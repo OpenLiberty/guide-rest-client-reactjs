@@ -1,0 +1,60 @@
+// Copyright (c) 2020 IBM Corporation and others.
+// Licensed under Creative Commons Attribution-NoDerivatives
+// 4.0 International (CC BY-ND 4.0)
+//   https://creativecommons.org/licenses/by-nd/4.0/
+//
+// Contributors:
+//     IBM Corporation
+:projectid: rest-client-reactjs
+:page-layout: guide-multipane
+:page-duration: 20 minutes
+:page-description: Explore how to access a simple RESTful web service and consume its resources with ReactJS in Open Liberty.
+:page-releasedate: ...
+:page-related-guides: ['rest-intro', 'rest-client-java']
+:page-permalink: /guides/{projectid}
+:common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
+:source-highlighter: prettify
+:page-seo-title: Consuming a RESTful web service with ReactJS
+:page-seo-description: ... 
+:guide-author: Open Liberty
+= Consuming a RESTful web service with ReactJS
+
+[.hidden]
+NOTE: This repository contains the guide documentation source. To view the guide in published form, view it on the https://openliberty.io/guides/{projectid}.html[Open Liberty website].
+
+Explore how to access a simple RESTful web service and consume its resources with AngularJS in Open
+Liberty.
+
+// =================================================================================================
+// Introduction
+// =================================================================================================
+
+...
+
+To learn more about REST services and how you can write them, see
+https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
+
+
+// =================================================================================================
+// Getting Started
+// =================================================================================================
+[role='command']
+include::{common-includes}/gitclone.adoc[]
+
+
+// =================================================================================================
+// 
+// =================================================================================================
+
+== 
+
+// =================================================================================================
+// Guide
+// =================================================================================================
+
+== Great work! You're done!
+
+You have just accessed a simple RESTful web service and consumed its resources by using ReactJS in
+Open Liberty.
+
+include::{common-includes}/attribution.adoc[subs="attributes"]
