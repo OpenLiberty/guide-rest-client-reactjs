@@ -11,7 +11,7 @@ export class Fetchdata extends Component {
   };
 
   getPosts() {
-    axios("http://localhost:9080/user")
+    axios("http://localhost:9080/artists")
       .then(response => {
         this.setState({
           posts: response.data,
@@ -27,34 +27,34 @@ export class Fetchdata extends Component {
   render() {
     const { isLoading, posts } = this.state;
     const columns = [{
-      Header: 'USerID',
+      Header: 'ID',
       accessor: 'id'
     }, {
-      Header: 'FirstName',
-      accessor: 'firstName'
+      Header: 'Name',
+      accessor: 'name'
     },
     {
-      Header: 'LastName',
-      accessor: 'lastName'
+      Header: 'Followers',
+      accessor: 'followers'
     },
     {
-      Header: 'Gender',
-      accessor: 'gender'
+      Header: 'Genres',
+      accessor: 'genres'
     },
     {
-      Header: 'Email',
-      accessor: 'email'
+      Header: 'Popularity',
+      accessor: 'popularity'
     }]
 
     return (
       <React.Fragment>
-        <h2>Random Post</h2>
+        <h2>Artist Web Service</h2>
         {!isLoading ? (
           <ReactTable
             data={posts}
             columns={columns}
-            defaultPageSize={5}
-            pageSizeOptions={[5, 10, 15]}
+            defaultPageSize={6}
+            pageSizeOptions={[6, 12, 15]}
           />) : (
             <p>{this.state.loading}</p>
           )}
