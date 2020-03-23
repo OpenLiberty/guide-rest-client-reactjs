@@ -22,7 +22,7 @@
 [.hidden]
 NOTE: This repository contains the guide documentation source. To view the guide in published form, view it on the https://openliberty.io/guides/{projectid}.html[Open Liberty website].
 
-Explore how to access a simple RESTful web service and consume its resources with AngularJS in Open
+Explore how to access a simple RESTful web service and consume its resources with ReactJS in Open
 Liberty.
 
 // =================================================================================================
