@@ -1,0 +1,71 @@
+[
+    {
+        "id": "1",
+        "name" : "foo",
+        "followers": "12313K",
+        "genres": "pop",
+        "popularity": "1231K",
+        "albums" : [
+            {
+                "title" : "album_one",
+                "artist" : "foo",
+                "ntracks" : 12
+            },
+            {
+                "title" : "album_two",
+                "artist" : "foo",
+                "ntracks" : 15
+            }
+        ]
+    }, 
+    {
+        "id" : "2",
+        "name" : "bar",
+        "followers": "12313K",
+        "genres": "hip hop",
+        "popularity": "1231K",
+        "albums" : [
+            {
+                "title" : "foo walks into a bar",
+                "artist" : "bar",
+                "ntracks" : 12
+            }
+        ]
+    }, 
+    {
+        "id": "3",
+        "name" : "dj",
+        "followers": "12313K",
+        "genres": "rock",
+        "popularity": "1231K",
+        "albums" : [
+        ]
+    },
+    {
+        "id": "4",
+        "name" : "dj",
+        "followers": "12313K",
+        "genres": "country",
+        "popularity": "1231K",
+        "albums" : [
+        ]
+    },
+    {
+        "id": "5",
+        "name" : "dj",
+        "followers": "12313K",
+        "genres": "rap",
+        "popularity": "1231K",
+        "albums" : [
+        ]
+    },
+    {
+        "id": "6",
+        "name" : "dj",
+        "followers": "12313K",
+        "genres": "techno",
+        "popularity": "1231K",
+        "albums" : [
+        ]
+    }
+]

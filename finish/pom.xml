@@ -1,12 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.microprofile.demo</groupId>
-    <artifactId>guide-rest-client-reactjs</artifactId>
+    <artifactId>microprofile-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -17,10 +15,10 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <!-- Plugin versions -->
+        <version.liberty-maven-plugin>3.1</version.liberty-maven-plugin>
         <version.maven-failsafe-plugin>2.22.2</version.maven-failsafe-plugin>
-        <version.maven-war-plugin>3.2.2</version.maven-war-plugin>
+        <version.maven-war-plugin>3.2.3</version.maven-war-plugin>
         <version.maven-surefire-plugin>2.22.2</version.maven-surefire-plugin>
-        <version.liberty-maven-plugin>3.2</version.liberty-maven-plugin>
         <!-- Liberty configuration -->
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
@@ -28,50 +26,49 @@
 
     <dependencies>
         <!-- Provided dependencies -->
-        <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-web-api</artifactId>
-            <version>8.0.0</version>
-            <scope>provided</scope>
-        </dependency>
+        <!-- tag::microprofile[] -->
         <dependency>
             <groupId>org.eclipse.microprofile</groupId>
-            <!-- tag::microprofile[] -->
             <artifactId>microprofile</artifactId>
-            <!-- end::microprofile[] -->
             <version>3.2</version>
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
-        <!-- Java utility classes -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
-        </dependency>
-        <!-- For tests-->
+        <!-- end::microprofile[] -->
+        <!-- For tests -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.6.0</version>
+            <version>5.5.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-client</artifactId>
-            <version>3.3.5</version>
+            <version>3.3.4</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-rs-extension-providers</artifactId>
-            <version>3.3.5</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- JSON-P RI -->
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.json</artifactId>
             <version>1.1.4</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- JSON-B API -->
+        <!-- tag::Yasson[] -->
+        <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>yasson</artifactId>
+            <version>1.0.5</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- end::Yasson[] -->
+        <!-- Support for JDK 9 and above -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
