@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
 import ReactTable from 'react-table-6';
-export class Fetchdata extends Component {
+
+class Fetchdata extends Component {
   state = {
     posts: {},
-    isLoading: true,
-    errors: null,
-    loading: "Loading....."
+    loading: true,
+    error: null,
+    //loading: "Loading....."
   };
 
   getPosts() {
@@ -15,17 +16,17 @@ export class Fetchdata extends Component {
       .then(response => {
         this.setState({
           posts: response.data,
-          isLoading: false
+          loading: false
         });
       })
-      .catch(error => this.setState({ error, isLoading: false }));
+      .catch(error => this.setState({ error, loading: false }));
 
   }
   componentDidMount() {
     this.getPosts();
   }
   render() {
-    const { isLoading, posts } = this.state;
+    const { loading, posts } = this.state;
     const columns = [{
       Header: 'ID',
       accessor: 'id'
@@ -49,14 +50,14 @@ export class Fetchdata extends Component {
     return (
       <React.Fragment>
         <h2>Artist Web Service</h2>
-        {!isLoading ? (
+        {!loading ? (
           <ReactTable
             data={posts}
             columns={columns}
             defaultPageSize={6}
             pageSizeOptions={[6, 12, 15]}
           />) : (
-            <p>{this.state.loading}</p>
+            <p>Loading .....</p>
           )}
       </React.Fragment>
     );
