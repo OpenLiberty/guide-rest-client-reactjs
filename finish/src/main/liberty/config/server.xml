@@ -13,11 +13,12 @@
 
   <webApplication location="guide-rest-client-reactjs.war" contextRoot="/"/>
 
-
+    <!-- tag::cors[] -->
     <cors domain="/artists"
       allowedOrigins="*"
       allowedMethods="GET"
       allowCredentials="true"
       exposeHeaders="MyHeader"/>
-
+    <!-- end::cors[] -->
+    
 </server>
