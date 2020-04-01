@@ -1,4 +1,4 @@
-// Copyright (c) 2017, 2019 IBM Corporation and others.
+// Copyright (c) 2020 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -8,14 +8,14 @@
 :projectid: rest-client-angularjs
 :page-layout: guide-multipane
 :page-duration: 20 minutes
-:page-description: Explore how to access a simple RESTful web service and consume its resources with AngularJS in Open Liberty.
-:page-releasedate: 2017-11-20
+:page-description: Explore how to access a simple RESTful web service and consume its resources with ReactJS in Open Liberty.
+// :page-releasedate: ...
 :page-related-guides: ['rest-intro', 'rest-client-java']
 :page-permalink: /guides/{projectid}
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 :source-highlighter: prettify
-:page-seo-title: Consuming a RESTful Java web service with AngularJS
-:page-seo-description: A getting started tutorial with examples on how to access a RESTful Java micoservice and deserialize the returned JSON by using the high-level `$resource` service of AngularJS.
+:page-seo-title: Consuming a RESTful Java web service with ReactJS
+:page-seo-description: A getting started tutorial with examples on how to access a RESTful Java micoservice and deserialize the returned JSON in ReactJS.
 :guide-author: Open Liberty
 = Consuming a RESTful web service with ReactJS
 
