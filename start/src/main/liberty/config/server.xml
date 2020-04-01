@@ -13,11 +13,4 @@
 
   <webApplication location="guide-rest-client-reactjs.war" contextRoot="/"/>
 
-
-    <cors domain="/artists"
-      allowedOrigins="*"
-      allowedMethods="GET"
-      allowCredentials="true"
-      exposeHeaders="MyHeader"/>
-
 </server>
