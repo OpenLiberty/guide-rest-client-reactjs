@@ -5,7 +5,7 @@
 //
 // Contributors:
 //     IBM Corporation
-:projectid: rest-client-angularjs
+:projectid: rest-client-reactjs
 :page-layout: guide-multipane
 :page-duration: 20 minutes
 :page-description: Explore how to access a simple RESTful web service and consume its resources with ReactJS in Open Liberty.
