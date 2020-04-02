@@ -5,7 +5,7 @@
 //
 // Contributors:
 //     IBM Corporation
-:projectid: rest-client-reactjs
+:projectid: rest-client-angularjs
 :page-layout: guide-multipane
 :page-duration: 20 minutes
 :page-description: Explore how to access a simple RESTful web service and consume its resources with ReactJS in Open Liberty.
@@ -29,13 +29,21 @@ Liberty.
 // What you'll learn
 // =================================================================================================
 
+== What you'll learn 
+
 You will learn how to access a REST service and deserialize the returned JSON that contains a list of artists, their albums and other ambiguous artist features by using an HTTP client with the ReactJS library. You will then present this data using a ReactJS element in the form of a paginated table.
 
 https://reactjs.org/[ReactJS^] is a JavaScript library used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. React also allows you to interface with other libraries and frameworks. Note, the names ReactJS and React are used interchangeably. To learn more about React, visit: https://reactjs.org/[React].
 
 The React application in this guide was created and configured for you in the `frontend` directory. The application uses the https://reactjs.org/docs/create-a-new-react-app.html[Create React App] prebuilt configuration to design the modern single-page React application. `Create React App` is a comfortable environment for learning React, and is the best way to start building a new single-page application in React. To learn more about this environment setup, see https://github.com/facebook/create-react-app[create-react-app] GitHub repository. 
 
-The REST service that provides the resources was written for you in advance and responds with the `artists.json` in `src/resources`.
+artists.json
+[source, json, linenums, role="code_column"]
+----
+include::finish/src/resources/artists.json[]
+----
+
+The REST service that provides the resources was written for you in advance and responds with the [hotspot]`artists.json` in `src/resources`.
 
 To learn more about REST services and how you can write them, see
 https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
