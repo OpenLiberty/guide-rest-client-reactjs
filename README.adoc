@@ -129,7 +129,7 @@ server.xml
 include::finish/src/main/liberty/config/server.xml[]
 ----
 
-The [hotspot=react-library file=0]`React library` imports the default export from the react package, and the component named export from the package. We then create an inheritance to the React Component to write our [hotspot=class file=0]`Fetchdata` component. 
+The [hotspot=react-library file=0]`React library` imports the default export from the react package, and the component named export from the package. An inheritance to the React Component is created to write the [hotspot=class file=0]`Fetchdata` component. 
 
 [role="code_command hotspot file=0", subs="quotes"]
 ----
@@ -139,11 +139,11 @@ The [hotspot=react-library file=0]`React library` imports the default export fro
 [role="edit_command_text"]
 Add the object to represent the [hotspot=state-object file=0]`state` of the posts that will appear on the paginated table. 
 
-The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=0]`exported` as a reusable UI element that can be used across our application, such as in the [hotspot=import-Fetchdata file=1]`App.js` file. The `App.js` file returns the `Fetchdata` component as a [hotspot=react-fragment file=1]`React Fragment` to create a reusable element that entails our whole web application. 
+The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=0]`exported` as a reusable UI element that can be used across your application, such as in the [hotspot=import-Fetchdata file=1]`App.js` file. The `App.js` file returns the `Fetchdata` component as a [hotspot=react-fragment file=1]`React Fragment` to create a reusable element that encompasses your whole web application. 
 
-The entry point of our application is the [hotspot file=2]`index.js` file, and it's where our code is always going to be run. The performance benefit in using ReactJS is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The `react-dom` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM. 
+The entry point of your application is the [hotspot file=2]`index.js` file, and it's where your code is always going to be run. The performance benefit in using ReactJS is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The `react-dom` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM. 
 
-To render the element we made onto our webpage, we invoke the [hotspot=dom-render file=2]`render` method provided by the DOM. Here, we rendered the `App` element on a DOM node.
+To render the element that was made onto your webpage, invoke the [hotspot=dom-render file=2]`render` method provided by the DOM. Here, we rendered the `App` element on a DOM node.
 
 Also, because you are requesting data from a different domain, you need to incorporate 
 Enabling Cross-Origin Resource Sharing (CORS). Open liberty has a built-in configuration 
@@ -189,7 +189,7 @@ The [hotspot=get-posts]`getPosts()` is the function that will utilize the axios 
 [role="edit_command_text"]
 Add the [hotspot=get-posts]`getPosts()` function into the Fetchdata Component. 
 Import the [hotspot=axios]`axios` HTTP call to read the artist JSON
-containing the data from our sample JSON files. Then, you can
+containing the data from the sample JSON files. Then, you can
 change the loading state by using the [hotspot=then-method]`.then()` method 
 to display the data. On successfully getting a response, the state of 
 the system changes by assigning [hotspot=data]`response.data` to [hotspot=data]`posts`.
@@ -208,7 +208,7 @@ if a `4xx` or `5xx` series error is returned.
 The [hotspot=mount-posts]`componentDidMount()` lifecycle method runs after the component output has been rendered to the DOM. Pagination can be used as a method used for handling data sets in React. In your application, you will render the columns in the paginated table, and define the [hotspot=header-id,header-names,header-followers,header-genres]`Header`
 and [hotspot=accessor-id,accessor-names,accessor-followers,accessor-genres]`accessor` of each column.
 
-Your paginated table is returned as `<React.Fragment>`, where we have defined props for the paginated [hotspot=table]`table`. The key prop [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The key prop [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
+Your paginated table is returned as `<React.Fragment>`, where you will define the props for the paginated [hotspot=table]`table`. The key prop [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The key prop [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
 
 Fetchdata.js
 [source, javascript, linenums, role='code_column']
