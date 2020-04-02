@@ -108,6 +108,7 @@ class Fetchdata extends Component {
   // end::render-posts[]
 }
 // end::element[]
+
 // tag::export-fetchdata[]
 export default Fetchdata;
 // end::export-fetchdata[]
