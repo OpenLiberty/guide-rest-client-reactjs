@@ -208,7 +208,7 @@ if a `4xx` or `5xx` series error is returned.
 The [hotspot=mount-posts]`componentDidMount()` lifecycle method runs after the component output has been rendered to the DOM. Pagination can be used as a method used for handling data sets in React. In your application, you will render the columns in the paginated table, and define the [hotspot=header-id,header-names,header-followers,header-genres]`Header`
 and [hotspot=accessor-id,accessor-names,accessor-followers,accessor-genres]`accessor` of each column.
 
-Your paginated table is returned as `<React.Fragment>`, where you will define the props for the paginated [hotspot=table]`table`. The key prop [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The key prop [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
+Your paginated table is returned as `<React.Fragment>`, where you will define the props for the paginated [hotspot=table]`table`. The prop [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The prop [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
 
 Fetchdata.js
 [source, javascript, linenums, role='code_column']
