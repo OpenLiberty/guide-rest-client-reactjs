@@ -225,7 +225,7 @@ include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 Import the [hotspot=react-table]`react table` libraries needed for the paginated table. Add the 
 [hotspot=return-table]`return` statement to add the paginated table to your application.
 
-Your application is available on http://localhost:3000[http://localhost:3000^].
+Navigate to the http://localhost:3000[http://localhost:3000^] URL to view your application.
 
 // =================================================================================================
 // Testing the React client
