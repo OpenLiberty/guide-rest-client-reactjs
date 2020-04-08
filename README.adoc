@@ -101,7 +101,7 @@ http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 A React web application is simply a collection of components. Each component does a specific functionality. You will create the component that is used in the application to acquire and display data from the REST API. 
 
 Fetchdata.js
-[source, javascript, linenums, role='code_column hide_tags=axios-library,react-table,get-posts,mount-posts,render-posts']
+[source, javascript, linenums, role='code_column hide_tags=axios-library,react-table,columns,get-posts,mount-posts,render-posts']
 ----
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
@@ -162,14 +162,12 @@ Note: all the other dependencies that are installed in the project will show up 
 == Importing the HTTP client
 
 Your application needs a way to communicate with RESTful web services to retrieve their
-resources. In this guide, you will use the https://github.com/axios/axios[axios^] library that will provide an HTTP client that will be used to make HTTP requests to external resources. https://github.com/axios/axios[axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. 
-
-To see an example of the Angular framework leveraging its HTTP client while running on the Open Liberty server, see: https://openliberty.io/guides/rest-client-angular.html[Consuming a RESTful web service with Angular^]. To learn more about the axios library and its HTTP client, see: https://www.npmjs.com/package/axios[axios^].
+resources. In this guide, you will use the https://github.com/axios/axios[axios^] library that will provide an HTTP client that will be used to make HTTP requests to external resources. https://github.com/axios/axios[axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the axios library and its HTTP client, see: https://www.npmjs.com/package/axios[axios^].
 
 Begin by importing the [hotspot=axios-library]`axios` Library into the `Fetchdata` Component.
 
 Fetchdata.js
-[source, javascript, linenums, role='code_column hide_tags=react-table,mount-posts,render-posts']
+[source, javascript, linenums, role='code_column hide_tags=react-table,columns,mount-posts,render-posts']
 ----
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
@@ -200,10 +198,12 @@ if a `4xx` or `5xx` series error is returned.
 
 == Displaying the returned data
 
-The [hotspot=mount-posts]`componentDidMount()` lifecycle method is called once all the children elements and component instances are mounted onto the native UI. You will now have access to the native UI, access to your children references and the ability to trigger a new render pass. Pagination is the process of separating content into discrete pages, and it can be used as for handling data sets in React. In your application, you will render the columns in the paginated table, and define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
-and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column.
+The [hotspot=mount-posts]`componentDidMount()` lifecycle method is called once all the children elements and component instances are mounted onto the native UI. You will now have access to the native UI, access to your children references and the ability to trigger a new render pass. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
 
-Your paginated table is returned as `<React.Fragment>`, where you will define the props for the paginated [hotspot=table]`table`. The prop [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The prop [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
+The [hotspot=columns]`columns` constant is used to define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
+and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column that will be used in the table.
+
+Import the [hotspot=react-table]`react table` libraries needed for the paginated table.
 
 Fetchdata.js
 [source, javascript, linenums, role='code_column']
@@ -217,8 +217,11 @@ include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
 [role="edit_command_text"]
-Import the [hotspot=react-table]`react table` libraries needed for the paginated table. Add the 
+Add the [hotspot=mount-posts]`componentDidMount()` method to your component.
+Next add the [hotspot=columns]`columns` variable. Lastly, Add the 
 [hotspot=return-table]`return` statement to add the paginated table to your application.
+
+Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
 
 Navigate to the http://localhost:3000[http://localhost:3000^] URL to view your application.
 
