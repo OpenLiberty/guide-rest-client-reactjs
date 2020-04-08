@@ -101,7 +101,7 @@ http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 A React web application is simply a collection of components. Each component does a specific functionality. You will create the component that is used in the application to acquire and display data from the REST API. 
 
 Fetchdata.js
-[source, javascript, linenums, role='code_column hide_tags=axios-library,react-table,columns,get-posts,mount-posts,render-posts']
+[source, javascript, linenums, role='code_column hide_tags=axios-library,react-table,columns-info,get-posts,mount-posts,render-posts']
 ----
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
@@ -167,7 +167,7 @@ resources. In this guide, you will use the https://github.com/axios/axios[axios^
 Begin by importing the [hotspot=axios-library]`axios` Library into the `Fetchdata` Component.
 
 Fetchdata.js
-[source, javascript, linenums, role='code_column hide_tags=react-table,columns,mount-posts,render-posts']
+[source, javascript, linenums, role='code_column hide_tags=react-table,columns-info,mount-posts,render-posts']
 ----
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
@@ -200,7 +200,7 @@ if a `4xx` or `5xx` series error is returned.
 
 The [hotspot=mount-posts]`componentDidMount()` lifecycle method is called once all the children elements and component instances are mounted onto the native UI. You will now have access to the native UI, access to your children references and the ability to trigger a new render pass. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
 
-The [hotspot=columns]`columns` constant is used to define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
+The [hotspot=columns-info]`columns` constant is used to define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
 and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column that will be used in the table.
 
 Import the [hotspot=react-table]`react table` libraries needed for the paginated table.
@@ -218,7 +218,7 @@ include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
 [role="edit_command_text"]
 Add the [hotspot=mount-posts]`componentDidMount()` method to your component.
-Next add the [hotspot=columns]`columns` variable. Lastly, Add the 
+Next add the [hotspot=columns-info]`columns` variable. Lastly, Add the 
 [hotspot=return-table]`return` statement to add the paginated table to your application.
 
 Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
