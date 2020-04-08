@@ -33,9 +33,9 @@ Liberty.
 
 You will learn how to access a REST service and deserialize the returned JSON that contains a list of artists, their albums and other ambiguous artist features by using an HTTP client with the ReactJS library. You will then present this data using a ReactJS element in the form of a paginated table.
 
-https://reactjs.org/[ReactJS^] is a JavaScript library used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. React also allows you to interface with other libraries and frameworks. Note, the names ReactJS and React are used interchangeably. To learn more about React, visit: https://reactjs.org/[React].
+https://reactjs.org/[ReactJS^] is a JavaScript library used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. https://reactjs.org/[ReactJS^] also allows you to interface with other libraries and frameworks. Note, the names ReactJS and React are used interchangeably.
 
-The React application in this guide was created and configured for you in the `frontend` directory. The application uses the https://reactjs.org/docs/create-a-new-react-app.html[Create React App] prebuilt configuration to design the modern single-page React application. `Create React App` is a comfortable environment for learning React, and is the best way to start building a new single-page application in React. To learn more about this environment setup, see https://github.com/facebook/create-react-app[create-react-app] GitHub repository. 
+The React application in this guide is provided and configured for you in the `frontend` directory. The application uses the https://reactjs.org/docs/create-a-new-react-app.html[Create React App] prebuilt configuration to design the modern single-page React application. The [https://github.com/facebook/create-react-app]`create-react-app` integrated toolchain is a comfortable environment for learning React, and is the best way to start building a new single-page application in React.
 
 artists.json
 [source, json, linenums, role="code_column"]
@@ -44,6 +44,8 @@ include::finish/src/resources/artists.json[]
 ----
 
 The REST service that provides the resources was written for you in advance and responds with the [hotspot]`artists.json` in `src/resources`.
+
+You will implement a ReactJS client that consumes this JSON and displays its contents at the following URL: `http://localhost:9080`.
 
 To learn more about REST services and how you can write them, see
 https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
@@ -61,13 +63,7 @@ include::{common-includes}/gitclone.adoc[]
 [role='command']
 include::{common-includes}/twyb-intro.adoc[]
 
-Navigate your browser to the application root http://localhost:9080/artists[http://localhost:9080^] to
-see the following output:
-
-[subs="quotes", role="no_copy"]
-----
-[{"id":"1","name":"foo","followers":"12313K","genres":"pop","albums":[{"title":"album_one","artist":"foo","ntracks":12},{"title":"album_two","artist":"foo","ntracks":15}]},{"id":"2","name":"bar","followers":"12313K","genres":"hip hop","albums":[{"title":"foo walks into a bar","artist":"bar","ntracks":12}]},{"id":"3","name":"dj","followers":"12313K","genres":"rock","albums":[]}]
-----
+Navigate your browser to the application root http://localhost:9080/artists[http://localhost:9080^].
 
 // =================================================================================================
 // Starting the service
@@ -102,8 +98,7 @@ http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 
 == Creating the React component
 
-In React, a component does a specific functionality, where a web application in React is 
-simply a collection of components. You will create the component that is used in the application to acquire and display data from the REST API. 
+A React web application is simply a collection of components. Each component does a specific functionality. You will create the component that is used in the application to acquire and display data from the REST API. 
 
 Fetchdata.js
 [source, javascript, linenums, role='code_column hide_tags=axios-library,react-table,get-posts,mount-posts,render-posts']
@@ -167,9 +162,9 @@ Note: all the other dependencies that are installed in the project will show up 
 == Importing the HTTP client
 
 Your application needs a way to communicate with RESTful web services to retrieve their
-resources. In this guide, you will use the axios Library that provides a lightweight HTTP client that will be used to make HTTP requests to external resources. https://github.com/axios/axios[axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. 
+resources. In this guide, you will use the https://github.com/axios/axios[axios^] library that will provide an HTTP client that will be used to make HTTP requests to external resources. https://github.com/axios/axios[axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. 
 
-To see an example of the Angular framework leveraging its HTTP client while running on the Open Liberty server, see: https://openliberty.io/guides/rest-client-angular.html[Consuming a RESTful web service with Angular^]. To learn more about the axios Library and its HTTP client, see: https://www.npmjs.com/package/axios[axios^].
+To see an example of the Angular framework leveraging its HTTP client while running on the Open Liberty server, see: https://openliberty.io/guides/rest-client-angular.html[Consuming a RESTful web service with Angular^]. To learn more about the axios library and its HTTP client, see: https://www.npmjs.com/package/axios[axios^].
 
 Begin by importing the [hotspot=axios-library]`axios` Library into the `Fetchdata` Component.
 
@@ -205,7 +200,7 @@ if a `4xx` or `5xx` series error is returned.
 
 == Displaying the returned data
 
-The [hotspot=mount-posts]`componentDidMount()` lifecycle method runs after the component output has been rendered to the DOM. Pagination can be used as a method used for handling data sets in React. In your application, you will render the columns in the paginated table, and define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
+The [hotspot=mount-posts]`componentDidMount()` lifecycle method is called once all the children elements and component instances are mounted onto the native UI. You will now have access to the native UI, access to your children references and the ability to trigger a new render pass. Pagination is the process of separating content into discrete pages, and it can be used as for handling data sets in React. In your application, you will render the columns in the paginated table, and define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
 and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column.
 
 Your paginated table is returned as `<React.Fragment>`, where you will define the props for the paginated [hotspot=table]`table`. The prop [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The prop [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
@@ -244,7 +239,7 @@ mvn generate-resources
 
 When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key.
 
-Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write test cases, follow the official unit testing and end-to-end testing documentation on the official https://reactjs.org/docs/testing.html[React^] page.
+Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write test cases, follow the official unit testing and end-to-end testing documentation on the official https://reactjs.org/docs/testing.html[React^] testing document.
 
 == Great work! You're done!
 
