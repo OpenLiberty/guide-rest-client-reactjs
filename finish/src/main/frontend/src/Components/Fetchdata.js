@@ -48,6 +48,7 @@ class Fetchdata extends Component {
   // tag::render-posts[]
   render() {
     const { isLoading, posts } = this.state;
+    // tag::columns[]
     const columns = [{
       // tag::header-id[]
       Header: 'ID',
@@ -79,6 +80,7 @@ class Fetchdata extends Component {
       accessor: 'genres'
       // end::accessor-genres[]
     }]
+    // end::columns[]
 
     // tag::return-table[]
     return (
