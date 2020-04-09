@@ -14,7 +14,7 @@ class Fetchdata extends Component {
 // end::class[]
   // tag::state-object[]
   state = {
-    posts: [{}],
+    posts: {},
     isLoading: true,
     error: null,
   };
