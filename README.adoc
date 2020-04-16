@@ -89,7 +89,7 @@ Also, pressing CTRL+C in the shell session that deploys the frontend application
 // Starting the backend service
 // =================================================================================================
 
-== Starting the backend service
+== Starting and running the backend service
 
 Before you begin the implementation, start the provided REST service so that
 the artist JSON is available to you.
