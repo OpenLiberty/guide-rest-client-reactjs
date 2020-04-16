@@ -76,7 +76,7 @@ the following data:
 [{"id":"1","name":"foo","followers":"12313K","genres":"pop","albums":[{"title":"album_one","artist":"foo","ntracks":12},{"title":"album_two","artist":"foo","ntracks":15}]},{"id":"2","name":"bar","followers":"12313K","genres":"hip hop","albums":[{"title":"foo walks into a bar","artist":"bar","ntracks":12}]},{"id":"3","name":"dj","followers":"12313K","genres":"rock","albums":[]}]
 ----
 
-Likewise, navigate to http://localhost:3000 to view the consumed JSON being displayed using ReactJS and see the following output:
+Likewise, navigate your broswer to the frontend service http://localhost:3000[http://localhost:3000^] to view the consumed JSON being displayed using ReactJS and see the following output:
 
 image::react-table.png[React Paginated Table,align="center"]
 
@@ -183,7 +183,7 @@ Note: all the other dependencies that are installed in the project will show up 
 == Importing the HTTP client
 
 Your application needs a way to communicate with RESTful web services to retrieve their
-resources. In this guide, you will use the https://github.com/axios/axios[axios^] library to provide you with an HTTP client. This will be used to make HTTP requests to external resources. https://github.com/axios/axios[Axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[axios documentation^].
+resources. In this section, you will use the https://github.com/axios/axios[axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. https://github.com/axios/axios[Axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[axios documentation^].
 
 Begin by importing the [hotspot=axios-library]`axios` Library into the `Fetchdata` Component.
 
@@ -218,7 +218,10 @@ if a `4xx` or `5xx` series error is returned.
 // =================================================================================================
 
 == Displaying the returned data
-In this section, we will verify that the component was updated properly and display the returned data. Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references and the ability to trigger a new render pass. You will use the concept of pagination to display the returned data. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
+In this section, we will verify that the component was updated properly and then display the returned artist data. Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references and the ability to trigger a new render pass. You will use the concept of pagination to display the returned data. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
+
+The [hotspot=columns-info]`columns` constant is used to define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
+and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column that will be used in the table.
 
 Import the [hotspot=react-table]`react table` libraries needed for the paginated table.
 
@@ -234,12 +237,9 @@ include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
 [role="edit_command_text"]
-Add the [hotspot=mount-posts]`componentDidMount()` and [hotspot=render-posts]`render()` 
+Add the [hotspot=mount-posts]`componentDidMount()` lifecycle method and [hotspot=render-posts]`render()` 
 method to your component. Next add the [hotspot=columns-info]`columns` variable. 
 Lastly, add the [hotspot=return-table]`return` statement to add the paginated table to your application.
-
-The [hotspot=columns-info]`columns` constant is used to define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
-and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column that will be used in the table.
 
 Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
 
@@ -253,7 +253,7 @@ Navigate to the http://localhost:3000[http://localhost:3000^] URL to view your f
 
 No explicit code directly uses the consumed artist JSON, so you don’t need to write any test cases.
 
-Whenever you change and build your React implementation, the frontend application root at http://localhost:3000 reflects the changes automatically. You can visit the root to manually check whether the artist JSON was consumed correctly. You can rebuild only your React frontend by running the following command:
+Whenever you change and build your React implementation, the frontend application at http://localhost:3000 reflects the changes automatically. You can visit the URL to manually check whether the artist JSON was consumed correctly. You can rebuild only your React frontend by running the following command:
 
 [role='command']
 ```
