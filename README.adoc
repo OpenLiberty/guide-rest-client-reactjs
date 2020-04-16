@@ -12,6 +12,7 @@
 // :page-releasedate: ...
 :page-related-guides: ['rest-intro', 'rest-client-java']
 :page-permalink: /guides/{projectid}
+:imagesdir: /img/guide/{projectid}
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 :source-highlighter: prettify
 :page-seo-title: Consuming a RESTful Java web service with ReactJS
@@ -43,9 +44,7 @@ artists.json
 include::finish/src/resources/artists.json[]
 ----
 
-The REST service that provides the resources was written for you in advance and responds with the [hotspot]`artists.json` in `src/resources`.
-
-You will implement a ReactJS client that consumes this JSON and displays its contents at the following URL: `http://localhost:9080`.
+The REST service that provides the resources was written for you in advance in the backend of the application, and responds with the [hotspot]`artists.json` in `src/resources`. You will implement a ReactJS client that consumes this JSON and displays its contents on a single-page webpage, which will act as your application's frontend. 
 
 To learn more about REST services and how you can write them, see
 https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
@@ -63,13 +62,34 @@ include::{common-includes}/gitclone.adoc[]
 [role='command']
 include::{common-includes}/twyb-intro.adoc[]
 
-Navigate your browser to the application root http://localhost:9080/artists[http://localhost:9080^].
+In another shell session, build the frontend by running the Maven `generate-resources` goal:
+[role='command']
+----
+mvn generate-resources
+----
+
+Navigate your browser to the backend service http://localhost:9080/artists[http://localhost:9080/artists^] to see
+the following data:
+
+[subs="quotes", role="no_copy"]
+----
+[{"id":"1","name":"foo","followers":"12313K","genres":"pop","albums":[{"title":"album_one","artist":"foo","ntracks":12},{"title":"album_two","artist":"foo","ntracks":15}]},{"id":"2","name":"bar","followers":"12313K","genres":"hip hop","albums":[{"title":"foo walks into a bar","artist":"bar","ntracks":12}]},{"id":"3","name":"dj","followers":"12313K","genres":"rock","albums":[]}]
+----
+
+Likewise, navigate to http://localhost:3000 to view the consumed JSON being displayed using ReactJS and see the following output:
+
+image::react-table.png[React Paginated Table,align="center"]
+
+[role='command']
+include::{common-includes}/twyb-end.adoc[]
+
+Also, pressing CTRL+C in the shell session to deploy the frontend application will stop the node server. 
 
 // =================================================================================================
-// Starting the service
+// Starting the backend service
 // =================================================================================================
 
-== Starting the service
+== Starting the backend service
 
 Before you begin the implementation, start the provided REST service so that
 the artist JSON is available to you.
@@ -120,18 +140,10 @@ include::finish/src/main/liberty/config/server.xml[]
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
 
-The [hotspot=react-library file=0]`React library` imports the default export from the react package, and the component named export from the package. An inheritance to the React Component is created to write the [hotspot=class file=0]`Fetchdata` component. 
+The [hotspot=react-library file=0]`React library` imports the default export from the `react` package, and the component named export from the package. An inheritance to the React Component is created to write the [hotspot=class file=0]`Fetchdata` component. 
 
 
 The object to represent the [hotspot=state-object file=0]`state` of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=0]`exported` as a reusable UI element that can be used across your application, such as in the [hotspot=import-Fetchdata file=1]`App.js` file. The `App.js` file has been provided for you, and it returns the `Fetchdata` component as a [hotspot=react-fragment file=1]`React Fragment` to create a reusable element that encompasses your whole web application. 
-
-[role="code_command hotspot file=0", subs="quotes"]
-----
-#Update the `Fetchdata.js` file.#
-`src/main/frontend/src/Components/Fetchdata.js`
-----
-[role="edit_command_text"]
-Update the component to add [hotspot=state-object file=0]`state` object.
 
 The entry point of your application is the [hotspot file=2]`index.js` file, and this is where your code is always going to be run. The performance benefit in using ReactJS is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The https://reactjs.org/docs/react-dom.html[react-dom^] package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM. 
 
@@ -171,7 +183,7 @@ Note: all the other dependencies that are installed in the project will show up 
 == Importing the HTTP client
 
 Your application needs a way to communicate with RESTful web services to retrieve their
-resources. In this guide, you will use the https://github.com/axios/axios[axios^] library that will provide an HTTP client that will be used to make HTTP requests to external resources. https://github.com/axios/axios[axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the axios library and its HTTP client, see: https://www.npmjs.com/package/axios[axios^].
+resources. In this guide, you will use the https://github.com/axios/axios[axios^] library to provide you with an HTTP client. This will be used to make HTTP requests to external resources. https://github.com/axios/axios[Axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[axios documentation^].
 
 Begin by importing the [hotspot=axios-library]`axios` Library into the `Fetchdata` Component.
 
@@ -206,11 +218,7 @@ if a `4xx` or `5xx` series error is returned.
 // =================================================================================================
 
 == Displaying the returned data
-
-The [hotspot=mount-posts]`componentDidMount()` lifecycle method is called once all the children elements and component instances are mounted onto the native UI. You will now have access to the native UI, and will be able to access to your children references and the ability to trigger a new render pass. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
-
-The [hotspot=columns-info]`columns` constant is used to define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
-and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column that will be used in the table.
+In this section, we will verify that the component was updated properly and display the returned data. Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references and the ability to trigger a new render pass. You will use the concept of pagination to display the returned data. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
 
 Import the [hotspot=react-table]`react table` libraries needed for the paginated table.
 
@@ -230,9 +238,12 @@ Add the [hotspot=mount-posts]`componentDidMount()` and [hotspot=render-posts]`re
 method to your component. Next add the [hotspot=columns-info]`columns` variable. 
 Lastly, add the [hotspot=return-table]`return` statement to add the paginated table to your application.
 
+The [hotspot=columns-info]`columns` constant is used to define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
+and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column that will be used in the table.
+
 Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
 
-Navigate to the http://localhost:3000[http://localhost:3000^] URL to view your application.
+Navigate to the http://localhost:3000[http://localhost:3000^] URL to view your frontend application.
 
 // =================================================================================================
 // Testing the React client
@@ -242,16 +253,16 @@ Navigate to the http://localhost:3000[http://localhost:3000^] URL to view your a
 
 No explicit code directly uses the consumed artist JSON, so you don’t need to write any test cases.
 
-Whenever you change and build your React implementation, the application root at http://localhost:3000 reflects the changes automatically. You can visit the root to manually check whether the artist JSON was consumed correctly. You can rebuild only your React frontend by running the following command:
+Whenever you change and build your React implementation, the frontend application root at http://localhost:3000 reflects the changes automatically. You can visit the root to manually check whether the artist JSON was consumed correctly. You can rebuild only your React frontend by running the following command:
 
 [role='command']
 ```
 mvn generate-resources
 ```
 
-When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key.
+When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key. Likewise, pressing CTRL+C in the shell session to deploy the frontend application will stop the node server. 
 
-Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write test cases, follow the official unit testing and end-to-end testing documentation on the official https://reactjs.org/docs/testing.html[React^] testing document.
+Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write test cases, follow the official unit testing and end-to-end testing documentation on the official https://reactjs.org/docs/testing.html[React testing document^].
 
 == Great work! You're done!
 
