@@ -220,10 +220,7 @@ if a `4xx` or `5xx` series error is returned.
 == Displaying the returned data
 In this section, we will verify that the component was updated properly and then display the returned artist data. Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references and the ability to trigger a new render pass. You will use the concept of pagination to display the returned data. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
 
-The [hotspot=columns-info]`columns` constant is used to define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
-and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column that will be used in the table.
-
-Import the [hotspot=react-table]`react table` libraries needed for the paginated table.
+Start by importing the [hotspot=react-table]`react table` libraries needed for the paginated table.
 
 Fetchdata.js
 [source, javascript, linenums, role='code_column']
@@ -240,6 +237,9 @@ include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 Add the [hotspot=mount-posts]`componentDidMount()` lifecycle method and [hotspot=render-posts]`render()` 
 method to your component. Next add the [hotspot=columns-info]`columns` variable. 
 Lastly, add the [hotspot=return-table]`return` statement to add the paginated table to your application.
+
+The [hotspot=columns-info]`columns` constant is used to define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
+and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column that will be used in the table.
 
 Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
 
