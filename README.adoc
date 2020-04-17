@@ -235,13 +235,12 @@ include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
 [role="edit_command_text"]
 Add the [hotspot=mount-posts]`componentDidMount()` lifecycle method and [hotspot=render-posts]`render()` 
-method to your component. Next add the [hotspot=columns-info]`columns` variable. 
-Lastly, add the [hotspot=return-table]`return` statement to add the paginated table to your application.
+method to your component. 
 
 The [hotspot=columns-info]`columns` constant is used to define the [hotspot=header-id hotspot=header-name hotspot=header-followers hotspot=header-genres]`Header`
 and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres]`accessor` of each column that will be used in the table.
 
-Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
+The [hotspot=return-table]`return` statement adds the paginated table to your application. Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
 
 Navigate to the http://localhost:3000[http://localhost:3000^] URL to view your frontend application.
 
