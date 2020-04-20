@@ -73,7 +73,7 @@ the following data:
 
 [subs="quotes", role="no_copy"]
 ----
-[{"id":"1","name":"foo","followers":"12313K","genres":"pop","albums":[{"title":"album_one","artist":"foo","ntracks":12},{"title":"album_two","artist":"foo","ntracks":15}]}]
+[{"id":"1","name":"foo","followers":"12313K","genres":"pop"}]
 ----
 
 Likewise, navigate your broswer to the frontend service http://localhost:3000[http://localhost:3000^] to view the consumed JSON being displayed using ReactJS and see the following output:
