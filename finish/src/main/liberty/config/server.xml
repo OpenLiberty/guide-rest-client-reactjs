@@ -10,15 +10,15 @@
   <variable name="default.https.port" defaultValue="9443"/>
 
   <httpEndpoint host="*" httpPort="${default.http.port}" 
-  httpsPort="${default.https.port}" id="defaultHttpEndpoint" />
+          httpsPort="${default.https.port}" id="defaultHttpEndpoint" />
 
   <webApplication location="guide-rest-client-reactjs.war" contextRoot="/"/>
   
   <!-- tag::cors[] -->
   <cors domain="/artists"
-    allowedOrigins="*"
-    allowedMethods="GET"
-    allowCredentials="true"
-    exposeHeaders="MyHeader"/>
+            allowedOrigins="*"
+            allowedMethods="GET"
+            allowCredentials="true"
+            exposeHeaders="MyHeader"/>
   <!-- end::cors[] -->
 </server>
