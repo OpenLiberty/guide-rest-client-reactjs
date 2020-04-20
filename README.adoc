@@ -73,7 +73,7 @@ the following data:
 
 [subs="quotes", role="no_copy"]
 ----
-[{"id":"1","name":"foo","followers":"12313K","genres":"pop","albums":[{"title":"album_one","artist":"foo","ntracks":12},{"title":"album_two","artist":"foo","ntracks":15}]},{"id":"2","name":"bar","followers":"12313K","genres":"hip hop","albums":[{"title":"foo walks into a bar","artist":"bar","ntracks":12}]},{"id":"3","name":"dj","followers":"12313K","genres":"rock","albums":[]}]
+[{"id":"1","name":"foo","followers":"12313K","genres":"pop","albums":[{"title":"album_one","artist":"foo","ntracks":12},{"title":"album_two","artist":"foo","ntracks":15}]}]
 ----
 
 Likewise, navigate your broswer to the frontend service http://localhost:3000[http://localhost:3000^] to view the consumed JSON being displayed using ReactJS and see the following output:
