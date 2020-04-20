@@ -102,6 +102,21 @@ include::{common-includes}/devmode-start.adoc[]
 You can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 
+Also, because you are requesting data from a different domain, you need to incorporate 
+Enabling Cross-Origin Resource Sharing (CORS). Open liberty has a built-in configuration 
+for CORS that can be added to the `server.xml`
+See https://openliberty.io/guides/cors.html[Enabling Cross-Origin Resource Sharing (CORS)^] to learn more about CORS.
+
+[role="code_command hotspot file=3", subs="quotes"]
+----
+#Update the `server.xml` file.#
+`src/main/liberty/config/server.xml`
+----
+[role="edit_command_text"]
+Add the [hotspot=cors file=3]`CORS` configuration.
+
+Note: all the other dependencies that are installed in the project will show up in the `package.json`.
+
 // =================================================================================================
 // Creating the React component
 // =================================================================================================
@@ -149,7 +164,7 @@ The entry point of your application is the [hotspot file=2]`index.js` file, and 
 
 To render the element that was made onto your webpage, the [hotspot=dom-render file=2]`render` method is provided by the DOM. Here, we rendered the `App` element on a DOM node.
 
-=== Building the frontend
+=== Running the frontend
 
 First, you need to build the frontend by running the Maven `generate-resources` goal:
 [role='command']
@@ -160,21 +175,6 @@ mvn generate-resources
 Note that you can rebuild the frontend at any time with the Maven `generate-resources` goal.
 Any local changes to your JavaScript are picked up when you build the
 frontend. These changes are also automatically rendered to your webpage template.
-
-Also, because you are requesting data from a different domain, you need to incorporate 
-Enabling Cross-Origin Resource Sharing (CORS). Open liberty has a built-in configuration 
-for CORS that can be added to the `server.xml`
-See https://openliberty.io/guides/cors.html[Enabling Cross-Origin Resource Sharing (CORS)^] to learn more about CORS.
-
-[role="code_command hotspot file=3", subs="quotes"]
-----
-#Update the `server.xml` file.#
-`src/main/liberty/config/server.xml`
-----
-[role="edit_command_text"]
-Add the [hotspot=cors file=3]`CORS` configuration.
-
-Note: all the other dependencies that are installed in the project will show up in the `package.json`.
 
 // =================================================================================================
 // Importing the HTTP client
