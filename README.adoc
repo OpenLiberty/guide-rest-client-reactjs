@@ -1,3 +1,5 @@
+
+
 // Copyright (c) 2020 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
@@ -59,24 +61,32 @@ include::{common-includes}/gitclone.adoc[]
 // Try what you'll build
 // =================================================================================================
 
-[role='command']
-include::{common-includes}/twyb-intro.adoc[]
+=== Try what you'll build
 
-In another shell session, build the frontend by running the Maven `generate-resources` goal:
+The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed.
+
+To try out the application, first go to the `finish` directory and build your React frontend:
+
 [role='command']
-----
+```
 mvn generate-resources
+```
+
+Run the following Maven goal to build the application and deploy it to Open Liberty:
+
+[role='command']
+```
+mvn liberty:run
+```
+
+After you see the following message, your application server is ready.
+
+[role="no_copy"]
+----
+The defaultServer server is ready to run a smarter planet.
 ----
 
-Navigate your browser to the backend service http://localhost:9080/artists[http://localhost:9080/artists^] to see
-the following data:
-
-[subs="quotes", role="no_copy"]
-----
-[{"id":"1","name":"foo","followers":"12313K","genres":"pop"}]
-----
-
-Likewise, navigate your broswer to the frontend service http://localhost:3000[http://localhost:3000^] to view the consumed JSON being displayed using ReactJS and see the following output:
+Then, point your browser to the web application root http://localhost:9080/app[http://localhost:8080^] to see the following output:
 
 image::react-table.png[React Paginated Table,align="center"]
 
@@ -86,34 +96,49 @@ include::{common-includes}/twyb-end.adoc[]
 Also, pressing CTRL+C in the shell session that deploys the frontend application will stop the node server. 
 
 // =================================================================================================
-// Starting the backend service
+// Starting the service
 // =================================================================================================
 
-== Starting and running the backend service
+== Starting the service
 
 Before you begin the implementation, start the provided REST service so that
 the artist JSON is available to you.
 
 Navigate to the `start` directory to begin.
 
+First, you need to build the frontend by running the Maven `generate-resources` goal:
+[role='command']
+----
+mvn generate-resources
+----
+
+Note that you can rebuild the frontend at any time with the Maven `generate-resources` goal.
+Any local changes to your JaveScript and HTML are picked up when you build the
+frontend.
+
 [role='command']
 include::{common-includes}/devmode-start.adoc[]
 
-You can find your artist JSON at the
+After you start the service, you can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 
-Also, because you are requesting data from a different domain, you need to incorporate 
+server.xml
+[source, xml, linenums, role='code_column']
+----
+include::finish/src/main/liberty/config/server.xml[]
+----
+Also, because you will be requesting data from a different domain, you need to incorporate 
 Enabling Cross-Origin Resource Sharing (CORS). Open liberty has a built-in configuration 
 for CORS that can be added to the `server.xml`
 See https://openliberty.io/guides/cors.html[Enabling Cross-Origin Resource Sharing (CORS)^] to learn more about CORS.
 
-[role="code_command hotspot file=3", subs="quotes"]
+[role="code_command hotspot file=0", subs="quotes"]
 ----
 #Update the `server.xml` file.#
 `src/main/liberty/config/server.xml`
 ----
 [role="edit_command_text"]
-Add the [hotspot=cors file=3]`CORS` configuration.
+Add the [hotspot=cors file=0]`CORS` configuration.
 
 Note: all the other dependencies that are installed in the project will show up in the `package.json`.
 
@@ -143,12 +168,6 @@ index.js
 include::finish/src/main/frontend/src/index.js[]
 ----
 
-server.xml
-[source, xml, linenums, role='code_column']
-----
-include::finish/src/main/liberty/config/server.xml[]
-----
-
 [role="code_command hotspot file=0", subs="quotes"]
 ----
 #Create the `Fetchdata.js` file.#
@@ -163,18 +182,6 @@ The object to represent the [hotspot=state-object file=0]`state` of the posts th
 The entry point of your application is the [hotspot file=2]`index.js` file, and this is where your code is always going to be run. The performance benefit in using ReactJS is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The https://reactjs.org/docs/react-dom.html[react-dom^] package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM. 
 
 To render the element that was made onto your webpage, the [hotspot=dom-render file=2]`render` method is provided by the DOM. Here, we rendered the `App` element on a DOM node.
-
-=== Running the frontend
-
-First, you need to build the frontend by running the Maven `generate-resources` goal:
-[role='command']
-----
-mvn generate-resources
-----
-
-Note that you can rebuild the frontend at any time with the Maven `generate-resources` goal.
-Any local changes to your JavaScript are picked up when you build the
-frontend. These changes are also automatically rendered to your webpage template.
 
 // =================================================================================================
 // Importing the HTTP client
@@ -242,7 +249,7 @@ and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspo
 
 The [hotspot=return-table]`return` statement adds the paginated table to your application. Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
 
-Navigate to the http://localhost:3000[http://localhost:3000^] URL to view your frontend application.
+Navigate to the http://localhost:8080[http://localhost:8080^] URL to view your frontend application.
 
 // =================================================================================================
 // Testing the React client
@@ -252,7 +259,7 @@ Navigate to the http://localhost:3000[http://localhost:3000^] URL to view your f
 
 No explicit code directly uses the consumed artist JSON, so you don’t need to write any test cases.
 
-Whenever you change and build your React implementation, the frontend application at http://localhost:3000 reflects the changes automatically. You can visit the URL to manually check whether the artist JSON was consumed correctly. You can rebuild only your React frontend by running the following command:
+Whenever you change and build your React implementation, the frontend application at http://localhost:8080 reflects the changes automatically. You can visit the URL to manually check whether the artist JSON was consumed correctly. You can rebuild only your React frontend by running the following command:
 
 [role='command']
 ```
@@ -269,6 +276,7 @@ You have just accessed a simple RESTful web service and consumed its resources b
 Open Liberty.
 
 include::{common-includes}/attribution.adoc[subs="attributes"]
+
 
 
 
