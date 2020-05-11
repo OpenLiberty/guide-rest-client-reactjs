@@ -2,8 +2,7 @@
     {
         "id": "1",
         "name" : "foo",
-        "followers": "12313K",
-        "genres": "pop",
+        "genres": "pop, country",
         "albums" : [
             {
                 "title" : "album_one",
@@ -20,8 +19,7 @@
     {
         "id" : "2",
         "name" : "bar",
-        "followers": "12313K",
-        "genres": "hip hop",
+        "genres": "rock",
         "albums" : [
             {
                 "title" : "foo walks into a bar",
@@ -33,8 +31,7 @@
     {
         "id": "3",
         "name" : "dj",
-        "followers": "12313K",
-        "genres": "rock",
+        "genres": "hip hop",
         "albums" : [
         ]
     }

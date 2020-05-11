@@ -50,36 +50,44 @@ class Fetchdata extends Component {
     const { isLoading, posts } = this.state;
     // tag::columns-info[]
     const columns = [{
-      // tag::header-id[]
-      Header: 'ID',
-      // end::header-id[]
-      // tag::accessor-id[]
-      accessor: 'id'
-      // end::accessor-id[]
-    }, {
-      // tag::header-name[]
-      Header: 'Name',
-      // end::header-name[]
-      // tag::accessor-name[]
-      accessor: 'name'
-      // end::accessor-name[]
-    },
-    {
-      // tag::header-followers[]
-      Header: 'Followers',
-      // end::header-followers[]
-      // tag::accessor-followers[]
-      accessor: 'followers'
-      // end::accessor-followers[]
+        // tag::header-genres[]
+        Header: 'Artist Info',
+        // end::header-genres[]
+        // tag::accessor-genres[]
+        columns: [
+          {
+            Header: "Artist ID",
+            accessor: "id"
+          },
+          {
+            Header: "Artist Name",
+            accessor: "name"
+          },
+          {
+            Header: "Genres",
+            accessor: "genres",
+          }
+        ]
     },
     {
       // tag::header-genres[]
-      Header: 'Genres',
+      Header: 'Albums',
       // end::header-genres[]
       // tag::accessor-genres[]
-      accessor: 'genres'
+      columns: [
+        {
+          Header: "Title",
+          accessor: "albums.title",
+        },
+        {
+          Header: "Number of Tracks",
+          accessor: "albums.ntracks",
+        }
+      ]
+       
       // end::accessor-genres[]
-    }]
+    }
+  ]
     // end::columns-info[]
 
     // tag::return-table[]
