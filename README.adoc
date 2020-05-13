@@ -86,7 +86,7 @@ After you see the following message, your application server is ready.
 The defaultServer server is ready to run a smarter planet.
 ----
 
-Then, point your browser to the web application root http://localhost:9080/app[http://localhost:8080^] to see the following output:
+Then, point your browser to the web application root http://localhost:9080/app[http://localhost:3000^] to see the following output:
 
 image::react-table.png[React Paginated Table,align="center"]
 
@@ -249,7 +249,7 @@ and [hotspot=accessor-id hotspot=accessor-name hotspot=accessor-followers hotspo
 
 The [hotspot=return-table]`return` statement adds the paginated table to your application. Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
 
-Navigate to the http://localhost:8080[http://localhost:8080^] URL to view your frontend application.
+Navigate to the http://localhost:3000[http://localhost:3000^] URL to view your frontend application.
 
 // =================================================================================================
 // Testing the React client
@@ -259,7 +259,7 @@ Navigate to the http://localhost:8080[http://localhost:8080^] URL to view your f
 
 No explicit code directly uses the consumed artist JSON, so you don’t need to write any test cases.
 
-Whenever you change and build your React implementation, the frontend application at http://localhost:8080 reflects the changes automatically. You can visit the URL to manually check whether the artist JSON was consumed correctly. You can rebuild only your React frontend by running the following command:
+Whenever you change and build your React implementation, the frontend application at http://localhost:3000 reflects the changes automatically. You can visit the URL to manually check whether the artist JSON was consumed correctly. You can rebuild only your React frontend by running the following command:
 
 [role='command']
 ```
