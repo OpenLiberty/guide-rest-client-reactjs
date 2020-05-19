@@ -242,7 +242,7 @@ include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 Add the [hotspot=mount-posts]`componentDidMount()` lifecycle method and [hotspot=render-posts]`render()` 
 method to your component. 
 
-The [hotspot=table-info]`columns` constant is used to define the table present on the webpage. The table is split into two major sections, the [hotspot=header-artist]`Artist Info Header` and the[hotspot=header-album]`Albums Header`. Each section defines the appropriate [hotspot=header-ID hotspot=header-name hotspot=header-genres hotspot=header-title hotspot=header-tracks]`Headers` 
+The [hotspot=table-info]`columns` constant is used to define the table present on the webpage. The table is split into two major sections, the [hotspot=header-artist]`Artist Info Header` and the[hotspot=header-albums]`Albums Header`. Each section defines the appropriate [hotspot=header-ID hotspot=header-name hotspot=header-genres hotspot=header-title hotspot=header-tracks]`Headers` 
 and [hotspot=accessor-ID hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres hotspot=accessor-title hotspot=accessor-tracks]`accessors` that corresponds to the `resources/artists.json`.
 
 You will create the [hotspot=convert-data]`convertData` function that will manipulate the JSON data, to allow it to be accessed.  
