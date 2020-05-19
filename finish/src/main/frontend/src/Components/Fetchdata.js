@@ -75,7 +75,7 @@ class Fetchdata extends Component {
   // tag::render-posts[]
   render() {
     const { isLoading, posts } = this.state;
-    // tag::columns-info[]
+    // tag::table-info[]
     const columns = [{
         // tag::header-artist[]
         Header: 'Artist Info',
@@ -131,7 +131,7 @@ class Fetchdata extends Component {
       ]
     }
   ]
-  // end::columns-info[]
+  // end::table-info[]
 
     // tag::return-table[]
     return (
