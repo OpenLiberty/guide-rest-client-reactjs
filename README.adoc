@@ -193,7 +193,7 @@ resources. In this section, you will use the https://github.com/axios/axios[axio
 Begin by importing the [hotspot=axios-library]`axios` Library into the `Fetchdata` Component.
 
 Fetchdata.js
-[source, javascript, linenums, role='code_column hide_tags=react-table,mount-posts,render-posts']
+[source, javascript, linenums, role='code_column hide_tags=react-table,convert-data,mount-posts,render-posts']
 ----
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
