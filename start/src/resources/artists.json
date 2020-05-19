@@ -2,7 +2,7 @@
     {
         "id": "1",
         "name" : "foo",
-        "genres": "pop, country",
+        "genres": "pop",
         "albums" : [
             {
                 "title" : "album_one",
@@ -22,9 +22,9 @@
         "genres": "rock",
         "albums" : [
             {
-                "title" : "foo walks into a bar",
+                "title" : "album_rock",
                 "artist" : "bar",
-                "ntracks" : 12
+                "ntracks" : 15
             }
         ]
     }, 
@@ -33,6 +33,11 @@
         "name" : "dj",
         "genres": "hip hop",
         "albums" : [
+            {
+                "title" : "album_dj",
+                "artist" : "bar",
+                "ntracks" : 7
+            }
         ]
     }
 ]
