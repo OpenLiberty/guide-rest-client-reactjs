@@ -1,17 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Switch
+} from 'react-router-dom';
 // tag::import-fetchdata
 import Fetchdata from './Components/Fetchdata';
-// end::import-fetchdata
+
 
 function App() {
   return (
-    // tag::react-fragment[]
-    <React.Fragment>
-      <Fetchdata/>
-    </React.Fragment>
-    // end::react-fragment[]
+    <div className="App">
+    <Fetchdata/>
+    </div>
   );
 }
 

@@ -28,17 +28,44 @@ class Fetchdata extends Component {
       .then(response => {
         this.setState({
           // tag::data[]
-          posts: response.data,
+          posts: convertData(response.data),
           // end::data[]
           isLoading: false
         });
       // end::then-method[]
+      console.log(response);
       })
       // tag::error-handling[]
       .catch(error => this.setState({ error, isLoading: false }));
       // end::error-handling[]
 
-  }
+      // tag::convert-data[]
+      const convertData = (data) => {
+        let result = [];
+
+        for(let item of data){
+          let b = {};
+        
+          if(item.albums.length){
+          const aa = item.albums;
+          delete item.albums;
+
+            for (let it of aa) {
+            b = it;
+            result.push({...item,...b});
+          }
+
+        } else {
+          delete item.albums;
+          result.push(item);
+          }
+        }
+
+        return result;
+      }
+        
+    }
+    // end::convert-data[]
   // end::get-posts[]
   // tag::mount-posts[]
   componentDidMount() {
@@ -50,45 +77,61 @@ class Fetchdata extends Component {
     const { isLoading, posts } = this.state;
     // tag::columns-info[]
     const columns = [{
-        // tag::header-genres[]
+        // tag::header-artist[]
         Header: 'Artist Info',
-        // end::header-genres[]
-        // tag::accessor-genres[]
+        // end::header-artist[]
         columns: [
           {
+            // tag::header-ID[]
             Header: "Artist ID",
+            // end::header-ID[]
+            // tag::accessor-ID[]
             accessor: "id"
+            // end::accessor-ID[]
           },
           {
+            // tag::header-name[]
             Header: "Artist Name",
+            // end::header-name[]
+            // tag::accessor-name[]
             accessor: "name"
+            // end::accessor-name[]
           },
           {
+            // tag::header-genres[]
             Header: "Genres",
+            // end::header-genres[]
+            // tag::accessor-genres[]
             accessor: "genres",
+            // end::accessor-genres[]
           }
         ]
     },
     {
-      // tag::header-genres[]
+      // tag::header-albums[]
       Header: 'Albums',
-      // end::header-genres[]
-      // tag::accessor-genres[]
+      // end::header-albums[]
       columns: [
         {
+          // tag::header-title[]
           Header: "Title",
-          accessor: "albums.title",
+          // end::header-title[]
+          // tag::accessor-title[]
+          accessor: "title",
+          // end::accessor-title[]
         },
         {
+          // tag::header-tracks[]
           Header: "Number of Tracks",
-          accessor: "albums.ntracks",
+          // end::header-tracks[]
+          // tag::accessor-tracks[]
+          accessor: "ntracks",
+          // end::accessor-tracks[]
         }
       ]
-       
-      // end::accessor-genres[]
     }
   ]
-    // end::columns-info[]
+  // end::columns-info[]
 
     // tag::return-table[]
     return (
