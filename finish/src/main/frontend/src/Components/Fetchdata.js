@@ -59,14 +59,13 @@ class Fetchdata extends Component {
             delete item.albums;
             result.push(item);
           }
-        }
-
-        return result;
+      }
+      return result;
     }
-        
-  }
     // end::convert-data[]
+  }
   // end::get-posts[]
+
   // tag::mount-posts[]
   componentDidMount() {
     this.getPosts();
