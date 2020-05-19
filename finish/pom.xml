@@ -123,7 +123,6 @@
                             <npmVersion>6.13.4</npmVersion>
                         </configuration>
                     </execution>
-
                     <execution>
                         <id>npm install</id>
                         <goals>
@@ -143,13 +142,28 @@
                             <arguments>run build</arguments>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>npm run start</id>
+                </executions>
+            </plugin>
+
+            <!-- Copy frontend static files to target directory-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                 <execution>
+                        <id>Copy frontend build to target</id>
+                        <phase>process-resources</phase>
                         <goals>
-                            <goal>npm</goal>
+                            <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <arguments>run start</arguments>
+                            <outputDirectory>${basedir}/src/main/webapp</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/src/main/frontend/build</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
                         </configuration>
                     </execution>
                 </executions>
