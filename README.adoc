@@ -138,7 +138,7 @@ See https://openliberty.io/guides/cors.html[Enabling Cross-Origin Resource Shari
 [role="edit_command_text"]
 Add the [hotspot=cors file=0]`CORS` configuration.
 
-Note: all the other dependencies that are installed in the project will show up in the `package.json`.
+Note: all the other dependencies that are installed in the project will show up in `frontend/src/package.json`.
 
 // =================================================================================================
 // Creating the React component
