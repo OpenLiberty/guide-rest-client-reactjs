@@ -39,32 +39,32 @@ class Fetchdata extends Component {
       .catch(error => this.setState({ error, isLoading: false }));
       // end::error-handling[]
 
-      // tag::convert-data[]
-      const convertData = (data) => {
-        let result = [];
+  // tag::convert-data[]
+    const convertData = (data) => {
+      let result = [];
 
-        for(let item of data){
-          let b = {};
+      for(let item of data){
+        let b = {};
         
-          if(item.albums.length){
-          const aa = item.albums;
-          delete item.albums;
+        if(item.albums.length){
+        const a = item.albums;
+        delete item.albums;
 
-            for (let it of aa) {
-            b = it;
-            result.push({...item,...b});
+          for (let it of a) {
+          b = it;
+          result.push({...item,...b});
           }
 
-        } else {
-          delete item.albums;
-          result.push(item);
+          } else {
+            delete item.albums;
+            result.push(item);
           }
         }
 
         return result;
-      }
-        
     }
+        
+  }
     // end::convert-data[]
   // end::get-posts[]
   // tag::mount-posts[]
