@@ -38,7 +38,6 @@ class Fetchdata extends Component {
       // tag::error-handling[]
       .catch(error => this.setState({ error, isLoading: false }));
       // end::error-handling[]
-
   // tag::convert-data[]
     const convertData = (data) => {
       let result = [];
