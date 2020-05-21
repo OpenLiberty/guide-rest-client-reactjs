@@ -184,7 +184,7 @@ The [hotspot=get-posts]`getPosts()` is the function that will utilize the axios 
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Update the `Fetchdata.js` file.#
+#Replace the `Fetchdata.js` file.#
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
 [role="edit_command_text"]
@@ -217,7 +217,7 @@ include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Update the `Fetchdata.js` file.#
+#Replace the `Fetchdata.js` file.#
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
 [role="edit_command_text"]
