@@ -61,16 +61,9 @@ include::{common-includes}/gitclone.adoc[]
 
 === Try what you'll build
 
-The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed.
+The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed. The React frontend is already pre-built for you and the static files from the production build can be found in `webapp/static`.
 
-To try out the application, first go to the `finish` directory and build your React frontend:
-
-[role='command']
-```
-mvn generate-resources
-```
-
-Run the following Maven goal to build the application and deploy it to Open Liberty:
+To try out the application, run the following Maven goal to build the application and deploy it to Open Liberty:
 
 [role='command']
 ```
@@ -90,8 +83,6 @@ image::react-table.png[React Paginated Table,align="center"]
 
 [role='command']
 include::{common-includes}/twyb-end.adoc[]
-
-Also, pressing CTRL+C in the shell session that deploys the frontend application will stop the node server. 
 
 // =================================================================================================
 // Starting the service
