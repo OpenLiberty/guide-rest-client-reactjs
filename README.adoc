@@ -120,24 +120,6 @@ include::{common-includes}/devmode-start.adoc[]
 After you start the service, you can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 
-server.xml
-[source, xml, linenums, role='code_column']
-----
-include::finish/src/main/liberty/config/server.xml[]
-----
-Also, because you will be requesting data from a different domain, you need to incorporate 
-Enabling Cross-Origin Resource Sharing (CORS). Open liberty has a built-in configuration 
-for CORS that can be added to the `server.xml`
-See https://openliberty.io/guides/cors.html[Enabling Cross-Origin Resource Sharing (CORS)^] to learn more about CORS.
-
-[role="code_command hotspot file=0", subs="quotes"]
-----
-#Update the `server.xml` file.#
-`src/main/liberty/config/server.xml`
-----
-[role="edit_command_text"]
-Add the [hotspot=cors file=0]`CORS` configuration.
-
 Note: all the other dependencies that are installed in the project will show up in `frontend/src/package.json`.
 
 // =================================================================================================
