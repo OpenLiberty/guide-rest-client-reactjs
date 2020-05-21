@@ -5,9 +5,11 @@ import Fetchdata from './Components/Fetchdata';
 
 function App() {
   return (
+    // tag::react-fragment[]
     <React.Fragment>
       <Fetchdata/>
     </React.Fragment>
+    // end::react-fragment[]
   );
 }
 
