@@ -145,12 +145,6 @@ include::finish/src/main/frontend/src/index.js[]
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
 
-[role="code_command hotspot file=0", subs="quotes"]
-----
-#Create the `Fetchdata.js` file.#
-`src/main/frontend/src/Components/Fetchdata.js`
-----
-
 The [hotspot=react-library file=0]`React library` imports the default export from the `react` package, and the component named export from the package. An inheritance to the React Component is created to write the [hotspot=class file=0]`Fetchdata` component. 
 
 
@@ -167,12 +161,12 @@ To render the element that was made onto your webpage, the [hotspot=dom-render f
 === Importing The HTTP client
 
 Your application needs a way to communicate with RESTful web services to retrieve their
-resources. In this section, you will use the https://github.com/axios/axios[axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. https://github.com/axios/axios[Axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[axios documentation^].
+resources. You will use the https://github.com/axios/axios[axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. https://github.com/axios/axios[Axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[axios documentation^].
 
 The [hotspot=axios-library]`axios` Library is provided the `Fetchdata` Component.
 
 Fetchdata.js
-[source, javascript, linenums, role='code_column hide_tags=react-table,convert-data,mount-posts,render-posts']
+[source, javascript, linenums, role='code_column']
 ----
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
@@ -189,7 +183,7 @@ if a `4xx` or `5xx` series error is returned.
 // =================================================================================================
 
 === Displaying the returned data
-In this section, you will verify that the component was updated properly through the [hotspot=mount-posts]`componentDidMount()` lifecycle method, and then display the returned artist data using the [hotspot=render-posts]`render()` method in your component. Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references and the ability to trigger a new render pass. You will use the concept of pagination to display the returned data. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
+You need to verify that the component was updated properly. This is done through the [hotspot=mount-posts]`componentDidMount()` lifecycle method, and then display the returned artist data using the [hotspot=render-posts]`render()` method in your component. Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references and the ability to trigger a new render pass. You will use the concept of pagination to display the returned data. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
 
 The [hotspot=react-table]`react table` libraries are provided for the paginated table.
 
