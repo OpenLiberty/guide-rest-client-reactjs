@@ -250,7 +250,7 @@ include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 [role="edit_command_text"]
 Change the `"id"` object to `"popularity"` and define an arbitrary numerical value for each artist. For instance `"popularity": "123k"`.
 
-Now, you will need to update the [hotspot=accessor-ID file=1]`accessor` in the [hotspot=table-info file=1]`columns` constant.
+Now, you will need to update the [hotspot=accessor-ID file=1]`accessor` in the `columns` constant.
 
 [role="code_command hotspot file=1", subs="quotes"]
 ----
@@ -258,7 +258,7 @@ Now, you will need to update the [hotspot=accessor-ID file=1]`accessor` in the [
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
 [role="edit_command_text"]
-Change [hotspot=accessor-ID]`accessor` to `accessor: "popularity"`.
+Change [hotspot=accessor-ID file=1]`accessor` to `accessor: "popularity"`.
 
 Rebuild the frontend by running the Maven `generate-resources` goal:
 [role='command']
