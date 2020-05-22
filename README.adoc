@@ -224,7 +224,7 @@ Although the React application in this guide is simple, when you build more comp
 // Showcasing the JAX-RS API
 // =================================================================================================
 
-== Optional: Updating the data set
+== Optional: Updating the REST service
 
 If you update the REST service, the changes will be automatically picked up by the Open Liberty server. Your webpage will have an updated table output that responds with the [hotspot]`artists.json` in `src/resources`. 
 
