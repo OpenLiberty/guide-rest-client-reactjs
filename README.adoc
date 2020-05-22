@@ -95,16 +95,6 @@ the artist JSON is available to you.
 
 Navigate to the `start` directory to begin.
 
-First, you need to build the frontend by running the Maven `generate-resources` goal:
-[role='command']
-----
-mvn generate-resources
-----
-
-Note that you can rebuild the frontend at any time with the Maven `generate-resources` goal.
-Any local changes to your JaveScript and HTML are picked up when you build the
-frontend.
-
 [role='command']
 include::{common-includes}/devmode-start.adoc[]
 
@@ -199,6 +189,22 @@ The [hotspot=convert-data]`convertData` function will manipulate the JSON data, 
 
 The [hotspot=return-table]`return` statement adds the paginated table to your application. Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
 
+// =================================================================================================
+// Building the frontend
+// =================================================================================================
+
+=== Building the frontend
+
+You need to build the frontend by running the Maven `generate-resources` goal:
+[role='command']
+----
+mvn generate-resources
+----
+
+Note that you can rebuild the frontend at any time with the Maven `generate-resources` goal.
+Any local changes to your JavaScript and HTML are picked up when you build the
+frontend.
+
 Navigate to the http://localhost:9080[http://localhost:9080^] URL to view your frontend application.
 
 // =================================================================================================
@@ -248,7 +254,7 @@ include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 `src/main/resources/artists.json`
 ----
 [role="edit_command_text"]
-Change the `"id"` object to `"popularity"` and define an arbitrary numerical value for each artist. For instance `"popularity": "123k"`.
+Change the `"id"` object to `"popularity"` and define an arbitrary numerical value for each artist. For instance, `"popularity": "123k"`.
 
 Now, you will need to update the [hotspot=accessor-ID file=1]`accessor` in the `columns` constant.
 
