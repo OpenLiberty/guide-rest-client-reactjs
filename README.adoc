@@ -226,7 +226,7 @@ Although the React application in this guide is simple, when you build more comp
 
 == Optional: Updating the REST service
 
-If you update the REST service, the changes will be automatically picked up by the Open Liberty server. Your webpage will have an updated table output that responds with the [hotspot]`artists.json` in `src/resources`. 
+If you update the REST service, the changes will be automatically picked up by the Open Liberty server. Your webpage will have an updated table output that responds with the [hotspot]`artists.json` in `src/resources`. You can also add/delete data to cater your desired artist data. You will have to update or add `Headers` and `accessors` in the [hotspot=table-info]`columns` constant.
 
 Try it out for yourself. 
 
@@ -236,10 +236,32 @@ artists.json
 include::finish/src/resources/artists.json[]
 ----
 
+Fetchdata.js
+[source, javascript, linenums, role='code_column']
+----
+include::finish/src/main/frontend/src/Components/Fetchdata.js[]
+----
+
 [role="code_command hotspot file=0", subs="quotes"]
 ----
-#Replace the `artists.json` file.#
+#Update the `artists.json` file.#
 `src/main/resources/artists.json`
+----
+[role="edit_command_text"]
+Change the `"id"` object to `popularity` and define an arbitrary numerical value. For instance `popularity: "123k"`.
+
+[role="code_command hotspot file=0", subs="quotes"]
+----
+#Update the `Fetchdata.js` file.#
+`src/main/frontend/src/Components/Fetchdata.js`
+----
+[role="edit_command_text"]
+Change [hotspot=accessor-ID]`accessors` to `accessor: "popularity"`.
+
+Rebuild the frontend by running the Maven `generate-resources` goal:
+[role='command']
+----
+mvn generate-resources
 ----
 
 [role='command']
