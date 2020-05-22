@@ -242,6 +242,16 @@ include::finish/src/resources/artists.json[]
 `src/main/resources/artists.json`
 ----
 
+[role='command']
+include::{common-includes}/devmode-start.adoc[]
+
+After you start the service, you can find your updated artist JSON at the
+http://localhost:9080/artists[http://localhost:9080/artists^] URL.
+
+Navigate to the http://localhost:9080[http://localhost:9080^] URL to view your updated frontend application.
+
+When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key. 
+
 == Great work! You're done!
 
 You have just accessed a simple RESTful web service and consumed its resources by using ReactJS in
