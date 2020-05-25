@@ -227,12 +227,12 @@ When you are done checking the application root, exit development mode by pressi
 Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write test cases, follow the official unit testing and end-to-end testing documentation on the official https://reactjs.org/docs/testing.html[React testing document^].
 
 // =================================================================================================
-// Showcasing the JAX-RS API
+// Updating the REST service
 // =================================================================================================
 
 == Optional: Updating the REST service
 
-If you update the REST service, the changes will be automatically picked up by the Open Liberty server. Your webpage will have an updated table output that responds with the [hotspot file=0]`artists.json` in `src/resources`. You can also add/delete data to cater your desired artist data. In this case, you will also have to update or add `Headers` and `accessors` in the [hotspot=table-info file=1]`columns` constant to correspond with the data.
+If you update the REST service, the changes will be automatically picked up by the Open Liberty server. Your webpage will have an updated table output that responds with the [hotspot file=0]`artists.json` in `src/resources`. You can also add/delete data to cater your desired artist data. In this case, you will also must update or add `Headers` and `accessors` in the [hotspot=table-info file=1]`columns` constant to correspond with the data. 
 
 Try it out for yourself. 
 
