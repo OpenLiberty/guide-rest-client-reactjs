@@ -110,8 +110,7 @@
                 <version>1.9.1</version>
                 <configuration>
                     <workingDirectory>src/main/frontend</workingDirectory>
-                </configuration>
-                
+                </configuration> 
                  <!-- tag::node-resources[] -->
                 <executions>
                     <execution>
@@ -129,7 +128,6 @@
                         <goals>
                             <goal>npm</goal>
                         </goals>
-                        <!-- Optional configuration which provides for running any npm command -->
                         <configuration>
                             <arguments>install</arguments>
                         </configuration>
@@ -146,7 +144,6 @@
                 </executions>
                 <!-- end::node-resources[] -->
             </plugin>
-
             <!-- Copy frontend static files to target directory-->
             <!-- tag::copy-plugin[] -->
             <plugin>
