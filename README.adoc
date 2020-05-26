@@ -151,7 +151,7 @@ The performance benefit in using React is evident through the Virtual DOM that i
 // Creating the React components
 // =================================================================================================
 
-=== Creating the React components
+== Creating the React components
 
 A React web application is simply a collection of components. Each component does a specific functionality. You will create the components that are used in the application to acquire and display data from the REST API. 
 
