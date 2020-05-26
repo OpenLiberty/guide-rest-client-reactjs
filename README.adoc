@@ -163,7 +163,7 @@ include::finish/src/main/frontend/src/App.js[]
 ----
 
 Fetchdata.js
-[source, javascript, linenums, role='code_column hide_tags=get-posts, mount-posts']
+[source, javascript, linenums, role='code_column hide_tags=get-posts,mount-posts']
 ----
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
@@ -176,7 +176,7 @@ The main component in your React application is the `App` Component. You will ne
 `src/main/frontend/src/Components/App.js`
 ----
 
-Next, you will create the 
+Next, you will create the component that will define the states and properties of your react webpage. 
 [role="code_command hotspot file=1", subs="quotes"]
 ----
 #Create the `Fetchdata.js` file.#
