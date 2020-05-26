@@ -110,7 +110,7 @@ that was generated using `create-react-app`. There are also pre-coded style shee
 
 == Project Configuration
 
-=== Backend
+=== Server side
 
 The static files that will be produced from the optimized production build are generated through the [hotspot=node-resources]`node resources`, and they are sent to the backend of the application.
 
@@ -130,7 +130,8 @@ include::finish/pom.xml[]
 [role="edit_command_text"]
 Add the [hotspot=copy-plugin]`Maven resource plugin` to your project configuration.
 
-=== Frontend
+=== Client side
+
 You will need to create the entry point of your React application. In production, when the frontend application is used by other applications, the [hotspot file]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
 
 [role="code_command hotspot file=1", subs="quotes"]
@@ -176,16 +177,16 @@ The main component in your React application is the `App` Component. You will ne
 ----
 
 Next, you will create the 
-[role="code_command hotspot file=2", subs="quotes"]
+[role="code_command hotspot file=1", subs="quotes"]
 ----
 #Create the `Fetchdata.js` file.#
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
-The [hotspot=react-library file=2]`React library` imports the `default export` from the `react` package, and the `component named export` from the package. An inheritance to the React Component is created to write the [hotspot=class file=2]`Fetchdata` component. The [hotspot=state-object file=2]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=2]`exported` as a reusable UI element that can be used across your application.
+The [hotspot=react-library file=1]`React library` imports the `default export` from the `react` package, and the `component named export` from the package. An inheritance to the React Component is created to write the [hotspot=class file=1]`Fetchdata` component. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=1]`exported` as a reusable UI element that can be used across your application.
 
-To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. The [hotspot=table-info file=2]`columns` constant is used to define the table present on the webpage.
+To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table present on the webpage.
 
-The [hotspot=return-table file=2]`return` statement adds the paginated table to your application. Your paginated table is returned as a `<React.Fragment>`, where you have defined the properties for the [hotspot=table file=2]`ReactTable`. The [hotspot=posts file=2]`{posts}` prop corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns file=2]`{column}` prop corresponds to the rendered column object and is assigned to the `columns` of the table.
+The [hotspot=return-table file=1]`return` statement adds the paginated table to your application. Your paginated table is returned as a `<React.Fragment>`, where you have defined the properties for the [hotspot=table file=1]`ReactTable`. The [hotspot=posts file=1]`{posts}` prop corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns file=1]`{column}` prop corresponds to the rendered column object and is assigned to the `columns` of the table.
 
 // =================================================================================================
 // Importing the HTTP client
