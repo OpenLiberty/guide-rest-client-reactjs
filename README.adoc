@@ -100,17 +100,9 @@ include::{common-includes}/devmode-start.adoc[]
 
 After you start the service, you can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL. 
-If you later decide to update the REST service data in the [hotspot file]`artist.json`
-for your frontend application, it will automatically be picked by the Open Liberty server.
-
-artists.json
-[source, json, linenums, role="code_column"]
-----
-include::finish/src/resources/artists.json[]
-----
 
 Note: all the other dependencies that are installed in the project will show up in `frontend/src/package.json`
-that was generated with `create-react-app`.
+that was generated using `create-react-app`.
 
 // =================================================================================================
 // Project Configuration
@@ -119,7 +111,7 @@ that was generated with `create-react-app`.
 == Project Configuration
 === Frontend 
 
-A React web application is simply a collection of components. Each component does a specific functionality. You will create the components that are used in the application to acquire and display data from the JAX-RS API. 
+A React web application is simply a collection of components. Each component does a specific functionality. You will create the components that are used in the application to acquire and display data from the REST API. 
 
 App.js
 [source, javascript, linenums, role='code_column']
@@ -284,7 +276,7 @@ Whenever you change and build your React implementation, the frontend applicatio
 mvn generate-resources
 ```
 
-When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key. Likewise, pressing CTRL+C in the shell session that deployed your frontend application will stop the node server. 
+When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key.
 
 Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write test cases, follow the official unit testing and end-to-end testing documentation on the official https://reactjs.org/docs/testing.html[React testing document^].
 
