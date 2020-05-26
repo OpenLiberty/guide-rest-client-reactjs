@@ -214,29 +214,6 @@ The [hotspot=convert-data]`convertData` function will manipulate the JSON data, 
 Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references, with the ability to trigger a new render pass.
 
 // =================================================================================================
-// Displaying the returned data 
-// =================================================================================================
-
-=== Displaying the returned data
-To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
-
-Fetchdata.js
-[source, javascript, linenums, role='code_column']
-----
-include::finish/src/main/frontend/src/Components/Fetchdata.js[]
-----
-
-[role="code_command hotspot", subs="quotes"]
-----
-#Update the `Fetchdata.js` file.#
-`src/main/frontend/src/Components/Fetchdata.js`
-----
-
-The [hotspot=table-info]`columns` constant is used to define the table present on the webpage. The table is split into two major sections: the [hotspot=header-artist]`Artist Info Header` and the [hotspot=header-albums]`Albums Header`. Each section defines the [hotspot=header-ID hotspot=header-name hotspot=header-genres hotspot=header-title hotspot=header-tracks]`Headers` for the columns, and the appropriate [hotspot=accessor-ID hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres hotspot=accessor-title hotspot=accessor-tracks]`accessors` that respond with the `resources/artists.json`.
-
-The [hotspot=return-table]`return` statement adds the paginated table to your application. Your paginated table is returned as a `<React.Fragment>`, where you have defined the properties for the [hotspot=table]`ReactTable`. The [hotspot=posts]`{posts}` prop corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns]`{column}` prop corresponds to the rendered column object and is assigned to the `columns` of the table.
-
-// =================================================================================================
 // Building the frontend
 // =================================================================================================
 
