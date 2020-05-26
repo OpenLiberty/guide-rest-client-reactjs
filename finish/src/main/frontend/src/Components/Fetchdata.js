@@ -1,5 +1,9 @@
+// tag::react-library[]
 import React, { Component } from "react";
 import axios from "axios";
+// end::react-library[]
+
+// tag::class[]
 class Fetchdata extends Component {
 // end::class[]
   // tag::state-object[]
@@ -61,6 +65,7 @@ class Fetchdata extends Component {
   componentDidMount() {
     this.getPosts();
   }
+  // end::mount-posts[]
 }
 
 export default Fetchdata;
