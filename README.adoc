@@ -175,7 +175,7 @@ The [hotspot=get-posts]`getPosts()` function will utilize the axios API. You als
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Create the `Fetchdata.js` file.#
+#Update the `Fetchdata.js` file.#
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
 [role="edit_command_text"]
@@ -215,7 +215,8 @@ Add the [hotspot=copy-plugin]`Maven resource plugin` to your project configurati
 
 === Building the frontend
 
-On successfully building your components, you need to build the frontend by running the Maven `generate-resources` goal:
+On successfully building your components and configuring the build automation, 
+you need to build the frontend by running the Maven `generate-resources` goal:
 [role='command']
 ----
 mvn generate-resources
