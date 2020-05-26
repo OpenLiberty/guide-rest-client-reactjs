@@ -150,11 +150,16 @@ The performance benefit in using React is evident through the Virtual DOM that i
 
 To render the element that was made onto your webpage, the [hotspot=dom-render file=1]`render` method is provided by the DOM. Here, we rendered the `App` element on a DOM node.
 
-The [hotspot=react-library file=3]`React library` imports the `default export` from the `react` package, and the `component named export` from the package. An inheritance to the React Component is created to write the [hotspot=class file=3]`Fetchdata` component. The [hotspot=state-object file=3]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=3]`exported` as a reusable UI element that can be used across your application.
+[role="code_command hotspot file=2", subs="quotes"]
+----
+#Create the `Fetchdata.js` file.#
+`src/main/frontend/src/Components/Fetchdata.js`
+----
+The [hotspot=react-library file=2]`React library` imports the `default export` from the `react` package, and the `component named export` from the package. An inheritance to the React Component is created to write the [hotspot=class file=2]`Fetchdata` component. The [hotspot=state-object file=2]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=2]`exported` as a reusable UI element that can be used across your application.
 
-To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. The [hotspot=table-info]`columns` constant is used to define the table present on the webpage. The table is split into two major sections: the [hotspot=header-artist]`Artist Info Header` and the [hotspot=header-albums]`Albums Header`. Each section defines the [hotspot=header-ID hotspot=header-name hotspot=header-genres hotspot=header-title hotspot=header-tracks]`Headers` for the columns, and the appropriate [hotspot=accessor-ID hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres hotspot=accessor-title hotspot=accessor-tracks]`accessors` that respond with the `resources/artists.json`.
+To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. The [hotspot=table-info file=2]`columns` constant is used to define the table present on the webpage.
 
-The [hotspot=return-table]`return` statement adds the paginated table to your application. Your paginated table is returned as a `<React.Fragment>`, where you have defined the properties for the [hotspot=table]`ReactTable`. The [hotspot=posts]`{posts}` prop corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns]`{column}` prop corresponds to the rendered column object and is assigned to the `columns` of the table
+The [hotspot=return-table file=2]`return` statement adds the paginated table to your application. Your paginated table is returned as a `<React.Fragment>`, where you have defined the properties for the [hotspot=table file=2]`ReactTable`. The [hotspot=posts file=2]`{posts}` prop corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns file=2]`{column}` prop corresponds to the rendered column object and is assigned to the `columns` of the table.
 
 // =================================================================================================
 // Importing the HTTP client
