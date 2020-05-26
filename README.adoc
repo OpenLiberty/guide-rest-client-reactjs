@@ -119,7 +119,7 @@ that was generated with `create-react-app`.
 == Project Configuration
 === Frontend 
 
-A React web application is simply a collection of components. Each component does a specific functionality. You will create the components that are used in the application to acquire and display data from the REST API. 
+A React web application is simply a collection of components. Each component does a specific functionality. You will create the components that are used in the application to acquire and display data from the JAX-RS API. 
 
 App.js
 [source, javascript, linenums, role='code_column']
