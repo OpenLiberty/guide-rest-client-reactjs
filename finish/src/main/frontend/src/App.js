@@ -1,13 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Fetchdata from './Components/Fetchdata';
+import Display from './Components/Display';
+
 
 function App() {
   return (
     // tag::react-fragment[]
     <React.Fragment>
-      <Fetchdata/>
+      <Display/>
     </React.Fragment>
     // end::react-fragment[]
   );
