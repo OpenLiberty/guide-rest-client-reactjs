@@ -126,12 +126,6 @@ include::finish/src/main/frontend/src/index.js[]
 
 The [hotspot=react-library file=0]`React library` imports the `default export` from the `react` package, and the `component named export` from the package. An inheritance to the React Component is created to write the [hotspot=class file=0]`Fetchdata` component. 
 
-[role="code_command hotspot file=0", subs="quotes"]
-----
-#Update the `Fetchdata.js` file.#
-`src/main/frontend/src/Components/Fetchdata.js`
-----
-
 The main component in React is the `App` Component. You will need to create the `App.js` file which acts as a container for all other components. The `App.js` file returns the `Fetchdata` component as a [hotspot=react-fragment file=1]`React Fragment` to create a reusable element that encompasses your web application.
 
 [role="code_command hotspot file=0", subs="quotes"]
@@ -273,62 +267,6 @@ mvn generate-resources
 When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key. Likewise, pressing CTRL+C in the shell session that deployed your frontend application will stop the node server. 
 
 Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write test cases, follow the official unit testing and end-to-end testing documentation on the official https://reactjs.org/docs/testing.html[React testing document^].
-
-// =================================================================================================
-// Updating the REST service
-// =================================================================================================
-
-== Optional: Updating the REST service
-
-If you update the REST service, the changes will be automatically picked up by the Open Liberty server. Your webpage will have an updated table output that responds with the [hotspot file=0]`artists.json` in `src/resources`. You can also add/delete data to cater your desired artist data. In this case, you will also must update or add `Headers` and `accessors` in the [hotspot=table-info file=1]`columns` constant to correspond with the data. 
-
-Try it out for yourself. 
-
-artists.json
-[source, json, linenums, role="code_column"]
-----
-include::finish/src/resources/artists.json[]
-----
-
-Fetchdata.js
-[source, javascript, linenums, role='code_column']
-----
-include::finish/src/main/frontend/src/Components/Fetchdata.js[]
-----
-
-[role="code_command hotspot file=0", subs="quotes"]
-----
-#Update the `artists.json` file.#
-`src/main/resources/artists.json`
-----
-[role="edit_command_text"]
-Change the `"id"` object to `"popularity"` and define an arbitrary numerical value for each artist. For instance, `"popularity": "123k"`.
-
-Now, you will need to update the [hotspot=accessor-ID file=1]`accessor` in the `columns` constant.
-
-[role="code_command hotspot file=1", subs="quotes"]
-----
-#Update the `Fetchdata.js` file.#
-`src/main/frontend/src/Components/Fetchdata.js`
-----
-[role="edit_command_text"]
-Change [hotspot=accessor-ID file=1]`accessor` to `accessor: "popularity"`.
-
-Rebuild the frontend by running the Maven `generate-resources` goal:
-[role='command']
-----
-mvn generate-resources
-----
-
-[role='command']
-include::{common-includes}/devmode-start.adoc[]
-
-After you start the service, you can find your updated artist JSON at the
-http://localhost:9080/artists[http://localhost:9080/artists^] URL.
-
-Navigate to the http://localhost:9080[http://localhost:9080^] URL to view your updated frontend application.
-
-When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key. 
 
 == Great work! You're done!
 
