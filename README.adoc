@@ -99,9 +99,18 @@ Navigate to the `start` directory to begin.
 include::{common-includes}/devmode-start.adoc[]
 
 After you start the service, you can find your artist JSON at the
-http://localhost:9080/artists[http://localhost:9080/artists^] URL.
+http://localhost:9080/artists[http://localhost:9080/artists^] URL. 
+If you later decide to update the REST service data in the [hotspot file]`artist.json`
+for your frontend application, it will automatically be picked by the Open Liberty server.
 
-Note: all the other dependencies that are installed in the project will show up in `frontend/src/package.json`.
+artists.json
+[source, json, linenums, role="code_column"]
+----
+include::finish/src/resources/artists.json[]
+----
+
+Note: all the other dependencies that are installed in the project will show up in `frontend/src/package.json`
+that was generated with `create-react-app`.
 
 // =================================================================================================
 // Project Configuration
