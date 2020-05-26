@@ -125,7 +125,7 @@ include::finish/src/main/frontend/src/index.js[]
 ----
 
 Fetchdata.js
-[source, javascript, linenums, role='code_column']
+[source, javascript, linenums, role='code_column hide_tags=get-posts, mount-posts']
 ----
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
