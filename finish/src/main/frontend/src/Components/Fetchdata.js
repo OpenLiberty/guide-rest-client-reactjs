@@ -68,4 +68,6 @@ class Fetchdata extends Component {
   // end::mount-posts[]
 }
 
+// tag::export-fetchdata[]
 export default Fetchdata;
+// end::export-fetchdata[]
