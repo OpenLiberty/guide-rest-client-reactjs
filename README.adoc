@@ -132,7 +132,7 @@ The main component in React is the `App` Component. You will need to create the 
 `src/main/frontend/src/Components/App.js`
 ----
 
-You will need to create the entry point of your React application. In production, when the frontend application is used by other applications, the [hotspot file=2]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
+You will need to create the entry point of your React application. In production, when the frontend application is used by other applications, the [hotspot file=1]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
 
 [role="code_command hotspot file=1", subs="quotes"]
 ----
