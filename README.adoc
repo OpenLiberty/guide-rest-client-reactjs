@@ -110,7 +110,7 @@ Note: all the other dependencies that are installed in the project will show up 
 == Project Configuration
 === Frontend 
 
-A React web application is simply a collection of components. Each component does a specific functionality. You will create the component that is used in the application to acquire and display data from the REST API. 
+A React web application is simply a collection of components. Each component does a specific functionality. You will create the components that are used in the application to acquire and display data from the REST API. 
 
 App.js
 [source, javascript, linenums, role='code_column']
@@ -124,7 +124,7 @@ index.js
 include::finish/src/main/frontend/src/index.js[]
 ----
 
-The main component in React is the `App` Component. You will need to create the `App.js` file which acts as a container for all other components. The `App.js` file returns the `Fetchdata` component as a [hotspot=react-fragment file=0]`React Fragment` to create a reusable element that encompasses your web application.
+The main component in React is the `App` Component. You will need to create the [hotspot file=0]`App.js` file which acts as a container for all other components. The `App.js` file returns the `Display` component as a [hotspot=react-fragment file=0]`React Fragment` to create a reusable element that encompasses your web application.
 
 [role="code_command hotspot file=0", subs="quotes"]
 ----
@@ -132,7 +132,7 @@ The main component in React is the `App` Component. You will need to create the 
 `src/main/frontend/src/Components/App.js`
 ----
 
-You will need to create the entry point of your React application. In production, when the frontend application is used by other applications, the `index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
+You will need to create the entry point of your React application. In production, when the frontend application is used by other applications, the [hotspot file=2]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
 
 [role="code_command hotspot file=1", subs="quotes"]
 ----
@@ -140,7 +140,7 @@ You will need to create the entry point of your React application. In production
 `src/main/frontend/src/Components/App.js`
 ----
 
-The performance benefit in using ReactJS is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The https://reactjs.org/docs/react-dom.html[react-dom^] package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM. 
+The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The https://reactjs.org/docs/react-dom.html[react-dom^] package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM. 
 
 To render the element that was made onto your webpage, the [hotspot=dom-render file=1]`render` method is provided by the DOM. Here, we rendered the `App` element on a DOM node.
 
@@ -183,7 +183,7 @@ include::finish/src/main/frontend/src/App.js[]
 
 The [hotspot=react-library file=0]`React library` imports the `default export` from the `react` package, and the `component named export` from the package. An inheritance to the React Component is created to write the [hotspot=class file=0]`Fetchdata` component.
 
-The [hotspot=state-object file=0]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=0]`exported` as a reusable UI element that can be used across your application, such as in the [hotspot=import-Fetchdata file=1]`App.js` file.
+The [hotspot=state-object file=0]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=0]`exported` as a reusable UI element that can be used across your application.
 
 // =================================================================================================
 // Importing the HTTP client
@@ -209,10 +209,10 @@ The [hotspot=get-posts]`getPosts()` function will utilize the axios API. You als
 ----
 [role="edit_command_text"]
 Add the [hotspot=get-posts]`getPosts()` function and [hotspot=mount-posts]`componentDidMount()` 
-method into the Fetchdata Component. 
-The [hotspot=axios]`axios` HTTP call to read the artist JSON
-containing the data from the sample JSON files. Then, the
-the loading state is changed by using the [hotspot=then-method]`.then()` method 
+method into the `Fetchdata` Component. 
+The [hotspot=axios]`axios` HTTP call is used to read the artist JSON
+containing the data from the sample JSON file in `resources`. Then,
+the loading state is changed through the [hotspot=then-method]`.then()` method 
 to display the data. On successfully getting a response, the state of 
 the system changes by assigning [hotspot=data]`response.data` to [hotspot=data]`posts`
 The [hotspot=convert-data]`convertData` function will manipulate the JSON data, to allow it to be accessed.
@@ -225,8 +225,6 @@ Once the state is updated, your component will mount all the children elements a
 
 === Displaying the returned data
 To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. 
-
-The [hotspot=react-table]`react table` libraries are already provided in your component for the paginated table.
 
 Display.js
 [source, javascript, linenums, role='code_column']
@@ -242,7 +240,7 @@ include::finish/src/main/frontend/src/Components/Display.js[]
 
 The [hotspot=table-info]`columns` constant is used to define the table present on the webpage. The table is split into two major sections: the [hotspot=header-artist]`Artist Info Header` and the [hotspot=header-albums]`Albums Header`. Each section defines the [hotspot=header-ID hotspot=header-name hotspot=header-genres hotspot=header-title hotspot=header-tracks]`Headers` for the columns, and the appropriate [hotspot=accessor-ID hotspot=accessor-name hotspot=accessor-followers hotspot=accessor-genres hotspot=accessor-title hotspot=accessor-tracks]`accessors` that respond with the `resources/artists.json`.
 
-The [hotspot=return-table]`return` statement adds the paginated table to your application. Your paginated table is returned as `<React.Fragment>`, where you have defined the properties for the paginated [hotspot=table]`table`. The property [hotspot=posts]`{posts}` corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The property [hotspot=columns]`{column}` corresponds to the rendered column object and is assigned to the `columns` of the table.
+The [hotspot=return-table]`return` statement adds the paginated table to your application. Your paginated table is returned as a `<React.Fragment>`, where you have defined the properties for the [hotspot=table]`ReactTable`. The [hotspot=posts]`{posts}` prop corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns]`{column}` prop corresponds to the rendered column object and is assigned to the `columns` of the table.
 
 // =================================================================================================
 // Building the frontend
@@ -250,7 +248,7 @@ The [hotspot=return-table]`return` statement adds the paginated table to your ap
 
 === Building the frontend
 
-You need to build the frontend by running the Maven `generate-resources` goal:
+On successfully building your components, you need to build the frontend by running the Maven `generate-resources` goal:
 [role='command']
 ----
 mvn generate-resources
