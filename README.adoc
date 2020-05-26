@@ -102,7 +102,7 @@ After you start the service, you can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL. 
 
 Note: all the other dependencies that are installed in the project will show up in `frontend/src/package.json`
-that was generated using `create-react-app`.
+that was generated using `create-react-app`. There are also pre-coded style sheet files that can be found in `frontend/src/Styles`.
 
 // =================================================================================================
 // Project Configuration 
