@@ -112,7 +112,6 @@
                     <workingDirectory>src/main/frontend</workingDirectory>
                 </configuration>
 
-                <!-- tag::node-resources[] -->
                 <executions>
                     <execution>
                         <id>install node and npm</id>
@@ -144,11 +143,7 @@
                         </configuration>
                     </execution>
                 </executions>
-                <!-- end::node-resources[] -->
             </plugin>
-
-            <!-- Copy frontend static files to target directory-->
-            <!-- tag::copy-plugin[] -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -171,7 +166,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- end::copy-plugin[] -->
         </plugins>
     </build>
 </project>

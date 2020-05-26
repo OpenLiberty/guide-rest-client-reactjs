@@ -149,6 +149,12 @@ The static files that will be produced from the optimized production build are g
 
 You need to add the configuration that will copy the frontend static files to target directory. 
 
+pom.xml
+[source, xml, linenums, role='code_column']
+----
+include::finish/pom.xml[]
+----
+
 [role="code_command hotspot", subs="quotes"]
 ----
 #Update the `pom.xml` file.#
@@ -156,12 +162,6 @@ You need to add the configuration that will copy the frontend static files to ta
 ----
 [role="edit_command_text"]
 Add the [hotspot=copy-plugin]`Maven resource plugin` to your project configuration.
-
-pom.xml
-[source, xml, linenums, role='code_column']
-----
-include::finish/pom.xml[]
-----
 
 // =================================================================================================
 // Creating your React components
