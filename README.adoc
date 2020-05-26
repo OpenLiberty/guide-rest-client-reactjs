@@ -105,29 +105,6 @@ Note: all the other dependencies that are installed in the project will show up 
 that was generated using `create-react-app`.
 
 // =================================================================================================
-// Project Configuration
-// =================================================================================================
-
-== Project Configuration
-The static files that will be produced from the optimized production build are generated through the [hotspot=node-resources]`node resources`, and they are sent to the backend of the application.
-
-You need to add the configuration that will copy the frontend static files to target directory. 
-
-pom.xml
-[source, xml, linenums, role='code_column']
-----
-include::finish/pom.xml[]
-----
-
-[role="code_command hotspot", subs="quotes"]
-----
-#Update the `pom.xml` file.#
-`pom.xml`
-----
-[role="edit_command_text"]
-Add the [hotspot=copy-plugin]`Maven resource plugin` to your project configuration.
-
-// =================================================================================================
 // Creating your React components
 // =================================================================================================
 
@@ -214,8 +191,27 @@ The [hotspot=convert-data]`convertData` function will manipulate the JSON data, 
 Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references, with the ability to trigger a new render pass.
 
 // =================================================================================================
-// Building the frontend
+// Building your application
 // =================================================================================================
+== Building your application 
+== Project Configuration
+The static files that will be produced from the optimized production build are generated through the [hotspot=node-resources]`node resources`, and they are sent to the backend of the application.
+
+You need to add the configuration that will copy the frontend static files to target directory. 
+
+pom.xml
+[source, xml, linenums, role='code_column']
+----
+include::finish/pom.xml[]
+----
+
+[role="code_command hotspot", subs="quotes"]
+----
+#Update the `pom.xml` file.#
+`pom.xml`
+----
+[role="edit_command_text"]
+Add the [hotspot=copy-plugin]`Maven resource plugin` to your project configuration.
 
 === Building the frontend
 
