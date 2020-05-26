@@ -105,10 +105,53 @@ Note: all the other dependencies that are installed in the project will show up 
 that was generated using `create-react-app`.
 
 // =================================================================================================
-// Creating your React components
+// Project Configuration 
 // =================================================================================================
 
-== Creating the React components
+== Project Configuration
+
+=== Backend
+
+The static files that will be produced from the optimized production build are generated through the [hotspot=node-resources]`node resources`, and they are sent to the backend of the application.
+
+You need to add the configuration that will copy the frontend static files to target directory. 
+
+pom.xml
+[source, xml, linenums, role='code_column']
+----
+include::finish/pom.xml[]
+----
+
+[role="code_command hotspot", subs="quotes"]
+----
+#Update the `pom.xml` file.#
+`pom.xml`
+----
+[role="edit_command_text"]
+Add the [hotspot=copy-plugin]`Maven resource plugin` to your project configuration.
+
+=== Frontend
+You will need to create the entry point of your React application. In production, when the frontend application is used by other applications, the [hotspot file=1]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
+
+[role="code_command hotspot file=1", subs="quotes"]
+----
+#Create the `index.js` file.#
+`src/main/frontend/src/Components/App.js`
+----
+
+index.js
+[source, javascript, linenums, role='code_column']
+----
+include::finish/src/main/frontend/src/index.js[]
+----
+
+The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The https://reactjs.org/docs/react-dom.html[react-dom^] package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM. 
+
+// =================================================================================================
+// Creating the React components
+// =================================================================================================
+
+=== Creating the React components
 
 A React web application is simply a collection of components. Each component does a specific functionality. You will create the components that are used in the application to acquire and display data from the REST API. 
 
@@ -116,12 +159,6 @@ App.js
 [source, javascript, linenums, role='code_column']
 ----
 include::finish/src/main/frontend/src/App.js[]
-----
-
-index.js
-[source, javascript, linenums, role='code_column']
-----
-include::finish/src/main/frontend/src/index.js[]
 ----
 
 Fetchdata.js
@@ -137,19 +174,6 @@ The main component in React is the `App` Component. You will need to create the 
 #Create the `App.js` file.#
 `src/main/frontend/src/Components/App.js`
 ----
-
-You will need to create the entry point of your React application. In production, when the frontend application is used by other applications, the [hotspot file=1]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
-
-[role="code_command hotspot file=1", subs="quotes"]
-----
-#Create the `index.js` file.#
-`src/main/frontend/src/Components/App.js`
-----
-
-The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The https://reactjs.org/docs/react-dom.html[react-dom^] package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM. 
-
-To render the element that was made onto your webpage, the [hotspot=dom-render file=1]`render` method is provided by the DOM. Here, we rendered the `App` element on a DOM node.
-
 [role="code_command hotspot file=2", subs="quotes"]
 ----
 #Create the `Fetchdata.js` file.#
@@ -194,29 +218,6 @@ the system changes by assigning [hotspot=data]`response.data` to [hotspot=data]`
 The [hotspot=convert-data]`convertData` function will manipulate the JSON data, to allow it to be accessed.
 
 Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references, with the ability to trigger a new render pass.
-
-// =================================================================================================
-// Building your application
-// =================================================================================================
-== Building your application 
-=== Project Configuration
-The static files that will be produced from the optimized production build are generated through the [hotspot=node-resources]`node resources`, and they are sent to the backend of the application.
-
-You need to add the configuration that will copy the frontend static files to target directory. 
-
-pom.xml
-[source, xml, linenums, role='code_column']
-----
-include::finish/pom.xml[]
-----
-
-[role="code_command hotspot", subs="quotes"]
-----
-#Update the `pom.xml` file.#
-`pom.xml`
-----
-[role="edit_command_text"]
-Add the [hotspot=copy-plugin]`Maven resource plugin` to your project configuration.
 
 === Building the frontend
 
