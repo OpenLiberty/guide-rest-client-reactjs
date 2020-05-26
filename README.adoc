@@ -124,8 +124,6 @@ index.js
 include::finish/src/main/frontend/src/index.js[]
 ----
 
-The [hotspot=react-library file=0]`React library` imports the `default export` from the `react` package, and the `component named export` from the package. An inheritance to the React Component is created to write the [hotspot=class file=0]`Fetchdata` component. 
-
 The main component in React is the `App` Component. You will need to create the `App.js` file which acts as a container for all other components. The `App.js` file returns the `Fetchdata` component as a [hotspot=react-fragment file=1]`React Fragment` to create a reusable element that encompasses your web application.
 
 [role="code_command hotspot file=0", subs="quotes"]
