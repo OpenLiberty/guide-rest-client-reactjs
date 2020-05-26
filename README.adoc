@@ -194,7 +194,7 @@ Once the state is updated, your component will mount all the children elements a
 // Building your application
 // =================================================================================================
 == Building your application 
-== Project Configuration
+=== Project Configuration
 The static files that will be produced from the optimized production build are generated through the [hotspot=node-resources]`node resources`, and they are sent to the backend of the application.
 
 You need to add the configuration that will copy the frontend static files to target directory. 
