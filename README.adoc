@@ -163,7 +163,7 @@ include::finish/src/main/frontend/src/App.js[]
 ----
 
 Fetchdata.js
-[source, javascript, linenums, role='code_column hide_tags=get-posts,mount-posts']
+[source, javascript, linenums, role='code_column hide_tags=get-posts,mount-posts,axios-library']
 ----
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
@@ -224,8 +224,8 @@ Once the state is updated, your component will mount all the children elements a
 
 === Building the frontend
 
-On successfully building your components and configuring the build automation, 
-you need to build the frontend by running the Maven `generate-resources` goal:
+On successfully building your components, you need to build the 
+frontend by running the Maven `generate-resources` goal:
 [role='command']
 ----
 mvn generate-resources
