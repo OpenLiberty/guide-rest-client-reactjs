@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Fetchdata from './Components/Fetchdata';
+import '../Styles/App.css';
+import Fetchdata from './Fetchdata';
 
 
 function App() {

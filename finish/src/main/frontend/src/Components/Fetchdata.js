@@ -5,7 +5,6 @@ import React, { Component } from "react";
 import axios from "axios";
 // end::axios-library[]
 // tag::react-table[]
-import { Table } from "react-bootstrap";
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 // end::react-table[]
