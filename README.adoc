@@ -170,7 +170,7 @@ The main component in your React application is the `App` Component. You will ne
 
 The `App.js` file returns the `FetchData` component as a [hotspot=react-fragment file=0]`React Fragment` to create a reusable element that encompasses your web application. 
 
-Next, you will create the component that will define the states and properties of your react webpage. 
+Next, you will create the `FetchData` component that will define the states and properties of your react webpage. 
 [role="code_command hotspot file=1", subs="quotes"]
 ----
 #Create the `Fetchdata.js` file.#
