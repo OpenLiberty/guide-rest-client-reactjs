@@ -207,13 +207,13 @@ The [hotspot=get-posts]`getPosts()` function will utilize the axios API. You als
 [role="edit_command_text"]
 Add the [hotspot=axios-library]`axios library` and the [hotspot=get-posts]`getPosts()` function. 
 Next, add the [hotspot=mount-posts]`componentDidMount()` method into your Component. 
-Lastly, add the [hotspot=convert-data]`convertData` function which will manipulate the JSON data, to allow it to be accessed.
- 
 
 The [hotspot=axios]`axios` HTTP call is used to read the artist JSON
 containing the data from the sample JSON file in `resources`. 
 On successfully getting a response, the state of the system changes by 
-assigning [hotspot=data]`response.data` to [hotspot=data]`posts`.
+assigning [hotspot=data]`response.data` to [hotspot=data]`posts`. 
+The [hotspot=convert-data]`convertData` function manipulates the 
+JSON data, to allow it to be accessed by the `ReactTable`.
 
 Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references, with the ability to trigger a new render pass.
 
