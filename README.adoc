@@ -146,7 +146,9 @@ index.js
 include::finish/src/main/frontend/src/index.js[]
 ----
 
-The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The https://reactjs.org/docs/react-dom.html[react-dom^] package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM. 
+The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The https://reactjs.org/docs/react-dom.html[react-dom^] package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
+
+You will also notice the `serviceWorker.js` file included in `frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by in using `create-react-app`. By default, it will not control your application as it is [hotspot=service-worker]`unregistered` in the [hotspot file]`index.js`. 
 
 // =================================================================================================
 // Creating the React components
