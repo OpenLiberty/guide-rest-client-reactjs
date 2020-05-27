@@ -159,7 +159,7 @@ A React web application is simply a collection of components. Each component doe
 App.js
 [source, javascript, linenums, role='code_column']
 ----
-include::finish/src/main/frontend/src/App.js[]
+include::finish/src/main/frontend/src/Components/App.js[]
 ----
 
 Fetchdata.js
