@@ -145,8 +145,8 @@
                 </executions>
             </plugin>
             <!-- end::node-resources[] -->
-            <!-- Copy frontend static files to target directory-->
             <!-- tag::copy-plugin[] -->
+            <!-- Copy frontend static files to target directory -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
