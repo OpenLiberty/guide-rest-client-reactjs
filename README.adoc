@@ -110,11 +110,9 @@ that was generated using `create-react-app`. There are also pre-coded style shee
 
 == Project Configuration
 
-=== Server side
-
 The static files that will be produced from the optimized production build are generated through the [hotspot=node-resources]`node resources`, and they are sent to the backend of the application.
 
-You need to add the configuration that will copy the frontend static files to target directory. 
+The [hotspot=copy-plugin]`Maven resource plugin` in the `pom.xml` is the configuration that will copy the frontend static files to target directory. 
 
 pom.xml
 [source, xml, linenums, role='code_column']
@@ -122,22 +120,14 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-[role="code_command hotspot", subs="quotes"]
-----
-#Update the `pom.xml` file.#
-`pom.xml`
-----
-[role="edit_command_text"]
-Add the [hotspot=copy-plugin]`Maven resource plugin` to your project configuration.
+=== Creating the default page
 
-=== Client side
-
-You will need to create the entry point of your React application. In production, when the frontend application is used by other applications, the [hotspot file]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
+You need to create the entry point of your React application. In production, when the frontend application is used by other applications, the [hotspot file]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
 
 [role="code_command hotspot", subs="quotes"]
 ----
 #Create the `index.js` file.#
-`src/main/frontend/src/Components/App.js`
+`src/main/frontend/src`
 ----
 
 index.js
@@ -148,7 +138,7 @@ include::finish/src/main/frontend/src/index.js[]
 
 The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The https://reactjs.org/docs/react-dom.html[react-dom^] package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
 
-You will also notice the `serviceWorker.js` file included in `frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by in using `create-react-app`. By default, it will not control your application as it is [hotspot=service-worker]`unregistered` in the [hotspot file]`index.js`. 
+You will also notice the `serviceWorker.js` file included in `frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by in using `create-react-app`. By default, it will not control your application as it is [hotspot=service-worker]`unregistered` in the `index.js`. 
 
 // =================================================================================================
 // Creating the React components
@@ -215,16 +205,21 @@ The [hotspot=get-posts]`getPosts()` function will utilize the axios API. You als
 [role="edit_command_text"]
 Add the [hotspot=axios-library]`axios library` and the [hotspot=get-posts]`getPosts()` function. 
 Next, add the [hotspot=mount-posts]`componentDidMount()` method into your Component. 
+Lastly, add the [hotspot=convert-data]`convertData` function which will manipulate the JSON data, to allow it to be accessed.
+ 
+
 The [hotspot=axios]`axios` HTTP call is used to read the artist JSON
-containing the data from the sample JSON file in `resources`. Then,
-the loading state is changed through the [hotspot=then-method]`.then()` method 
-to display the data. On successfully getting a response, the state of 
-the system changes by assigning [hotspot=data]`response.data` to [hotspot=data]`posts`
-The [hotspot=convert-data]`convertData` function will manipulate the JSON data, to allow it to be accessed.
+containing the data from the sample JSON file in `resources`. 
+On successfully getting a response, the state of the system changes by 
+assigning [hotspot=data]`response.data` to [hotspot=data]`posts`.
 
 Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references, with the ability to trigger a new render pass.
 
-=== Building the frontend
+// =================================================================================================
+// Building the frontend
+// =================================================================================================
+
+== Building the frontend
 
 On successfully building your components, you need to build the 
 frontend by running the Maven `generate-resources` goal:
