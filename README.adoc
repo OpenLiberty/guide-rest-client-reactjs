@@ -160,13 +160,15 @@ Fetchdata.js
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
 
-The main component in your React application is the `App` Component. You will need to create the [hotspot file=0]`App.js` file which acts as a container for all other components. The `App.js` file returns the `FetchData` component as a [hotspot=react-fragment file=0]`React Fragment` to create a reusable element that encompasses your web application.
+The main component in your React application is the `App` Component. You will need to create the [hotspot file=0]`App.js` file which acts as a container for all other components. 
 
 [role="code_command hotspot file=0", subs="quotes"]
 ----
 #Create the `App.js` file.#
 `src/main/frontend/src/Components/App.js`
 ----
+
+The `App.js` file returns the `FetchData` component as a [hotspot=react-fragment file=0]`React Fragment` to create a reusable element that encompasses your web application. 
 
 Next, you will create the component that will define the states and properties of your react webpage. 
 [role="code_command hotspot file=1", subs="quotes"]
