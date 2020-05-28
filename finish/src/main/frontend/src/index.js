@@ -1,5 +1,9 @@
+// tag::import-react[]
 import React from 'react';
+// end::import-react[]
+// tag::react-dom[]
 import ReactDOM from 'react-dom';
+// end::react-dom[]
 import './Styles/index.css';
 import App from './Components/App';
 import * as serviceWorker from './serviceWorker';
@@ -16,3 +20,4 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // tag::service-worker[]
 serviceWorker.unregister();
 // end::service-worker[]
+d

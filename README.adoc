@@ -136,7 +136,10 @@ index.js
 include::finish/src/main/frontend/src/index.js[]
 ----
 
-The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The https://reactjs.org/docs/react-dom.html[react-dom^] package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
+The [hotspot=import-react]`React library` imports the `default export` from the react package.
+The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The [hotspot=react-dom]`ReactDOM` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. Here, you are rendering the the `App` 
+element on a DOM node using the [hotspot=dom-render]`render` method. 
+See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
 
 You will also notice the `serviceWorker.js` file included in `frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by in using `create-react-app`. By default, it will not control your application as it is [hotspot=service-worker]`unregistered` in the `index.js`. 
 
@@ -176,7 +179,7 @@ Next, you will create the `FetchData` component that will define the states and 
 #Create the `Fetchdata.js` file.#
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
-The [hotspot=react-library file=1]`React library` imports the `default export` from the `react` package, and the `component named export` from the package. An inheritance to the React Component is created to write the [hotspot=class file=1]`Fetchdata` component. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=1]`exported` as a reusable UI element that can be used across your application.
+The [hotspot=react-library file=1]`React library` imports the `default export`, as well as the `component named export` from the `react` package so you can create the [hotspot=class file=1]`Fetchdata` component as an inheritance of the `React Component`. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=1]`exported` as a reusable UI element that can be used across your application.
 
 To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table present on the webpage.
 
@@ -189,7 +192,7 @@ The [hotspot=return-table file=1]`return` statement adds the paginated table to 
 === Importing The HTTP client
 
 Your application needs a way to communicate with RESTful web services to retrieve their
-resources in order to output the resources onto the paginated table. You will use the https://github.com/axios/axios[axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. https://github.com/axios/axios[Axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, we need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[axios documentation^].
+resources in order to output the resources onto the paginated table. You will use the https://github.com/axios/axios[axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. https://github.com/axios/axios[Axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, you need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[axios documentation^].
 
 Fetchdata.js
 [source, javascript, linenums, role='code_column']
