@@ -20,4 +20,3 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // tag::service-worker[]
 serviceWorker.unregister();
 // end::service-worker[]
-d
