@@ -155,8 +155,8 @@ class Fetchdata extends Component {
           )}
       </React.Fragment>
       // end::react-fragment[]
-    // end::return-table[]
     );
+    // end::return-table[]
   }
   // end::render-posts[]
 }

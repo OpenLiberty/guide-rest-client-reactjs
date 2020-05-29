@@ -110,9 +110,9 @@ that was generated using `create-react-app`. There are also pre-coded style shee
 
 == Project Configuration
 
-The static files that will be produced from the optimized production build are generated through the [hotspot=node-resources]`node resources`, and they are sent to the backend of the application.
+In order for your entire application to host on the Open Liberty server, the files generated from the frontend production build need to be served to the backend. Static content is pre-generated content that can be delivered to a destination. The static content that will be produced from the production build are generated through the [hotspot=node-resources]`node resources`, and they are sent to the backend of the application.
 
-The [hotspot=copy-plugin]`Maven resource plugin` in the `pom.xml` is the configuration that will copy the frontend static files to target directory. 
+The [hotspot=copy-plugin]`Maven resource plugin` in the `pom.xml` is the configuration that will copy the frontend static files to web content of the application. 
 
 pom.xml
 [source, xml, linenums, role='code_column']
@@ -120,7 +120,7 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-=== Creating the default page
+== Creating the default page
 
 You need to create the entry point of your React application. In production, when the frontend application is used by other applications, the [hotspot file]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
 
