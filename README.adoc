@@ -221,10 +221,10 @@ JSON data, to allow it to be accessed by the `ReactTable`.
 Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references, with the ability to trigger a new render pass.
 
 // =================================================================================================
-// Building the frontend
+// Building and packaging the frontend
 // =================================================================================================
 
-== Building the frontend
+== Building and packaging the frontend
 
 On successfully building your components, you need to build the
 frontend and package your application.
