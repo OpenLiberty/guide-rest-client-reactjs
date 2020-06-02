@@ -226,11 +226,12 @@ Once the state is updated, your component will mount all the children elements a
 
 == Building the frontend
 
-On successfully building your components, you need to build the 
-frontend by running the Maven `generate-resources` goal:
+On successfully building your components, you need to build the
+frontend and package your application.
+
 [role='command']
 ----
-mvn generate-resources
+mvn package
 ----
 
 Note that you can rebuild the frontend at any time with the Maven `generate-resources` goal.
@@ -263,7 +264,3 @@ You have just accessed a simple RESTful web service and consumed its resources b
 Open Liberty.
 
 include::{common-includes}/attribution.adoc[subs="attributes"]
-
-
-
-
