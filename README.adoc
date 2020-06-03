@@ -110,9 +110,14 @@ that was generated using `create-react-app`. There are also pre-coded style shee
 
 == Project Configuration
 
-In order for your entire application to host on the Open Liberty server, the files generated from the frontend production build need to be served to the backend. Static content is pre-generated content that can be delivered to a destination. The static content that will be produced from the production build are generated through the [hotspot=node-resources]`node resources`, and they are sent to the backend of the application.
+The Maven project is configured for your frontend application to host on the same origin. 
 
-The [hotspot=copy-plugin]`Maven resource plugin` in the `pom.xml` is the configuration that will copy the frontend static files to web content of the application. 
+The static content generated from the frontend production build needs to be served to your application. 
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install node`
+in your project directory and to produces the [hotspot=resource-build]`frontend production build`, which creates
+the static content. 
+
+Then, the [hotspot=copy-plugin]`maven-resources-plugin` copies the static content from the [hotspot=directory]`frontend build directory` to the [hotspot=output-directory]`web content` of the application.
 
 pom.xml
 [source, xml, linenums, role='code_column']
@@ -127,7 +132,7 @@ You need to create the entry point of your React application. In production, whe
 [role="code_command hotspot", subs="quotes"]
 ----
 #Create the `index.js` file.#
-`src/main/frontend/src`
+`src/main/frontend/src/index.js`
 ----
 
 index.js
@@ -227,14 +232,15 @@ Once the state is updated, your component will mount all the children elements a
 == Building and packaging the frontend
 
 On successfully building your components, you need to build the
-frontend and package your application.
+frontend and package your application. The Maven `process-resources` goal generates the node resources,
+creates the frontend production build, and copies and processes the resources into the destination directory. 
 
 [role='command']
 ----
-mvn package
+mvn process-resources
 ----
 
-Note that you can rebuild the frontend at any time with the Maven `generate-resources` goal.
+Note that you can rebuild the frontend at any time with the Maven `process-resources` goal.
 Any local changes to your JavaScript and HTML are picked up when you build the
 frontend.
 
@@ -256,7 +262,8 @@ App.test.js
 include::finish/src/main/frontend/src/App.test.js[]
 ----
 
-Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application oriented test cases, follow the official unit testing and end-to-end testing documentation on the official https://reactjs.org/docs/testing.html[React testing document^].
+Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application oriented test cases, follow the official unit testing and end-to-end testing documentation on the official 
+https://reactjs.org/docs/testing.html[React testing document^].
 
 == Great work! You're done!
 
