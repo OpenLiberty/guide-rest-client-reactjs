@@ -34,6 +34,43 @@
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
+
+        <!-- For tests -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.5.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-client</artifactId>
+            <version>3.3.6</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- JSON-P RI -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.1.4</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- JSON-B API -->
+        <!-- tag::Yasson[] -->
+        <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>yasson</artifactId>
+            <version>1.0.5</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- end::Yasson[] -->
+        <!-- Support for JDK 9 and above -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -44,22 +81,37 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.2.3</version>
             </plugin>
+            <!-- Plugin to run unit tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>            
+            </plugin>
             <!-- Enable liberty-maven plugin -->
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>3.2</version>            
             </plugin>
+            <!-- Plugin to run functional tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.2</version>                
+                <configuration>
+                    <systemPropertyVariables>
+                        <http.port>${liberty.var.default.http.port}</http.port>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
             <!-- Frontend resources -->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
-                <!-- tag::frontend-plugin[] -->
                 <artifactId>frontend-maven-plugin</artifactId>
-                <!-- end::frontend-plugin[] -->
                 <version>1.9.1</version>
                 <configuration>
                     <workingDirectory>src/main/frontend</workingDirectory>
-                </configuration>
+                </configuration> 
                 <executions>
                     <execution>
                         <id>install node and npm</id>
@@ -71,7 +123,6 @@
                             <npmVersion>6.13.4</npmVersion>
                         </configuration>
                     </execution>
-                    <!-- tag::node-resource-install[] -->
                     <execution>
                         <id>npm install</id>
                         <goals>
@@ -81,8 +132,6 @@
                             <arguments>install</arguments>
                         </configuration>
                     </execution>
-                    <!-- end::node-resource-install[] -->
-                    <!-- tag::node-resource-build[] -->
                     <execution>
                         <id>npm run build</id>
                         <goals>
@@ -92,16 +141,12 @@
                             <arguments>run build</arguments>
                         </configuration>
                     </execution>
-                    <!-- end::node-resource-build[] -->
                 </executions>
             </plugin>
-            <!-- tag::copy-plugin[] -->
             <!-- Copy frontend static files to target directory -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <!-- tag::copy-plugin[] -->
                 <artifactId>maven-resources-plugin</artifactId>
-                <!-- end::copy-plugin[] -->
                 <executions>
                  <execution>
                         <id>Copy frontend build to target</id>
@@ -110,18 +155,14 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <!-- tag::ouput-directory[] -->
                             <outputDirectory>
                                 ${basedir}/src/main/webapp
                             </outputDirectory>
-                            <!-- end::output-directory[] -->
                             <resources>
                                 <resource>
-                                    <!-- tag::directory[] -->
                                     <directory>
                                         ${basedir}/src/main/frontend/build
                                     </directory>
-                                    <!-- end::directory[] -->
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
