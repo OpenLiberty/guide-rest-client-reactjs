@@ -44,6 +44,12 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.2.3</version>
             </plugin>
+            <!-- Enable liberty-maven plugin -->
+            <plugin>
+                <groupId>io.openliberty.tools</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <version>3.2</version>            
+            </plugin>
             <!-- Frontend resources -->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
