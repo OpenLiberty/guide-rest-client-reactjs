@@ -114,7 +114,7 @@ The Maven project is configured for your frontend application to host on the sam
 
 The static content generated from the frontend production build needs to be served to your application. 
 The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install node`
-in your project directory and to produces the [hotspot=resource-build]`frontend production build`, which creates
+in your project directory and to produces the [hotspot=node-resource-build]`frontend production build`, which creates
 the static content. 
 
 Then, the [hotspot=copy-plugin]`maven-resources-plugin` copies the static content from the [hotspot=directory]`frontend build directory` to the [hotspot=output-directory]`web content` of the application.

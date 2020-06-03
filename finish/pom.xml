@@ -89,7 +89,6 @@
                     <!-- end::node-resource-build[] -->
                 </executions>
             </plugin>
-            <!-- tag::copy-plugin[] -->
             <!-- Copy frontend static files to target directory -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -104,7 +103,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <!-- tag::ouput-directory[] -->
+                            <!-- tag::output-directory[] -->
                             <outputDirectory>
                                 ${basedir}/src/main/webapp
                             </outputDirectory>
