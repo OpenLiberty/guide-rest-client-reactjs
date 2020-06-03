@@ -158,10 +158,14 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/src/main/webapp</outputDirectory>
+                            <outputDirectory>
+                                ${basedir}/src/main/webapp
+                            </outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/src/main/frontend/build</directory>
+                                    <directory>
+                                        ${basedir}/src/main/frontend/build
+                                    </directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>

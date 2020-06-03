@@ -77,35 +77,35 @@ class Fetchdata extends Component {
     const { isLoading, posts } = this.state;
     // tag::table-info[]
     const columns = [{
-        // tag::header-artist[]
-        Header: 'Artist Info',
-        // end::header-artist[]
-        columns: [
-          {
-            // tag::header-ID[]
-            Header: "Artist ID",
-            // end::header-ID[]
-            // tag::accessor-ID[]
-            accessor: "id"
-            // end::accessor-ID[]
-          },
-          {
-            // tag::header-name[]
-            Header: "Artist Name",
-            // end::header-name[]
-            // tag::accessor-name[]
-            accessor: "name"
-            // end::accessor-name[]
-          },
-          {
-            // tag::header-genres[]
-            Header: "Genres",
-            // end::header-genres[]
-            // tag::accessor-genres[]
-            accessor: "genres",
-            // end::accessor-genres[]
-          }
-        ]
+      // tag::header-artist[]
+      Header: 'Artist Info',
+      // end::header-artist[]
+      columns: [
+        {
+          // tag::header-ID[]
+          Header: "Artist ID",
+          // end::header-ID[]
+          // tag::accessor-ID[]
+          accessor: "id"
+          // end::accessor-ID[]
+        },
+        {
+          // tag::header-name[]
+          Header: "Artist Name",
+          // end::header-name[]
+          // tag::accessor-name[]
+          accessor: "name"
+          // end::accessor-name[]
+        },
+        {
+          // tag::header-genres[]
+          Header: "Genres",
+          // end::header-genres[]
+          // tag::accessor-genres[]
+          accessor: "genres",
+          // end::accessor-genres[]
+        }
+      ]
     },
     {
       // tag::header-albums[]
@@ -133,28 +133,28 @@ class Fetchdata extends Component {
   ]
   // end::table-info[]
 
-    // tag::return-table[]
-    return (
-      // tag::react-fragment[]
-      <React.Fragment>
-        <h2>Artist Web Service</h2>
-        {!isLoading ? (
-          // tag::table[]
-          <ReactTable
-            // tag::posts[]
-            data={posts}
-            // end::posts[]
-            // tag::columns[]
-            columns={columns}
-            // end::columns[]
-            defaultPageSize={6}
-            pageSizeOptions={[6, 12, 15]}
-          />) : (
-          // end::table[]
-            <p>Loading .....</p>
-          )}
-      </React.Fragment>
-      // end::react-fragment[]
+  // tag::return-table[]
+  return (
+    // tag::react-fragment[]
+    <React.Fragment>
+      <h2>Artist Web Service</h2>
+      {!isLoading ? (
+        // tag::table[]
+        <ReactTable
+          // tag::posts[]
+          data={posts}
+          // end::posts[]
+          // tag::columns[]
+          columns={columns}
+          // end::columns[]
+          defaultPageSize={6}
+          pageSizeOptions={[6, 12, 15]}
+        />) : (
+        // end::table[]
+          <p>Loading .....</p>
+        )}
+    </React.Fragment>
+    // end::react-fragment[]
     );
     // end::return-table[]
   }
