@@ -102,7 +102,7 @@ After you start the service, you can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL. 
 
 Note: all the other dependencies that are installed in the project will show up in `frontend/src/package.json`
-that was generated using `create-react-app`. There are also pre-coded style sheet files that can be found in `frontend/src/Styles`.
+that was generated using `create-react-app`. There are also pre-coded stylesheet files that can be found in `frontend/src/Styles`.
 
 // =================================================================================================
 // Project Configuration 
@@ -114,7 +114,7 @@ The Maven project is configured for your frontend application to host on the sam
 
 The static content generated from the frontend production build needs to be served to your application. 
 The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install node`
-in your project directory and to produces the [hotspot=node-resource-build]`frontend production build`, which creates
+in your project directory and produces the [hotspot=node-resource-build]`frontend production build`, which creates
 the static content. 
 
 Then, the [hotspot=copy-plugin]`maven-resources-plugin` copies the static content from the [hotspot=directory]`frontend build directory` to the [hotspot=output-directory]`web content` of the application.
@@ -142,11 +142,11 @@ include::finish/src/main/frontend/src/index.js[]
 ----
 
 The [hotspot=import-react]`React library` imports the `default export` from the react package.
-The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The [hotspot=react-dom]`ReactDOM` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. Here, you are rendering the the `App` 
+The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The [hotspot=react-dom]`ReactDOM` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. Here, you're rendering the the `App` 
 element on a DOM node using the [hotspot=dom-render]`render` method. 
 See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
 
-You will also notice the `serviceWorker.js` file included in `frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by in using `create-react-app`. By default, it will not control your application as it is [hotspot=service-worker]`unregistered` in the `index.js`. 
+You will also notice the `serviceWorker.js` file included in `frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by in using `create-react-app`. By default, it won't control your application as it's [hotspot=service-worker]`unregistered` in the `index.js`. 
 
 // =================================================================================================
 // Creating the React components
@@ -154,7 +154,7 @@ You will also notice the `serviceWorker.js` file included in `frontend/src`. Thi
 
 == Creating the React components
 
-A React web application is simply a collection of components. Each component does a specific functionality. You will create the components that are used in the application to acquire and display data from the REST API. 
+A React web application is simply a collection of components. Each component has a specific function. You will create the components that are used in the application to acquire and display data from the REST API. 
 
 App.js
 [source, javascript, linenums, role='code_column']
@@ -168,7 +168,7 @@ Fetchdata.js
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
 
-The main component in your React application is the `App` Component. You will need to create the [hotspot file=0]`App.js` file which acts as a container for all other components. 
+The main component in your React application is the `App` Component. You will need to create the [hotspot file=0]`App.js` file, which acts as a container for all other components. 
 
 [role="code_command hotspot file=0", subs="quotes"]
 ----
@@ -178,7 +178,7 @@ The main component in your React application is the `App` Component. You will ne
 
 The `App.js` file returns the `FetchData` component as a [hotspot=react-fragment file=0]`React Fragment` to create a reusable element that encompasses your web application. 
 
-Next, you will create the `FetchData` component that will define the states and properties of your react webpage. 
+Next, you'll create the `FetchData` component that will define the states and properties of your react webpage. 
 [role="code_command hotspot file=1", subs="quotes"]
 ----
 #Create the `Fetchdata.js` file.#
@@ -186,7 +186,7 @@ Next, you will create the `FetchData` component that will define the states and 
 ----
 The [hotspot=react-library file=1]`React library` imports the `default export`, as well as the `component named export` from the `react` package so you can create the [hotspot=class file=1]`Fetchdata` component as an inheritance of the `React Component`. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=1]`exported` as a reusable UI element that can be used across your application.
 
-To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you will render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table present on the webpage.
+To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table present on the webpage.
 
 The [hotspot=return-table file=1]`return` statement adds the paginated table to your application. Your paginated table is returned as a `<React.Fragment>`, where you have defined the properties for the [hotspot=table file=1]`ReactTable`. The [hotspot=posts file=1]`{posts}` prop corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns file=1]`{column}` prop corresponds to the rendered column object and is assigned to the `columns` of the table.
 
@@ -205,7 +205,7 @@ Fetchdata.js
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
 
-The [hotspot=get-posts]`getPosts()` function will utilize the axios API. You also  need to verify that the component was updated properly. This is done through the [hotspot=mount-posts]`componentDidMount()` lifecycle method.
+The [hotspot=get-posts]`getPosts()` function will use the axios API. You also  need to verify that the component was updated properly. This is done through the [hotspot=mount-posts]`componentDidMount()` lifecycle method.
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -253,7 +253,7 @@ Navigate to the http://localhost:9080[http://localhost:9080^] URL to view your f
 == Testing the React client
 
 When you create a new project with `create-react-app`, it comes with a test file
-called [hotspot file]`App.test.js` which is included in `frontend/src`. This is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases written for this application. Similar to the purpose in using the `axios` HTTP-client, React does not have a built-in test runner.
+called [hotspot file]`App.test.js`, which is included in `frontend/src`. This is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases written for this application. Similar to the purpose in using the `axios` HTTP-client, React doesn't have a built-in test runner.
 The `create-react-app` configuration uses https://jestjs.io/[Jest^] as it's test runner. To learn more about Jest, follow their documentation on https://jestjs.io/docs/en/tutorial-react[Testing React Apps^]. 
 
 App.test.js
@@ -262,7 +262,7 @@ App.test.js
 include::finish/src/main/frontend/src/App.test.js[]
 ----
 
-Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application oriented test cases, follow the official unit testing and end-to-end testing documentation on the official 
+Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official testing documentation on the official 
 https://reactjs.org/docs/testing.html[React testing document^].
 
 == Great work! You're done!
