@@ -112,7 +112,7 @@ that was generated using `create-react-app`. There are also pre-coded stylesheet
 
 The Maven project is configured for your frontend application to host on the same origin. 
 
-The static content generated from the frontend production build needs to be served to your application. 
+The static content generated from the frontend production build need to be served to your application. 
 The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install node`
 in your project directory and produces the [hotspot=node-resource-build]`frontend production build`, which creates
 the static content. 
