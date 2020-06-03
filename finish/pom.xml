@@ -103,18 +103,18 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <!-- tag::output-directory[] -->
                             <outputDirectory>
+                                <!-- tag::output-directory[] -->
                                 ${basedir}/src/main/webapp
+                                <!-- end::output-directory[] -->
                             </outputDirectory>
-                            <!-- end::output-directory[] -->
                             <resources>
                                 <resource>
-                                    <!-- tag::directory[] -->
                                     <directory>
+                                        <!-- tag::directory[] -->
                                         ${basedir}/src/main/frontend/build
+                                        <!-- end::directory[] -->
                                     </directory>
-                                    <!-- end::directory[] -->
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
