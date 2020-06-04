@@ -64,7 +64,9 @@
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.9.1</version>
                 <configuration>
+                    <!-- tag::working-dir[] -->
                     <workingDirectory>src/main/frontend</workingDirectory>
+                    <!-- end::working-dir[] -->
                 </configuration>
                 <executions>
                     <execution>
