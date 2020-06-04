@@ -116,8 +116,7 @@ The frontend of your application uses Node.js to execute your React code. Node.j
 that is used for developing networking applications. It's convenient package manager, https://www.npmjs.com/[npm^], is used to compile and execute your React code. To learn more about Node.js, see the official (https://nodejs.org/en/docs/)[Node.js documentation^].
 
 The static content generated from the frontend production build need to be served to your application. 
-The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` Node.js.
-in your [hotspot=working-dir]`project directory` and [hotspot=node-resource-build]`produce` the frontend production build, in `src/main/frontend/build`. 
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` Node.js in your [hotspot=working-dir]`project directory` and [hotspot=node-resource-build]`produce` the frontend production build, in `src/main/frontend/build`. 
 
 Then, the [hotspot=copy-plugin]`maven-resources-plugin` copies the static content from the [hotspot=directory]`build` directory to the [hotspot=output-directory]`web content` of the application.
 
