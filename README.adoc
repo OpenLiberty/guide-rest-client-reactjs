@@ -112,11 +112,11 @@ that was generated using `create-react-app`. There are also pre-coded stylesheet
 
 The Maven project is configured for your frontend application to host on the same origin. 
 
-The frontend of your application uses `Node.js` to execute your React code. `Node.js` is a JavaScript runtime 
-that is used for developing networking applications. It's convenient package manager, https://www.npmjs.com/[npm^], is used to compile and execute your React code. To learn more about `Node.js`, see the official (https://nodejs.org/en/docs/)[Node.js Documentation^].
+The frontend of your application uses Node.js to execute your React code. Node.js is a JavaScript runtime 
+that is used for developing networking applications. It's convenient package manager, https://www.npmjs.com/[npm^], is used to compile and execute your React code. To learn more about Node.js, see the official (https://nodejs.org/en/docs/)[Node.js documentation^].
 
 The static content generated from the frontend production build need to be served to your application. 
-The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` `Node.js`
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` Node.js.
 in your [hotspot=working-dir]`project directory` and [hotspot=node-resource-build]`produce` the frontend production build, in `src/main/frontend/build`. 
 
 Then, the [hotspot=copy-plugin]`maven-resources-plugin` copies the static content from the [hotspot=directory]`build` directory to the [hotspot=output-directory]`web content` of the application.
@@ -248,8 +248,6 @@ frontend.
 
 Navigate to the http://localhost:9080[http://localhost:9080^] URL to view your frontend application.
 
-When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key.
-
 // =================================================================================================
 // Testing the React client
 // =================================================================================================
@@ -268,6 +266,8 @@ include::finish/src/main/frontend/src/App.test.js[]
 
 Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official testing documentation on the 
 https://reactjs.org/docs/testing.html[React testing document^].
+
+When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key.
 
 == Great work! You're done!
 
