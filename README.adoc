@@ -112,8 +112,11 @@ that was generated using `create-react-app`. There are also pre-coded stylesheet
 
 The Maven project is configured for your frontend application to host on the same origin. 
 
+The frontend of your application uses `Node.js` to execute the React code. `Node.js` is a JavaScript runtime 
+that is used for developing networking applications. It's convenient package manager, https://www.npmjs.com/[npm^], is used to compile and execute your React code. To learn more about Node.js, see the official (https://nodejs.org/en/docs/)[Node.js Documentation^].
+
 The static content generated from the frontend production build need to be served to your application. 
-The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install node`
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install Node.js`
 in your project directory and produces the [hotspot=node-resource-build]`frontend production build`, which creates
 the static content. 
 
@@ -232,7 +235,7 @@ Once the state is updated, your component will mount all the children elements a
 == Building and packaging the frontend
 
 On successfully building your components, you need to build the
-frontend and package your application. The Maven `process-resources` goal generates the node resources,
+frontend and package your application. The Maven `process-resources` goal generates the node.js resources,
 creates the frontend production build, and copies and processes the resources into the destination directory. 
 
 [role='command']
