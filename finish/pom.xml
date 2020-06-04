@@ -13,7 +13,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
         <!-- Liberty configuration -->
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
@@ -38,35 +37,8 @@
         <!-- For tests -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
+            <artifactId>junit-jupiter</artifactId>
             <version>5.5.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-rs-client</artifactId>
-            <version>3.3.6</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- JSON-P RI -->
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
-            <version>1.1.4</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- JSON-B API -->
-        <dependency>
-            <groupId>org.eclipse</groupId>
-            <artifactId>yasson</artifactId>
-            <version>1.0.5</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- Support for JDK 9 and above -->
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -83,14 +55,13 @@
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.2</version>            
+                <version>3.2.1</version>            
             </plugin>
             <!-- Frontend resources -->
+            <!-- tag::frontend-plugin[] -->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
-                <!-- tag::frontend-plugin[] -->
                 <artifactId>frontend-maven-plugin</artifactId>
-                <!-- end::frontend-plugin[] -->
                 <version>1.9.1</version>
                 <configuration>
                     <workingDirectory>src/main/frontend</workingDirectory>
@@ -130,12 +101,12 @@
                     <!-- end::node-resource-build[] -->
                 </executions>
             </plugin>
+            <!-- end::frontend-plugin[] -->
             <!-- Copy frontend static files to target directory -->
+            <!-- tag::copy-plugin[] -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <!-- tag::copy-plugin[] -->
                 <artifactId>maven-resources-plugin</artifactId>
-                <!-- end::copy-plugin[] -->
                 <executions>
                  <execution>
                         <id>Copy frontend build to target</id>
@@ -163,6 +134,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- end::copy-plugin[] -->
         </plugins>
     </build>
 </project>
