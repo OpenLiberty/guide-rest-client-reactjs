@@ -236,6 +236,8 @@ On successfully building your components, you need to build the
 frontend and package your application. The Maven `process-resources` goal generates the Node.js resources,
 creates the frontend production build, and copies and processes the resources into the destination directory. 
 
+Run the following command in another shell:
+
 [role='command']
 ----
 mvn process-resources
