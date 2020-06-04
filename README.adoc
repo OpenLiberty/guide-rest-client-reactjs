@@ -246,6 +246,8 @@ frontend.
 
 Navigate to the http://localhost:9080[http://localhost:9080^] URL to view your frontend application.
 
+When you are done checking the application root, exit development mode by pressing CTRL+C in the shell session where you ran the server, or by typing q and then pressing the enter/return key.
+
 // =================================================================================================
 // Testing the React client
 // =================================================================================================
