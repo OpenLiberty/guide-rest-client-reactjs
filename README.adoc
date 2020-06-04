@@ -264,7 +264,7 @@ App.test.js
 include::finish/src/main/frontend/src/App.test.js[]
 ----
 
-Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official testing documentation on the official 
+Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official testing documentation on the 
 https://reactjs.org/docs/testing.html[React testing document^].
 
 == Great work! You're done!
