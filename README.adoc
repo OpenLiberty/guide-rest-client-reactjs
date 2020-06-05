@@ -36,7 +36,7 @@ You will learn how to access a REST service and deserialize the returned JSON th
 
 https://reactjs.org/[ReactJS^] is a JavaScript library used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. https://reactjs.org/[ReactJS^] also allows you to interface with other libraries and frameworks. Note, the names ReactJS and React are used interchangeably.
 
-The React application in this guide is provided and configured for you in the `frontend` directory. The application uses the https://reactjs.org/docs/create-a-new-react-app.html[Create React App] prebuilt configuration to design the modern single-page React application. The [https://github.com/facebook/create-react-app]`create-react-app` integrated toolchain is a comfortable environment for learning React, and is the best way to start building a new single-page application in React.
+The React application in this guide is provided and configured for you in the `src/main/frontend` directory. The application uses the https://reactjs.org/docs/create-a-new-react-app.html[Create React App] prebuilt configuration to design the modern single-page React application. The [https://github.com/facebook/create-react-app]`create-react-app` integrated toolchain is a comfortable environment for learning React, and is the best way to start building a new single-page application in React.
 
 artists.json
 [source, json, linenums, role="code_column"]
