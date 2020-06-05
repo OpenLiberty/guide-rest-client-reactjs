@@ -44,7 +44,7 @@ artists.json
 include::finish/src/resources/artists.json[]
 ----
 
-The REST service that provides the resources was written for you in advance in the backend of the application, and responds with the [hotspot]`artists.json` in `src/resources`. You will implement a ReactJS client that consumes this JSON and displays its contents on a single-page webpage, which will act as your application's frontend. 
+The REST service that provides the resources was written for you in advance in the backend of the application, and responds with the [hotspot]`artists.json` in `src/resources`. You will implement a ReactJS client as the frontend of your application, which consumes this JSON and displays its contents on a single-page webpage. 
 
 To learn more about REST services and how you can write them, see
 https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
@@ -101,8 +101,7 @@ include::{common-includes}/devmode-start.adoc[]
 After you start the service, you can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL. 
 
-Note: all the other dependencies that are installed in the project will show up in `frontend/src/package.json`
-that was generated using `create-react-app`. There are also pre-coded stylesheet files that can be found in `frontend/src/Styles`.
+Note: all the other dependencies that are installed in the project will show up in `src/main/frontend/src/package.json` that have already been generated for you, through the `create-react-app` configuration. There are also pre-coded stylesheet files that can be found in `src/main/frontend/src/Styles`.
 
 // =================================================================================================
 // Project Configuration 
@@ -110,15 +109,13 @@ that was generated using `create-react-app`. There are also pre-coded stylesheet
 
 == Project Configuration
 
-The Maven project is configured for your frontend application to host on the same origin. 
+The frontend of your application uses Node.js to compile your React code. The Maven project is configured for you to install Node.js, and populate the production files to the web content of your application. 
 
-The frontend of your application uses Node.js to execute your React code. Node.js is a JavaScript runtime 
-that is used for developing networking applications. It's convenient package manager, https://www.npmjs.com/[npm^], is used to compile and execute your React code. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
+Node.js is a JavaScript runtime that is used for developing networking applications. It's convenient package manager, https://www.npmjs.com/[npm^], is used to compile and execute your React code. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
-The static content generated from the frontend production build need to be served to your application. 
-The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` Node.js in your [hotspot=working-dir]`project directory` and [hotspot=node-resource-build]`produce` the frontend production build, in `src/main/frontend/build`. 
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` Node.js in your [hotspot=working-dir]`working` directory, and [hotspot=node-resource-build]`produce` the production files to the `src/main/frontend/build` directory. 
 
-Then, the [hotspot=copy-plugin]`maven-resources-plugin` copies the static content from the [hotspot=directory]`build` directory to the [hotspot=output-directory]`web content` of the application.
+Then, the [hotspot=copy-plugin]`maven-resources-plugin` copies the `static` content from the [hotspot=directory]`build` directory to the [hotspot=output-directory]`web content` of the application.
 
 pom.xml
 [source, xml, linenums, role='code_column']
@@ -128,7 +125,7 @@ include::finish/pom.xml[]
 
 == Creating the default page
 
-You need to create the entry point of your React application. In production, when the frontend application is used by other applications, the [hotspot file]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
+You need to create the entry point of your React application. The [hotspot file]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -142,12 +139,11 @@ index.js
 include::finish/src/main/frontend/src/index.js[]
 ----
 
-The [hotspot=import-react]`React library` imports the `default export` from the react package.
-The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The [hotspot=react-dom]`ReactDOM` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. Here, you're rendering the the `App` 
+The [hotspot=import-react]`React` library imports the [hotspot=import-react]`react` package. The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The [hotspot=react-dom]`ReactDOM` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. Here, you're rendering the the `App` 
 element on a DOM node using the [hotspot=dom-render]`render` method. 
 See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
 
-You will also notice the `serviceWorker.js` file included in `frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by in using `create-react-app`. By default, it won't control your application as it's [hotspot=service-worker]`unregistered` in the `index.js`. 
+You will also notice the `serviceWorker.js` file included in `src/main/frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by in using `create-react-app`. By default, it won't control your application as it's [hotspot=service-worker]`unregistered` in the `index.js`. 
 
 // =================================================================================================
 // Creating the React components
@@ -179,13 +175,13 @@ The main component in your React application is the `App` Component. You will ne
 
 The `App.js` file returns the `FetchData` component as a [hotspot=react-fragment file=0]`React Fragment` to create a reusable element that encompasses your web application. 
 
-Next, you'll create the `FetchData` component that will define the states and properties of your react webpage. 
+Next, you'll create the `FetchData` component that will define the states and properties of your React webpage. 
 [role="code_command hotspot file=1", subs="quotes"]
 ----
 #Create the `Fetchdata.js` file.#
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
-The [hotspot=react-library file=1]`React library` imports the `default export`, as well as the `component named export` from the `react` package so you can create the [hotspot=class file=1]`Fetchdata` component as an inheritance of the `React Component`. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=1]`exported` as a reusable UI element that can be used across your application.
+The [hotspot=react-library file=1]`React library` imports the `react` package for you to create the [hotspot=class file=1]`Fetchdata` component as an inheritance of the `React Component`, and use its values. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=1]`exported` as a reusable UI element that can be used across your application.
 
 To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table present on the webpage.
 
@@ -214,7 +210,7 @@ The [hotspot=get-posts]`getPosts()` function will use the axios API. You also  n
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
 [role="edit_command_text"]
-Add the [hotspot=axios-library]`axios library` and the [hotspot=get-posts]`getPosts()` function. 
+Add the [hotspot=axios-library]`axios` library and the [hotspot=get-posts]`getPosts()` function. 
 Next, add the [hotspot=mount-posts]`componentDidMount()` method into your Component. 
 
 The [hotspot=axios]`axios` HTTP call is used to read the artist JSON
@@ -247,7 +243,7 @@ Note that you can rebuild the frontend at any time with the Maven `process-resou
 Any local changes to your JavaScript and HTML are picked up when you build the
 frontend.
 
-Navigate to the http://localhost:9080[http://localhost:9080^] URL to view your frontend application.
+Navigate to the http://localhost:9080[http://localhost:9080^] URL to view the frontend of your application.
 
 // =================================================================================================
 // Testing the React client
@@ -256,7 +252,7 @@ Navigate to the http://localhost:9080[http://localhost:9080^] URL to view your f
 == Testing the React client
 
 When you create a new project with `create-react-app`, it comes with a test file
-called [hotspot file]`App.test.js`, which is included in `frontend/src`. This is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases written for this application. Similar to the purpose in using the `axios` HTTP-client, React doesn't have a built-in test runner.
+called [hotspot file]`App.test.js`, which is included in `src/main/frontend/src`. This is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases written for this application. Similar to the purpose in using the `axios` HTTP-client, React doesn't have a built-in test runner.
 The `create-react-app` configuration uses https://jestjs.io/[Jest^] as it's test runner. To learn more about Jest, follow their documentation on https://jestjs.io/docs/en/tutorial-react[Testing React Apps^]. 
 
 App.test.js
