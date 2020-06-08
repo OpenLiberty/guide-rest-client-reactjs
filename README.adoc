@@ -194,7 +194,7 @@ The [hotspot=return-table file=1]`return` statement adds the paginated table to 
 === Importing The HTTP client
 
 Your application needs a way to communicate with RESTful web services to retrieve their
-resources in order to output the resources onto the paginated table. You will use the https://github.com/axios/axios[axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. https://github.com/axios/axios[Axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, you need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[axios documentation^].
+resources in order to output the resources onto the paginated table. You will use the https://github.com/axios/axios[Axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. https://github.com/axios/axios[Axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, you need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the Axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[Axios documentation^].
 
 Fetchdata.js
 [source, javascript, linenums, role='code_column']
@@ -202,7 +202,7 @@ Fetchdata.js
 include::finish/src/main/frontend/src/Components/Fetchdata.js[]
 ----
 
-The [hotspot=get-posts]`getPosts()` function will use the axios API. You also  need to verify that the component was updated properly. This is done through the [hotspot=mount-posts]`componentDidMount()` lifecycle method.
+The [hotspot=get-posts]`getPosts()` function will use the Axios API. You also  need to verify that the component was updated properly. This is done through the [hotspot=mount-posts]`componentDidMount()` lifecycle method.
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -252,7 +252,7 @@ Navigate to the http://localhost:9080[http://localhost:9080^] URL to view the fr
 == Testing the React client
 
 When you create a new project with `create-react-app`, it comes with a test file
-called [hotspot file]`App.test.js`, which is included in `src/main/frontend/src`. This is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases written for this application. Similar to the purpose in using the `axios` HTTP-client, React doesn't have a built-in test runner.
+called [hotspot file]`App.test.js`, which is included in `src/main/frontend/src`. This is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases written for this application. Similar to the purpose in using the `Axios` HTTP-client, React doesn't have a built-in test runner.
 The `create-react-app` configuration uses https://jestjs.io/[Jest^] as it's test runner. To learn more about Jest, follow their documentation on https://jestjs.io/docs/en/tutorial-react[Testing React Apps^]. 
 
 App.test.js
