@@ -44,7 +44,7 @@ artists.json
 include::finish/src/resources/artists.json[]
 ----
 
-The REST service that provides the resources was written for you in advance in the backend of the application, and responds with the [hotspot]`artists.json` in `src/resources`. You will implement a ReactJS client as the frontend of your application, which consumes this JSON and displays its contents on a single-page webpage. 
+The REST service that provides the resources was written for you in advance in the backend of the application, and responds with the [hotspot]`artists.json` in `src/resources`. You will implement a ReactJS client as the front end of your application, which consumes this JSON and displays its contents on a single-page webpage. 
 
 To learn more about REST services and how you can write them, see
 https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
@@ -61,7 +61,7 @@ include::{common-includes}/gitclone.adoc[]
 
 === Try what you'll build
 
-The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed. The React frontend is already pre-built for you and the static files from the production build can be found in `src/main/webapp/static`.
+The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed. The React front end is already pre-built for you and the static files from the production build can be found in `src/main/webapp/static`.
 
 To try out the application, run the following Maven goal to build the application and deploy it to Open Liberty:
 
@@ -109,7 +109,7 @@ Note: all the other dependencies that are installed in the project will show up 
 
 == Project Configuration
 
-The frontend of your application uses Node.js to compile your React code. The Maven project is configured for you to install Node.js, and populate the production files to the web content of your application. 
+The front end of your application uses Node.js to compile your React code. The Maven project is configured for you to install Node.js, and populate the production files to the web content of your application. 
 
 Node.js is a JavaScript runtime that is used for developing networking applications. It's convenient package manager, https://www.npmjs.com/[npm^], is used to compile and execute your React code. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
@@ -223,13 +223,13 @@ JSON data, to allow it to be accessed by the `ReactTable`.
 Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references, with the ability to trigger a new render pass.
 
 // =================================================================================================
-// Building and packaging the frontend
+// Building and packaging the front end
 // =================================================================================================
 
-== Building and packaging the frontend
+== Building and packaging the front end
 
 On successfully building your components, you need to build the
-frontend and package your application. The Maven `process-resources` goal generates the Node.js resources,
+front end and package your application. The Maven `process-resources` goal generates the Node.js resources,
 creates the frontend production build, and copies and processes the resources into the destination directory. 
 
 Run the following command in another shell:
@@ -239,11 +239,11 @@ Run the following command in another shell:
 mvn process-resources
 ----
 
-Note that you can rebuild the frontend at any time with the Maven `process-resources` goal.
+Note that you can rebuild the front end at any time with the Maven `process-resources` goal.
 Any local changes to your JavaScript and HTML are picked up when you build the
-frontend.
+front end.
 
-Navigate to the http://localhost:9080[http://localhost:9080^] URL to view the frontend of your application.
+Navigate to the http://localhost:9080[http://localhost:9080^] URL to view the front end of your application.
 
 // =================================================================================================
 // Testing the React client
