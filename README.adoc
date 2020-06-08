@@ -181,7 +181,7 @@ Next, you'll create the `FetchData` component that will define the states and pr
 #Create the `Fetchdata.js` file.#
 `src/main/frontend/src/Components/Fetchdata.js`
 ----
-The [hotspot=react-library file=1]`React library` imports the `react` package for you to create the [hotspot=class file=1]`Fetchdata` component as an inheritance of the `React Component`, and use its values. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=1]`exported` as a reusable UI element that can be used across your application.
+The [hotspot=react-library file=1]`React` library imports the `react` package for you to create the [hotspot=class file=1]`Fetchdata` component as an inheritance of the `React Component`, and use its values. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=1]`exported` as a reusable UI element that can be used across your application.
 
 To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table present on the webpage.
 
