@@ -1,8 +1,8 @@
 // tag::react-library[]
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // end::react-library[]
 // tag::axios-library[]
-import axios from "axios";
+import axios from 'axios';
 // end::axios-library[]
 // tag::react-table[]
 import ReactTable from 'react-table-6';
@@ -23,7 +23,7 @@ class ArtistTable extends Component {
   // tag::get-posts[]
   getArtistsInfo() {
     // tag::axios[]
-    axios("http://localhost:9080/artists")
+    axios('http://localhost:9080/artists')
     // end::axios[]
       // tag::then-method[]
       .then(response => {
@@ -82,26 +82,26 @@ class ArtistTable extends Component {
       columns: [
         {
           // tag::header-ID[]
-          Header: "Artist ID",
+          Header: 'Artist ID',
           // end::header-ID[]
           // tag::accessor-ID[]
-          accessor: "id"
+          accessor: 'id'
           // end::accessor-ID[]
         },
         {
           // tag::header-name[]
-          Header: "Artist Name",
+          Header: 'Artist Name',
           // end::header-name[]
           // tag::accessor-name[]
-          accessor: "name"
+          accessor: 'name'
           // end::accessor-name[]
         },
         {
           // tag::header-genres[]
-          Header: "Genres",
+          Header: 'Genres',
           // end::header-genres[]
           // tag::accessor-genres[]
-          accessor: "genres",
+          accessor: 'genres',
           // end::accessor-genres[]
         }
       ]
@@ -113,18 +113,18 @@ class ArtistTable extends Component {
       columns: [
         {
           // tag::header-title[]
-          Header: "Title",
+          Header: 'Title',
           // end::header-title[]
           // tag::accessor-title[]
-          accessor: "title",
+          accessor: 'title',
           // end::accessor-title[]
         },
         {
           // tag::header-tracks[]
-          Header: "Number of Tracks",
+          Header: 'Number of Tracks',
           // end::header-tracks[]
           // tag::accessor-tracks[]
-          accessor: "ntracks",
+          accessor: 'ntracks',
           // end::accessor-tracks[]
         }
       ]
