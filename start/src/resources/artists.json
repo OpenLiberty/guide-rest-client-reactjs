@@ -39,5 +39,51 @@
                 "ntracks" : 7
             }
         ]
+    },
+    {
+        "id": "4",
+        "name" : "flow",
+        "genres": "R&B",
+        "albums" : [
+            {
+                "title" : "album_long",
+                "artist" : "flow",
+                "ntracks" : 22
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "name" : "cc",
+        "genres": "country",
+        "albums" : [
+            {
+                "title" : "album_short",
+                "artist" : "cc",
+                "ntracks" : 5
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "name" : "axis",
+        "genres": "classical",
+        "albums" : [
+            {
+                "title" : "album_one",
+                "artist" : "axis",
+                "ntracks" : 9
+            },
+            {
+                "title" : "album_two",
+                "artist" : "axis",
+                "ntracks" : 8
+            },
+            {
+                "title" : "album_three",
+                "artist" : "axis",
+                "ntracks" : 11
+            }
+        ]
     }
 ]

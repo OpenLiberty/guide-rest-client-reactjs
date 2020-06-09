@@ -10,18 +10,18 @@ import 'react-table-6/react-table.css';
 // end::react-table[]
 
 // tag::class[]
-class Fetchdata extends Component {
+class ArtistTable extends Component {
 // end::class[]
   // tag::state-object[]
   state = {
-    posts: {},
+    posts: [],
     isLoading: true,
     error: null,
   };
   // end::state-object[]
 
   // tag::get-posts[]
-  getPosts() {
+  getArtistsInfo() {
     // tag::axios[]
     axios("http://localhost:9080/artists")
     // end::axios[]
@@ -34,26 +34,25 @@ class Fetchdata extends Component {
           isLoading: false
         });
       // end::then-method[]
-      console.log(response);
       })
       // tag::error-handling[]
       .catch(error => this.setState({ error, isLoading: false }));
       // end::error-handling[]
       
-  // tag::convert-data[]
+    // tag::convert-data[]
     const convertData = (data) => {
       let result = [];
 
       for(let item of data){
-        let b = {};
+        let posts = {};
         
         if(item.albums.length){
-        const a = item.albums;
+        const album = item.albums;
         delete item.albums;
 
-          for (let it of a) {
-          b = it;
-          result.push({...item,...b});
+          for (let it of album) {
+          posts = it;
+          result.push({...item,...posts});
           }
 
           } else {
@@ -69,7 +68,7 @@ class Fetchdata extends Component {
 
   // tag::mount-posts[]
   componentDidMount() {
-    this.getPosts();
+    this.getArtistsInfo();
   }
   // end::mount-posts[]
   // tag::render-posts[]
@@ -147,8 +146,8 @@ class Fetchdata extends Component {
           // tag::columns[]
           columns={columns}
           // end::columns[]
-          defaultPageSize={6}
-          pageSizeOptions={[6, 12, 15]}
+          defaultPageSize={4}
+          pageSizeOptions={[4, 5, 6]}
         />) : (
         // end::table[]
           <p>Loading .....</p>
@@ -162,6 +161,6 @@ class Fetchdata extends Component {
 }
 // end::element[]
 
-// tag::export-fetchdata[]
-export default Fetchdata;
-// end::export-fetchdata[]
+// tag::export-artisttable[]
+export default ArtistTable;
+// end::export-artisttable[]

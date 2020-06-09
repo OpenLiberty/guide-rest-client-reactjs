@@ -1,15 +1,13 @@
 import React from 'react';
-import '../Styles/App.css';
-import Fetchdata from './Fetchdata';
+import '../styles/App.css';
+import ArtistTable from './ArtistTable';
 
 
 function App() {
   return (
-    // tag::react-fragment[]
-    <React.Fragment>
-      <Fetchdata/>
-    </React.Fragment>
-    // end::react-fragment[]
+    // tag::react-component[]
+      <ArtistTable/>
+    // end::react-component[]
   );
 }
 

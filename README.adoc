@@ -34,7 +34,7 @@ Liberty.
 
 You will learn how to access a REST service and deserialize the returned JSON that contains a list of artists, their albums and other ambiguous artist features by using an HTTP client with the ReactJS library. You will then present this data using a ReactJS element in the form of a paginated table.
 
-https://reactjs.org/[ReactJS^] is a JavaScript library used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. https://reactjs.org/[ReactJS^] also allows you to interface with other libraries and frameworks. Note, the names ReactJS and React are used interchangeably.
+https://reactjs.org/[ReactJS^] is a JavaScript library used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. ReactJS also allows you to interface with other libraries and frameworks. Note, the names ReactJS and React are used interchangeably.
 
 The React application in this guide is provided and configured for you in the `src/main/frontend` directory. The application uses the https://reactjs.org/docs/create-a-new-react-app.html[Create React App] prebuilt configuration to design the modern single-page React application. The [https://github.com/facebook/create-react-app]`create-react-app` integrated toolchain is a comfortable environment for learning React, and is the best way to start building a new single-page application in React.
 
@@ -61,9 +61,9 @@ include::{common-includes}/gitclone.adoc[]
 
 === Try what you'll build
 
-The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed. The React front end is already pre-built for you and the static files from the production build can be found in `src/main/webapp/static`.
+The `finish` directory in the root of this guide contains the finished application. The React front end is already pre-built for you and the static files from the production build can be found in `src/main/webapp/static`.
 
-To try out the application, run the following Maven goal to build the application and deploy it to Open Liberty:
+To try out the application, navigate to the `finish` directory and run the following Maven goal to build the application and deploy it to Open Liberty:
 
 [role='command']
 ```
@@ -101,7 +101,7 @@ include::{common-includes}/devmode-start.adoc[]
 After you start the service, you can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL. 
 
-Note: all the other dependencies that are installed in the project will show up in `src/main/frontend/src/package.json` that have already been generated for you, through the `create-react-app` configuration. There are also pre-coded stylesheet files that can be found in `src/main/frontend/src/Styles`.
+Note: all the other dependencies that are installed in the project will show up in `src/main/frontend/src/package.json` that have already been generated for you through the `create-react-app` configuration. There are also pre-coded `.css` files that can be found in `src/main/frontend/src/Styles`.
 
 // =================================================================================================
 // Project Configuration 
@@ -109,11 +109,11 @@ Note: all the other dependencies that are installed in the project will show up 
 
 == Project Configuration
 
-The front end of your application uses Node.js to compile your React code. The Maven project is configured for you to install Node.js, and populate the production files to the web content of your application. 
+The front end of your application uses Node.js to execute your React code. The Maven project is configured for you to install Node.js, and populate the production files to the web content of your application. 
 
-Node.js is a JavaScript runtime that is used for developing networking applications. It's convenient package manager, https://www.npmjs.com/[npm^], is used to compile and execute your React code. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
+Node.js is a JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to execute the React scripts found in the `package.json`. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
-The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` Node.js in your [hotspot=working-dir]`working` directory, and [hotspot=node-resource-build]`produce` the production files to the `src/main/frontend/build` directory. 
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` from the npm registry into a folder called `node_modules`, which can be found in your [hotspot=working-dir]`working` directory. Then, [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/build` directory. 
 
 Then, the [hotspot=copy-plugin]`maven-resources-plugin` copies the `static` content from the [hotspot=directory]`build` directory to the [hotspot=output-directory]`web content` of the application.
 
@@ -125,7 +125,7 @@ include::finish/pom.xml[]
 
 == Creating the default page
 
-You need to create the entry point of your React application. The [hotspot file]`index.js` file should be the main entry point of the application as it coincides with the `index.html` file. This is where your code is always going to be run. 
+You need to create the entry point of your React application. The [hotspot file=0]`index.js` file is the main entry point of the application as it coincides with the [hotspot file=1]`index.html`. This is where your code is always going to be run. 
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -139,11 +139,16 @@ index.js
 include::finish/src/main/frontend/src/index.js[]
 ----
 
-The [hotspot=import-react]`React` library imports the [hotspot=import-react]`react` package. The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The [hotspot=react-dom]`ReactDOM` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. Here, you're rendering the the `App` 
-element on a DOM node using the [hotspot=dom-render]`render` method. 
-See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
+index.html
+[source, html, linenums, role='code_column tags=html hide_tags=copyright']
+----
+include::finish/src/main/frontend/public/index.html[]
+----
 
-You will also notice the `serviceWorker.js` file included in `src/main/frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by in using `create-react-app`. By default, it won't control your application as it's [hotspot=service-worker]`unregistered` in the `index.js`. 
+The [hotspot=import-react file=0]`React` library imports the [hotspot=import-react file=0]`react` package. The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The DOM, or Document Object Model, is a programming interface for HTML and XML documents. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The [hotspot=react-dom file=0]`react-dom` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. 
+The purpose in using the [hotspot=dom-render file=0]`render` method is to display the specified HTML code inside the [hotspot=id-root file=1]`root` element by rendering the `App` element on a DOM node. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
+
+You will also notice the `serviceWorker.js` file included in `src/main/frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by using `create-react-app`. By default, it won't control your application as it's [hotspot=service-worker]`unregistered` in the `index.js`. 
 
 // =================================================================================================
 // Creating the React components
@@ -159,13 +164,13 @@ App.js
 include::finish/src/main/frontend/src/Components/App.js[]
 ----
 
-Fetchdata.js
+ArtistTable.js
 [source, javascript, linenums, role='code_column hide_tags=get-posts,mount-posts,axios-library']
 ----
-include::finish/src/main/frontend/src/Components/Fetchdata.js[]
+include::finish/src/main/frontend/src/Components/ArtistTable.js[]
 ----
 
-The main component in your React application is the `App` Component. You will need to create the [hotspot file=0]`App.js` file, which acts as a container for all other components. 
+The main component in your React application is the `App` Component. You will need to create the [hotspot file=0]`App.js` file to act as a container for all other components. 
 
 [role="code_command hotspot file=0", subs="quotes"]
 ----
@@ -173,19 +178,20 @@ The main component in your React application is the `App` Component. You will ne
 `src/main/frontend/src/Components/App.js`
 ----
 
-The `App.js` file returns the `FetchData` component as a [hotspot=react-fragment file=0]`React Fragment` to create a reusable element that encompasses your web application. 
+The `App.js` file returns the [hotspot=react-component file=0]`ArtistTable` component to create a reusable element that encompasses your web application. 
 
-Next, you'll create the `FetchData` component that will define the states and properties of your React webpage. 
+Next, you'll create the `ArtistTable` component that will define the states and properties of your React webpage. 
+
 [role="code_command hotspot file=1", subs="quotes"]
 ----
-#Create the `Fetchdata.js` file.#
-`src/main/frontend/src/Components/Fetchdata.js`
+#Create the `ArtistTable.js` file.#
+`src/main/frontend/src/Components/ArtistTable.js`
 ----
-The [hotspot=react-library file=1]`React` library imports the `react` package for you to create the [hotspot=class file=1]`Fetchdata` component as an inheritance of the `React Component`, and use its values. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `Fetchdata` component also needs to be [hotspot=export-fetchdata file=1]`exported` as a reusable UI element that can be used across your application.
+The [hotspot=react-library file=1]`React` library imports the `react` package for you to create the [hotspot=class file=1]`ArtistTable` component as an inheritance of the `React Component`, and use its values. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that will appear on the paginated table. The `ArtistTable` component also needs to be [hotspot=export-artisttable file=1]`exported` as a reusable UI element that can be used across your application.
 
 To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table present on the webpage.
 
-The [hotspot=return-table file=1]`return` statement adds the paginated table to your application. Your paginated table is returned as a `<React.Fragment>`, where you have defined the properties for the [hotspot=table file=1]`ReactTable`. The [hotspot=posts file=1]`{posts}` prop corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns file=1]`{column}` prop corresponds to the rendered column object and is assigned to the `columns` of the table.
+The [hotspot=return-table file=1]`return` statement returns the paginated table as a `<React.Fragment>`, where you have defined the properties for the [hotspot=table file=1]`ReactTable`. Fragments allow you to group a list of children elements, without adding extra nodes to the DOM. The [hotspot=posts file=1]`data` property corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns file=1]`columns` property corresponds to the rendered column object and is assigned to the `columns` of the table.
 
 // =================================================================================================
 // Importing the HTTP client
@@ -194,20 +200,20 @@ The [hotspot=return-table file=1]`return` statement adds the paginated table to 
 === Importing The HTTP client
 
 Your application needs a way to communicate with RESTful web services to retrieve their
-resources in order to output the resources onto the paginated table. You will use the https://github.com/axios/axios[Axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. https://github.com/axios/axios[Axios^] is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, you need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the Axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[Axios documentation^].
+resources in order to output the resources onto the paginated table. You will use the https://github.com/axios/axios[Axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. Axios is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, you need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the Axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[Axios documentation^].
 
-Fetchdata.js
+ArtistTable.js
 [source, javascript, linenums, role='code_column']
 ----
-include::finish/src/main/frontend/src/Components/Fetchdata.js[]
+include::finish/src/main/frontend/src/Components/ArtistTable.js[]
 ----
 
-The [hotspot=get-posts]`getPosts()` function will use the Axios API. You also  need to verify that the component was updated properly. This is done through the [hotspot=mount-posts]`componentDidMount()` lifecycle method.
+The [hotspot=get-posts]`getArtistInfo()` function will use the Axios API. You also need to verify that the component was mounted properly. This is done through the [hotspot=mount-posts]`componentDidMount()` lifecycle method as it runs when a component is rendered.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Update the `Fetchdata.js` file.#
-`src/main/frontend/src/Components/Fetchdata.js`
+#Update the `ArtistTable.js` file.#
+`src/main/frontend/src/Components/ArtistTable.js`
 ----
 [role="edit_command_text"]
 Add the [hotspot=axios-library]`axios` library and the [hotspot=get-posts]`getPosts()` function. 
@@ -232,7 +238,7 @@ On successfully building your components, you need to build the
 front end and package your application. The Maven `process-resources` goal generates the Node.js resources,
 creates the frontend production build, and copies and processes the resources into the destination directory. 
 
-Run the following command in another shell:
+Run the following command in another shell session:
 
 [role='command']
 ----
