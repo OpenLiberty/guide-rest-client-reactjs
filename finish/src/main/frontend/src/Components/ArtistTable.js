@@ -27,9 +27,21 @@ class ArtistTable extends Component {
     // end::axios[]
       // tag::then-method[]
       .then(response => {
+        // tag::response-data[]
+        const artists = response.data;
+        // end::response-data[]
+        // tag::convert-data[]
+        const posts = [];
+        for (const artist of artists) {
+          const { albums, ...rest } = artist;
+          for (const album of albums) {
+            posts.push({ ...rest, ...album });
+          }
+        };
+        // end::convert-data[]
         this.setState({
           // tag::data[]
-          posts: convertData(response.data),
+          posts,
           // end::data[]
           isLoading: false
         });
@@ -38,31 +50,6 @@ class ArtistTable extends Component {
       // tag::error-handling[]
       .catch(error => this.setState({ error, isLoading: false }));
       // end::error-handling[]
-      
-    // tag::convert-data[]
-    const convertData = (data) => {
-      let result = [];
-
-      for(let item of data){
-        let posts = {};
-        
-        if(item.albums.length){
-        const album = item.albums;
-        delete item.albums;
-
-          for (let it of album) {
-          posts = it;
-          result.push({...item,...posts});
-          }
-
-          } else {
-            delete item.albums;
-            result.push(item);
-          }
-      }
-      return result;
-    }
-    // end::convert-data[]
   }
   // end::get-posts[]
 
