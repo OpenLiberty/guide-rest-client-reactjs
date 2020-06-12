@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/App.css';
 import ArtistTable from './ArtistTable';
 
 function App() {

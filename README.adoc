@@ -32,7 +32,7 @@ Liberty.
 
 == What you'll learn 
 
-You will learn how to access a REST service and deserialize the returned JSON that contains a list of artists, their albums and other ambiguous artist features by using an HTTP client with the ReactJS library. You will then present this data using a ReactJS element in the form of a paginated table.
+You will learn how to access a REST service and deserialize the returned JSON that contains a list of artists and their albums by using an HTTP client with the ReactJS library. You will then present this data using a ReactJS paginated table component.
 
 https://reactjs.org/[ReactJS^] is a JavaScript library used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. ReactJS also allows you to interface with other libraries and frameworks. Note, the names ReactJS and React are used interchangeably.
 
@@ -109,7 +109,7 @@ Note: all the other dependencies that are installed in the project will show up 
 
 == Project Configuration
 
-The front end of your application uses Node.js to execute your React code. The Maven project is configured for you to install Node.js, and populate the production files to the web content of your application. 
+The front end of your application uses Node.js to build your React code. The Maven project is configured for you to install Node.js, and populate the production files to the web content of your application. 
 
 Node.js is a JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to execute the React scripts found in the `package.json`. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
@@ -125,7 +125,9 @@ include::finish/pom.xml[]
 
 == Creating the default page
 
-You need to create the entry point of your React application. The [hotspot file=0]`index.js` file is the main entry point of the application as it coincides with the [hotspot file=1]`index.html`. This is where your code is always going to be run. 
+You need to create the entry point of your React application. `create-react-app` uses 
+the [hotspot file=0]`index.js` file as the main entry point of the application. This JavaScript file 
+corresponds with the [hotspot file=1]`index.html`. This is where your code is always going to be run. 
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -147,8 +149,6 @@ include::finish/src/main/frontend/public/index.html[]
 
 The [hotspot=import-react file=0]`React` library imports the [hotspot=import-react file=0]`react` package. The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The DOM, or Document Object Model, is a programming interface for HTML and XML documents. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The [hotspot=react-dom file=0]`react-dom` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. 
 The purpose in using the [hotspot=dom-render file=0]`render` method is to display the specified HTML code inside the [hotspot=id-root file=1]`root` element by rendering the `App` element on a DOM node. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
-
-You will also notice the `serviceWorker.js` file included in `src/main/frontend/src`. This JavaScript file is used to register a service worker. A service worker is essentially a web API that offers offline capabilities. This file is invoked by using `create-react-app`. By default, it won't control your application as it's [hotspot=service-worker]`unregistered` in the `index.js`. 
 
 // =================================================================================================
 // Creating the React components
@@ -191,7 +191,7 @@ The [hotspot=react-library file=1]`React` library imports the `react` package fo
 
 To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table present on the webpage.
 
-The [hotspot=return-table file=1]`return` statement returns the paginated table as a `<React.Fragment>`, where you have defined the properties for the [hotspot=table file=1]`ReactTable`. Fragments allow you to group a list of children elements, without adding extra nodes to the DOM. The [hotspot=posts file=1]`data` property corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns file=1]`columns` property corresponds to the rendered column object and is assigned to the `columns` of the table.
+The [hotspot=return-table file=1]`return` statement returns the paginated table where you have defined the properties for the [hotspot=table file=1]`ReactTable`. The [hotspot=posts file=1]`data` property corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=columns file=1]`columns` property corresponds to the rendered column object and is assigned to the `columns` of the table.
 
 // =================================================================================================
 // Importing the HTTP client
@@ -224,7 +224,10 @@ containing the data from the sample JSON file in `resources`.
 On successfully getting a response, the state of the system changes by 
 assigning [hotspot=response-data]`response.data` to [hotspot=data]`posts`. 
 The [hotspot=convert-data]`convertData` function manipulates the 
-JSON data to allow it to be accessed by the `ReactTable`.
+JSON data to allow it to be accessed by the `ReactTable`. You will notice the 
+[hotspot=spread-one hotspot=spread-two]`object spread syntax` that the `convertData` function uses,
+which is a relatively new sytnax made for simplicity. 
+To learn more about it, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals[Spread in object literals^].
 
 Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references, with the ability to trigger a new render pass.
 

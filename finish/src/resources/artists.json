@@ -35,7 +35,7 @@
         "albums" : [
             {
                 "title" : "album_dj",
-                "artist" : "bar",
+                "artist" : "dj",
                 "ntracks" : 7
             }
         ]

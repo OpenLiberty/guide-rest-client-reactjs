@@ -33,9 +33,13 @@ class ArtistTable extends Component {
         // tag::convert-data[]
         const posts = [];
         for (const artist of artists) {
+          // tag::spread-one[]
           const { albums, ...rest } = artist;
+          // end::spread-one[]
           for (const album of albums) {
+            // tag::spread-two[]
             posts.push({ ...rest, ...album });
+            // end::spread-two[]
           }
         };
         // end::convert-data[]
@@ -122,7 +126,7 @@ class ArtistTable extends Component {
   // tag::return-table[]
   return (
     // tag::react-fragment[]
-    <React.Fragment>
+    <div>
       <h2>Artist Web Service</h2>
       {!isLoading ? (
         // tag::table[]
@@ -139,7 +143,7 @@ class ArtistTable extends Component {
         // end::table[]
           <p>Loading .....</p>
         )}
-    </React.Fragment>
+    </div>
     // end::react-fragment[]
     );
     // end::return-table[]
