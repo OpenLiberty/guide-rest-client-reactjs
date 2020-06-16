@@ -150,8 +150,7 @@ include::finish/src/main/frontend/public/index.html[]
 
 The [hotspot=import-react file=0]`React` library imports the [hotspot=import-react file=0]`react` package. The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The DOM, or Document Object Model, is a programming interface for HTML and XML documents. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The [hotspot=react-dom file=0]`react-dom` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. 
 
-The [hotspot=dom-render file=0]`render` method takes an HTML DOM element and tells the ReactDOM to render your React application inside of this DOM element. 
-display the specified HTML code inside the [hotspot=id-root file=1]`root` element by rendering the `App` element on a DOM node. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
+The [hotspot=dom-render file=0]`render` method takes an HTML DOM element and tells the ReactDOM to render your React application inside of this DOM element. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
 
 // =================================================================================================
 // Creating the React components
@@ -215,9 +214,6 @@ The [hotspot=get-posts]`getArtistInfo()` function will use the Axios API to fetc
 It will be called when the `ArtistTable` is rendered to the page using 
 the [hotspot=mount-posts]`componentDidMount()` React lifecycle method.
 
-
-The getArtistInfo() function will use the Axios API to fetch data from your backend. It will be called when the ArtistTable is rendered to the page using the componentDidMount React lifecycle method.
-
 [role="code_command hotspot", subs="quotes"]
 ----
 #Update the `ArtistTable.js` file.#
@@ -237,7 +233,7 @@ JSON data to allow it to be accessed by the `ReactTable`. You will notice the
 which is a relatively new sytnax made for simplicity. 
 To learn more about it, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals[Spread in object literals^].
 
-Once the state is updated, your component will mount your React elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your references.
+Once the state is updated, your component will mount your React elements and component instances to the native UI. You will now have access to the native UI, and you will be able to access your artist data in the table.
 
 // =================================================================================================
 // Building and packaging the front end
