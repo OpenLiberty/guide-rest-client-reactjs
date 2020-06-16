@@ -2,7 +2,7 @@ target/
 finish/target/
 start/target/
 
-.DS_store
+.DS_Store
 .classpath
 .factorypath
 .project
