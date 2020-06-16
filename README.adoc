@@ -36,7 +36,7 @@ You will learn how to access a REST service and deserialize the returned JSON th
 
 https://reactjs.org/[ReactJS^] is a JavaScript library used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. ReactJS also allows you to interface with other libraries and frameworks. Note, the names ReactJS and React are used interchangeably.
 
-The React application in this guide is provided and configured for you in the `src/main/frontend` directory. The application uses the https://reactjs.org/docs/create-a-new-react-app.html[Create React App] prebuilt configuration to design the modern single-page React application. The [https://github.com/facebook/create-react-app]`create-react-app` integrated toolchain is a comfortable environment for learning React, and is the best way to start building a new single-page application in React.
+The React application in this guide is provided and configured for you in the `src/main/frontend` directory. The application uses the https://reactjs.org/docs/create-a-new-react-app.html[Create React App] prebuilt configuration to set up the modern single-page React application. The [https://github.com/facebook/create-react-app]`create-react-app` integrated toolchain is a comfortable environment for learning React, and is the best way to start building a new single-page application in React.
 
 artists.json
 [source, json, linenums, role="code_column"]
@@ -101,7 +101,8 @@ include::{common-includes}/devmode-start.adoc[]
 After you start the service, you can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL. 
 
-Note: all the other dependencies that are installed in the project will show up in `src/main/frontend/src/package.json` that have already been generated for you through the `create-react-app` configuration. There are also pre-coded `.css` files that can be found in `src/main/frontend/src/Styles`.
+Note: all the dependencies for the React front end can be found in `src/main/frontend/src/package.json`, and 
+they are installed before building the front end by the `frontend-maven-plugin`. Additionally, there are also some provided `CSS` stylesheets files that can be found in `src/main/frontend/src/Styles`.
 
 // =================================================================================================
 // Project Configuration 
@@ -109,9 +110,9 @@ Note: all the other dependencies that are installed in the project will show up 
 
 == Project Configuration
 
-The front end of your application uses Node.js to build your React code. The Maven project is configured for you to install Node.js, and populate the production files to the web content of your application. 
+The front end of your application uses Node.js to build your React code. The Maven project is configured for you to install a local copy of Node.js, and populate the production files to the web content of your application. 
 
-Node.js is a JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to execute the React scripts found in the `package.json`. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
+Node.js is a server-side JavaScript runtime used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to execute the React build scripts found in the `package.json`. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
 The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` from the npm registry into a folder called `node_modules`, which can be found in your [hotspot=working-dir]`working` directory. Then, [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/build` directory. 
 
@@ -127,7 +128,7 @@ include::finish/pom.xml[]
 
 You need to create the entry point of your React application. `create-react-app` uses 
 the [hotspot file=0]`index.js` file as the main entry point of the application. This JavaScript file 
-corresponds with the [hotspot file=1]`index.html`. This is where your code is always going to be run. 
+corresponds with the [hotspot file=1]`index.html`. This is the entry point of where your code runs in the browser.
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -148,7 +149,9 @@ include::finish/src/main/frontend/public/index.html[]
 ----
 
 The [hotspot=import-react file=0]`React` library imports the [hotspot=import-react file=0]`react` package. The performance benefit in using React is evident through the Virtual DOM that it offers, which is essentially a copy of the browser DOM that resides in memory. The DOM, or Document Object Model, is a programming interface for HTML and XML documents. The Virtual DOM improves the performance of your web application as it plays a crucial role in the rendering process. The [hotspot=react-dom file=0]`react-dom` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. 
-The purpose in using the [hotspot=dom-render file=0]`render` method is to display the specified HTML code inside the [hotspot=id-root file=1]`root` element by rendering the `App` element on a DOM node. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
+
+The [hotspot=dom-render file=0]`render` method takes an HTML DOM element and tells the ReactDOM to render your React application inside of this DOM element. 
+display the specified HTML code inside the [hotspot=id-root file=1]`root` element by rendering the `App` element on a DOM node. See, https://reactjs.org/docs/react-dom.html[ReactDOM^] to learn more about the Virtual DOM.
 
 // =================================================================================================
 // Creating the React components
@@ -180,7 +183,7 @@ The main component in your React application is the `App` Component. You will ne
 
 The `App.js` file returns the [hotspot=react-component file=0]`ArtistTable` component to create a reusable element that encompasses your web application. 
 
-Next, you'll create the `ArtistTable` component that will define the states and properties of your React webpage. 
+Next, you'll create the `ArtistTable` component that will fetch data from your backend and render it in a table. 
 
 [role="code_command hotspot file=1", subs="quotes"]
 ----
@@ -208,7 +211,12 @@ ArtistTable.js
 include::finish/src/main/frontend/src/Components/ArtistTable.js[]
 ----
 
-The [hotspot=get-posts]`getArtistInfo()` function will use the Axios API. You also need to verify that the component was mounted properly. This is done through the [hotspot=mount-posts]`componentDidMount()` lifecycle method as it runs when a component is rendered.
+The [hotspot=get-posts]`getArtistInfo()` function will use the Axios API to fetch data from your backend. 
+It will be called when the `ArtistTable` is rendered to the page using 
+the [hotspot=mount-posts]`componentDidMount()` React lifecycle method.
+
+
+The getArtistInfo() function will use the Axios API to fetch data from your backend. It will be called when the ArtistTable is rendered to the page using the componentDidMount React lifecycle method.
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -229,7 +237,7 @@ JSON data to allow it to be accessed by the `ReactTable`. You will notice the
 which is a relatively new sytnax made for simplicity. 
 To learn more about it, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals[Spread in object literals^].
 
-Once the state is updated, your component will mount all the children elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your children references, with the ability to trigger a new render pass.
+Once the state is updated, your component will mount your React elements and component instances to the native UI. You will now have access to the native UI, and will be able to access to your references.
 
 // =================================================================================================
 // Building and packaging the front end

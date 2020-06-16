@@ -2,6 +2,7 @@ target/
 finish/target/
 start/target/
 
+.DS_store
 .classpath
 .factorypath
 .project
