@@ -101,6 +101,20 @@
                         </configuration>
                     </execution>
                     <!-- end::node-resource-build[] -->
+                    <!-- tag::node-tests[] -->
+                    <execution>
+                        <id>run tests</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>test a</arguments>
+                            <environmentVariables>
+                                <CI>true</CI>
+                            </environmentVariables>
+                        </configuration>
+                    </execution>
+                    <!-- end::node-tests[] -->
                 </executions>
             </plugin>
             <!-- end::frontend-plugin[] -->

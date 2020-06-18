@@ -105,21 +105,21 @@ Note: all the dependencies for the React front end can be found in `src/main/fro
 they are installed before building the front end by the `frontend-maven-plugin`. Additionally, there are also some provided `CSS` stylesheets files that can be found in `src/main/frontend/src/Styles`.
 
 // =================================================================================================
-// Project Configuration 
+// Project configuration 
 // =================================================================================================
 
-== Project Configuration
+== Project configuration
 
-The front end of your application uses Node.js to build your React code. The Maven project is configured for you to install a local copy of Node.js, and populate the production files to the web content of your application. 
+The front end of your application uses Node.js to build your React code. The Maven project is configured for you to install Node.js and produce the production files, which are copied to the web content of your application.
 
 Node.js is a server-side JavaScript runtime used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to execute the React build scripts found in the `package.json`. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
-The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` from the npm registry into a folder called `node_modules`, which can be found in your [hotspot=working-dir]`working` directory. Then, [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/build` directory. 
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` file from the npm registry into a folder called `node_modules`. The `node_modules` folder can be found in your [hotspot=working-dir]`working` directory. Then, the configuration[hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/build` directory. 
 
-Then, the [hotspot=copy-plugin]`maven-resources-plugin` copies the `static` content from the [hotspot=directory]`build` directory to the [hotspot=output-directory]`web content` of the application.
+The [hotspot=copy-plugin]`maven-resources-plugin` copies the `static` content from the [hotspot=directory]`build` directory to the [hotspot=output-directory]`web content` of the application.
 
 pom.xml
-[source, xml, linenums, role='code_column']
+[source, xml, linenums, role='code_column hide_tags=node-tests']
 ----
 include::finish/pom.xml[]
 ----
@@ -201,8 +201,7 @@ The [hotspot=return-table file=1]`return` statement returns the paginated table 
 
 === Importing The HTTP client
 
-Your application needs a way to communicate with RESTful web services to retrieve their
-resources in order to output the resources onto the paginated table. You will use the https://github.com/axios/axios[Axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. Axios is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. Unlike frameworks such as Angular that have a built-in HTTP client, you need to use a third-party vendor HTTP client to render data from an API endpoint. To learn more about the Axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[Axios documentation^].
+Your application needs a way to communicate with and retrieve resources from RESTful web services, in order to output the resources onto the paginated table. You will use the https://github.com/axios/axios[Axios^] library to provide you with an HTTP client. This client will be used to make HTTP requests to external resources. Axios is a promise-based HTTP client that allows you to send asynchronous requests to REST endpoints. To learn more about the Axios library and its HTTP client, visit the https://www.npmjs.com/package/axios[Axios documentation^].
 
 ArtistTable.js
 [source, javascript, linenums, role='code_column']
@@ -245,18 +244,19 @@ On successfully building your components, you need to build the
 front end and package your application. The Maven `process-resources` goal generates the Node.js resources,
 creates the frontend production build, and copies and processes the resources into the destination directory. 
 
-Run the following command in another shell session:
+In a new command-line session, build the front end by running the following command:
 
 [role='command']
 ----
 mvn process-resources
 ----
 
-Note that you can rebuild the front end at any time with the Maven `process-resources` goal.
+You can rebuild the front end at any time with the Maven `process-resources` goal.
 Any local changes to your JavaScript and HTML are picked up when you build the
 front end.
 
-Navigate to the http://localhost:9080[http://localhost:9080^] URL to view the front end of your application.
+Navigate to the http://localhost:9080[http://localhost:9080^] web application root to view 
+the front end of your application.
 
 // =================================================================================================
 // Testing the React client
@@ -265,7 +265,7 @@ Navigate to the http://localhost:9080[http://localhost:9080^] URL to view the fr
 == Testing the React client
 
 When you create a new project with `create-react-app`, it comes with a test file
-called [hotspot file]`App.test.js`, which is included in `src/main/frontend/src`. This is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases written for this application. Similar to the purpose in using the `Axios` HTTP-client, React doesn't have a built-in test runner.
+called [hotspot file]`App.test.js`, which is included in `src/main/frontend/src`. This is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases written for this application. 
 The `create-react-app` configuration uses https://jestjs.io/[Jest^] as it's test runner. To learn more about Jest, follow their documentation on https://jestjs.io/docs/en/tutorial-react[Testing React Apps^]. 
 
 App.test.js
@@ -273,6 +273,14 @@ App.test.js
 ----
 include::finish/src/main/frontend/src/App.test.js[]
 ----
+
+pom.xml
+[source, xml, linenums, role='code_column hide_tags=node-tests']
+----
+include::finish/pom.xml[]
+----
+
+To run the default tests, you can add the [hotspot=node-tests]`testing` configuration to the `frontend-maven-plugin` and re-run with the Maven `process-resources` goal.
 
 Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official testing documentation on the 
 https://reactjs.org/docs/testing.html[React testing document^].
