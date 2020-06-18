@@ -275,7 +275,7 @@ include::finish/src/main/frontend/src/App.test.js[]
 ----
 
 pom.xml
-[source, xml, linenums, role='code_column hide_tags=node-tests']
+[source, xml, linenums, role='code_column']
 ----
 include::finish/pom.xml[]
 ----
