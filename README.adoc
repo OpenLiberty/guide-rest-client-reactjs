@@ -232,7 +232,7 @@ JSON data to allow it to be accessed by the `ReactTable`. You will notice the
 which is a relatively new sytnax made for simplicity. 
 To learn more about it, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals[Spread in object literals^].
 
-[hotspot=set-state]`this.setState` is used to update the state of your React component with the data fetched from the server. This triggers a re-render of your React component which will update the table with the artist data. For more information on how state in React works, see the React documentation on https://reactjs.org/docs/faq-state.html[State and Lifecycle].
+[hotspot=setState]`this.setState` is used to update the state of your React component with the data fetched from the server. This triggers a re-render of your React component which will update the table with the artist data. For more information on how state in React works, see the React documentation on https://reactjs.org/docs/faq-state.html[State and Lifecycle].
 
 // =================================================================================================
 // Building and packaging the front end
