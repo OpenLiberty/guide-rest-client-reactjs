@@ -43,17 +43,17 @@ class ArtistTable extends Component {
           }
         };
         // end::convert-data[]
+        // tag::set-state[]
         this.setState({
           // tag::data[]
           posts,
           // end::data[]
           isLoading: false
         });
+        // end::set-state[]
       // end::then-method[]
       })
-      // tag::error-handling[]
       .catch(error => this.setState({ error, isLoading: false }));
-      // end::error-handling[]
   }
   // end::get-posts[]
 
@@ -67,56 +67,32 @@ class ArtistTable extends Component {
     const { isLoading, posts } = this.state;
     // tag::table-info[]
     const columns = [{
-      // tag::header-artist[]
       Header: 'Artist Info',
-      // end::header-artist[]
       columns: [
         {
-          // tag::header-ID[]
           Header: 'Artist ID',
-          // end::header-ID[]
-          // tag::accessor-ID[]
           accessor: 'id'
-          // end::accessor-ID[]
         },
         {
-          // tag::header-name[]
           Header: 'Artist Name',
-          // end::header-name[]
-          // tag::accessor-name[]
           accessor: 'name'
-          // end::accessor-name[]
         },
         {
-          // tag::header-genres[]
           Header: 'Genres',
-          // end::header-genres[]
-          // tag::accessor-genres[]
           accessor: 'genres',
-          // end::accessor-genres[]
         }
       ]
     },
     {
-      // tag::header-albums[]
       Header: 'Albums',
-      // end::header-albums[]
       columns: [
         {
-          // tag::header-title[]
           Header: 'Title',
-          // end::header-title[]
-          // tag::accessor-title[]
           accessor: 'title',
-          // end::accessor-title[]
         },
         {
-          // tag::header-tracks[]
           Header: 'Number of Tracks',
-          // end::header-tracks[]
-          // tag::accessor-tracks[]
           accessor: 'ntracks',
-          // end::accessor-tracks[]
         }
       ]
     }
@@ -131,12 +107,12 @@ class ArtistTable extends Component {
       {!isLoading ? (
         // tag::table[]
         <ReactTable
-          // tag::posts[]
+          // tag::prop-posts[]
           data={posts}
-          // end::posts[]
-          // tag::columns[]
+          // end::prop-posts[]
+          // tag::prop-columns[]
           columns={columns}
-          // end::columns[]
+          // end::prop-columns[]
           defaultPageSize={4}
           pageSizeOptions={[4, 5, 6]}
         />) : (
