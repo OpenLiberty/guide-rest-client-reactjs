@@ -193,7 +193,7 @@ The [hotspot=react-library file=1]`React` library imports the `react` package fo
 
 To display the returned data, you will use the practice of pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table present on the webpage.
 
-The [hotspot=return-table file=1]`return` statement returns the paginated table where you have defined the properties for the [hotspot=table file=1]`ReactTable`. The [hotspot=prop-posts file=1]`data` property corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=prop-columns file=1]`columns` property corresponds to the rendered column object and is assigned to the `columns` of the table.
+The [hotspot=return-table file=1]`return` statement returns the paginated table where you have defined the properties for the [hotspot=table file=1]`ReactTable`. The [hotspot=110 file=1]`data` property corresponds to the consumed data from the API endpoint and is assigned to the `data` of the table. The [hotspot=113 file=1]`columns` property corresponds to the rendered column object and is assigned to the `columns` of the table.
 
 // =================================================================================================
 // Importing the HTTP client
