@@ -107,12 +107,12 @@ class ArtistTable extends Component {
       {!isLoading ? (
         // tag::table[]
         <ReactTable
-          // tag::prop-posts[]
+          // tag::propPosts[]
           data={posts}
-          // end::prop-posts[]
-          // tag::prop-columns[]
+          // end::propPosts[]
+          // tag::propColumns[]
           columns={columns}
-          // end::prop-columns[]
+          // end::propColumns[]
           defaultPageSize={4}
           pageSizeOptions={[4, 5, 6]}
         />) : (
