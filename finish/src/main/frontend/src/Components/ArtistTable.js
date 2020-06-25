@@ -101,7 +101,6 @@ class ArtistTable extends Component {
 
   // tag::return-table[]
   return (
-    // tag::react-fragment[]
     <div>
       <h2>Artist Web Service</h2>
       {!isLoading ? (
@@ -120,7 +119,6 @@ class ArtistTable extends Component {
           <p>Loading .....</p>
         )}
     </div>
-    // end::react-fragment[]
     );
     // end::return-table[]
   }
