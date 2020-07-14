@@ -47,7 +47,7 @@ include::finish/src/resources/artists.json[]
 The REST service that provides the resources was written for you in advance in the back end of the application, and it responds with the [hotspot]`artists.json` in the `src/resources` directory. You will implement a ReactJS client as the front end of your application, which consumes this JSON file and displays its contents on a single-page webpage. 
 
 To learn more about REST services and how you can write them, see the
-https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
+https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^] guide.
 
 // =================================================================================================
 // Getting Started
@@ -172,7 +172,7 @@ ArtistTable.js
 include::finish/src/main/frontend/src/Components/ArtistTable.js[]
 ----
 
-The main component in your React application is the `App` Component. You need to create the [hotspot file=0]`App.js` file to act as a container for all other components. 
+The main component in your React application is the `App` component. You need to create the [hotspot file=0]`App.js` file to act as a container for all other components. 
 
 [role="code_command hotspot file=0", subs="quotes"]
 ----
@@ -220,7 +220,7 @@ the [hotspot=mount-posts]`componentDidMount()` React lifecycle method.
 ----
 [role="edit_command_text"]
 Add the [hotspot=axios-library]`axios` library and the [hotspot=get-posts]`getArtistsInfo()` function. 
-Next, add the [hotspot=mount-posts]`componentDidMount()` method to your Component. 
+Next, add the [hotspot=mount-posts]`componentDidMount()` method to your component. 
 
 The [hotspot=axios]`axios` HTTP call is used to read the artist JSON
 that contains the data from the sample JSON file in the `resources` directory. 
@@ -289,7 +289,7 @@ include::finish/pom.xml[]
 To run the default test, you can add the [hotspot=node-tests file=1]`testing` configuration to the `frontend-maven-plugin` and rerun the Maven `process-resources` goal.
 
 Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official 
-https://reactjs.org/docs/testing.html[React testing document^].
+https://reactjs.org/docs/testing.html[React testing documentation^].
 
 When you are done checking the application root, exit dev mode by pressing CTRL+C in the shell session where you ran the server, or by typing `q` and then pressing the `enter/return` key.
 
