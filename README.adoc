@@ -286,7 +286,7 @@ include::finish/pom.xml[]
 `pom.xml`
 ----
 [role="edit_command_text"]
-To run the default test, you can add the [hotspot=node-tests file=1]`testing` configuration to the `frontend-maven-plugin` and rerun the Maven `process-resources` goal.
+To run the default test, you can add the [hotspot=node-tests file=1]`testing` configuration to the `frontend-maven-plugin`. Rerun the Maven `process-resources` goal to rebuild the front end and run the tests.
 
 Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official 
 https://reactjs.org/docs/testing.html[React testing documentation^].
