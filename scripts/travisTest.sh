@@ -14,7 +14,8 @@ set -euxo pipefail
 #       liberty:create            - Create a Liberty server.
 #       liberty:install-feature   - Install a feature packaged as a Subsystem Archive (esa) to the Liberty runtime.
 #       liberty:deploy            - Copy applications to the Liberty server's dropins or apps directory.
-mvn -q clean process-resources liberty:create liberty:install-feature liberty:deploy
+mvn -q clean process-resources
+mvn liberty:create liberty:install-feature liberty:deploy
 
 ## Run the tests
 # These commands are separated because if one of the commands fail, the test script will fail and exit.
