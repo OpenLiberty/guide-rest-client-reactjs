@@ -15,9 +15,9 @@
 #       liberty:install-feature   - Install a feature packaged as a Subsystem Archive (esa) to the Liberty runtime.
 #       liberty:deploy            - Copy applications to the Liberty server's dropins or apps directory.
 mvn -q clean package
-mvn liberty:create
+mvn -q liberty:create
 echo create: $?
-mvn liberty:install-feature
+mvn -q liberty:install-feature
 echo install: $?
 mvn liberty:deploy
 echo deploy OL: $?
@@ -30,7 +30,9 @@ echo deploy OL: $?
 #       liberty:stop              - Stop a Liberty server.
 #       failsafe:verify           - Verifies that the integration tests of an application passed.
 mvn liberty:start
-if [ "$?" -ne "0" ]; then echo start Not OK; else echo start OK; exit 1; fi;
+if [ $? == 0 ]; then echo start OK; else echo start Not OK; exit 1; fi;
+
+curl http://localhost:9080
 
 status="$(curl --write-out "%{http_code}\n" --silent --output /dev/null "http://localhost:9080")"; if [ "$status" == "200" ]; then echo ENDPOINT OK; else echo "$status"; echo ENDPOINT NOT OK; exit 1; fi;
 
