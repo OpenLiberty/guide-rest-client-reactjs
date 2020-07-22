@@ -2,7 +2,6 @@ language: java
 before_script:
 - unset _JAVA_OPTIONS
 - cd finish
-- mvn com.github.eirslett:frontend-maven-plugin:1.10.0:npm
 - chmod +x ../scripts/travisTest.sh
 script: ../scripts/travisTest.sh
 notifications:
