@@ -1,8 +1,3 @@
-languge: node_js
-sudo: required
-before_install:
-  - npm install -g node-gyp
-  
 language: java
 before_script:
 - unset _JAVA_OPTIONS
