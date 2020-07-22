@@ -14,8 +14,13 @@
 #       liberty:create            - Create a Liberty server.
 #       liberty:install-feature   - Install a feature packaged as a Subsystem Archive (esa) to the Liberty runtime.
 #       liberty:deploy            - Copy applications to the Liberty server's dropins or apps directory.
-mvn -q clean package liberty:create liberty:install-feature liberty:deploy
-echo install OL: $?
+mvn -q clean package
+mvn liberty:create
+echo create: $?
+mvn liberty:install-feature
+echo install: $?
+mvn liberty:deploy
+echo deploy OL: $?
 
 ## Run the tests
 # These commands are separated because if one of the commands fail, the test script will fail and exit.
