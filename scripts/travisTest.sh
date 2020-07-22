@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euxo pipefail
+#set -euxo pipefail
 
 ##############################################################################
 ##
@@ -14,8 +14,10 @@ set -euxo pipefail
 #       liberty:create            - Create a Liberty server.
 #       liberty:install-feature   - Install a feature packaged as a Subsystem Archive (esa) to the Liberty runtime.
 #       liberty:deploy            - Copy applications to the Liberty server's dropins or apps directory.
-mvn -q clean package
-mvn liberty:create liberty:install-feature liberty:deploy
+mvn -q clean process-resources
+echo $?
+mvn -q package liberty:create liberty:install-feature liberty:deploy
+echo $?
 
 ## Run the tests
 # These commands are separated because if one of the commands fail, the test script will fail and exit.
@@ -25,6 +27,7 @@ mvn liberty:create liberty:install-feature liberty:deploy
 #       liberty:stop              - Stop a Liberty server.
 #       failsafe:verify           - Verifies that the integration tests of an application passed.
 mvn liberty:start
+if [ "$?" ne "0" ]; then echo start OK; else echo start NOT OK; exit 1; fi;
 
 status="$(curl --write-out "%{http_code}\n" --silent --output /dev/null "http://localhost:3000")"; if [ "$status" == "200" ]; then echo ENDPOINT OK; else echo "$status"; echo ENDPOINT NOT OK; exit 1; fi;
 
