@@ -9,7 +9,7 @@
 :page-layout: guide-multipane
 :page-duration: 20 minutes
 :page-description: Explore how to access a simple RESTful web service and consume its resources with ReactJS in Open Liberty.
-// :page-releasedate: ...
+:page-releasedate: 2020-07-22
 :page-related-guides: ['rest-intro', 'rest-client-java']
 :page-permalink: /guides/{projectid}
 :imagesdir: /img/guide/{projectid}
