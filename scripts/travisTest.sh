@@ -25,6 +25,8 @@ mvn -q clean package liberty:create liberty:install-feature liberty:deploy
 #       failsafe:verify           - Verifies that the integration tests of an application passed.
 mvn liberty:start
 
-status="$(curl --write-out "%{http_code}\n" --silent --output /dev/null "http://localhost:3000")"; if [ "$status" == "200" ]; then echo ENDPOINT OK; else echo "$status"; echo ENDPOINT NOT OK; exit 1; fi;
+curl http://localhost:9080
+
+status="$(curl --write-out "%{http_code}\n" --silent --output /dev/null "http://localhost:9080")"; if [ "$status" == "200" ]; then echo ENDPOINT OK; else echo "$status"; echo ENDPOINT NOT OK; exit 1; fi;
 
 mvn liberty:stop
