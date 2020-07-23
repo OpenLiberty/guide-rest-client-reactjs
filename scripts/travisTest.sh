@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euxo pipefail
+#set -euxo pipefail
 
 ##############################################################################
 ##
@@ -14,7 +14,15 @@ set -euxo pipefail
 #       liberty:create            - Create a Liberty server.
 #       liberty:install-feature   - Install a feature packaged as a Subsystem Archive (esa) to the Liberty runtime.
 #       liberty:deploy            - Copy applications to the Liberty server's dropins or apps directory.
-mvn -q clean package liberty:create liberty:install-feature liberty:deploy
+mvn -q clean
+mvn package
+if [ $? == 0 ]; then echo package OK; else echo package Not OK; cat /home/travis/.npm/_logs/2020-07-*-debug.log exit 1; fi;
+mvn -q liberty:create
+echo create: $?
+mvn -q liberty:install-feature
+echo install: $?
+mvn -q liberty:deploy
+echo deploy OL: $?
 
 ## Run the tests
 # These commands are separated because if one of the commands fail, the test script will fail and exit.
@@ -24,7 +32,10 @@ mvn -q clean package liberty:create liberty:install-feature liberty:deploy
 #       liberty:stop              - Stop a Liberty server.
 #       failsafe:verify           - Verifies that the integration tests of an application passed.
 mvn liberty:start
+if [ $? == 0 ]; then echo start OK; else echo start Not OK; exit 1; fi;
 
-status="$(curl --write-out "%{http_code}\n" --silent --output /dev/null "http://localhost:3000")"; if [ "$status" == "200" ]; then echo ENDPOINT OK; else echo "$status"; echo ENDPOINT NOT OK; exit 1; fi;
+curl http://localhost:9080
+
+status="$(curl --write-out "%{http_code}\n" --silent --output /dev/null "http://localhost:9080")"; if [ "$status" == "200" ]; then echo ENDPOINT OK; else echo "$status"; echo ENDPOINT NOT OK; exit 1; fi;
 
 mvn liberty:stop
