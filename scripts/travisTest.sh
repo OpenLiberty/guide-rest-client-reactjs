@@ -14,9 +14,9 @@
 #       liberty:create            - Create a Liberty server.
 #       liberty:install-feature   - Install a feature packaged as a Subsystem Archive (esa) to the Liberty runtime.
 #       liberty:deploy            - Copy applications to the Liberty server's dropins or apps directory.
-#mvn clean package
-#if [ $? == 0 ]; then echo package OK; else echo package Not OK; cat /home/travis/.npm/_logs/2020-07-*-debug.log exit 1; fi;
-mvn clean
+mvn -q clean
+mvn package
+if [ $? == 0 ]; then echo package OK; else echo package Not OK; cat /home/travis/.npm/_logs/2020-07-*-debug.log exit 1; fi;
 mvn -q liberty:create
 echo create: $?
 mvn -q liberty:install-feature
