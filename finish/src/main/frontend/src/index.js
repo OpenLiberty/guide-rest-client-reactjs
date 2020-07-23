@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // end::react-dom[]
 import './styles/index.css';
-import App from './components/App';
+import App from './Components/App';
 
 // tag::dom-render[]
 ReactDOM.render(<App />, document.getElementById('root'));
