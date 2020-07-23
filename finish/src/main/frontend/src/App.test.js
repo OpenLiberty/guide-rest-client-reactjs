@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './Components/App';
+import App from './components/App';
 
 test('renders artist web service title', () => {
   const { getByText } = render(<App />);
