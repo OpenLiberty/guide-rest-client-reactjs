@@ -4,7 +4,7 @@ import React from 'react';
 // tag::react-dom[]
 import ReactDOM from 'react-dom';
 // end::react-dom[]
-import './styles/index.css';
+import './Styles/index.css';
 import App from './Components/App';
 
 // tag::dom-render[]
