@@ -19,6 +19,11 @@ start/src/main/webapp/META-INF/MANIFEST.MF
 
 finish/src/main/frontend/node_modules
 start/src/main/frontend/node_modules
+finish/src/main/frontend/node
+start/src/main/frontend/node
+
+finish/src/main/frontend/build
+start/src/main/frontend/build
 
 finish/src/main/frontend/package-lock.json
 start/src/main/frontend/package-lock.json
