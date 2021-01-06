@@ -2,14 +2,14 @@ name: Test application
 
 on:
   pull_request:
-    branches: [qa]
+    branches: [ qa ]
 
 jobs:
-  java8build:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        jdk: [8]
+        jdk: [ 8 ]
     defaults:
       run:
         working-directory: finish
