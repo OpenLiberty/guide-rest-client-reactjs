@@ -97,7 +97,7 @@ the artist JSON is available to you.
 Navigate to the `start` directory to begin.
 
 [role='command']
-include::{common-includes}/devmode-start.adoc[]
+include::{common-includes}/devmode-lmp33-start.adoc[]
 
 After you start the service, you can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL. 

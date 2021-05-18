@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.eclipse.microprofile</groupId>
             <artifactId>microprofile</artifactId>
-            <version>3.3</version>
+            <version>4.0.1</version>
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.6.2</version>
+            <version>5.7.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -55,7 +55,7 @@
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.2.3</version>            
+                <version>3.3.4</version>            
             </plugin>
             <!-- Frontend resources -->
             <plugin>
@@ -100,7 +100,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.0</version>
                 <executions>
                  <execution>
                         <id>Copy frontend build to target</id>
