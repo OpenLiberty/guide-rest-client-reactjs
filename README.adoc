@@ -155,7 +155,8 @@ they are installed before the front end is built by the `frontend-maven-plugin`.
 
 The front end of your application uses Node.js to build your React code. The Maven project is configured for you to install Node.js and produce the production files, which are copied to the web content of your application.
 
-Node.js is a server-side JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to run the React build scripts that are found in the `package.json` file. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
+Node.js is a server-side JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to run the React build scripts that are found in the `package.json` file.
+To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
 The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies that are listed in your `package.json` file from the npm registry into a folder called `node_modules`. The `node_modules` folder can be found in your [hotspot=working-dir]`working` directory. Then, the configuration [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/build` directory. 
 
@@ -244,7 +245,8 @@ The [hotspot=return-table file=1]`return` statement returns the paginated table 
 
 === Importing the HTTP client
 
-Your application needs a way to communicate with and retrieve resources from RESTful web services to output the resources onto the paginated table. The https://github.com/axios/axios[Axios^] library will provide you with an HTTP client. This client is used to make HTTP requests to external resources. Axios is a promise-based HTTP client that can send asynchronous requests to REST endpoints. To learn more about the Axios library and its HTTP client, see the https://www.npmjs.com/package/axios[Axios documentation^].
+Your application needs a way to communicate with and retrieve resources from RESTful web services to output the resources onto the paginated table. The https://github.com/axios/axios[Axios^] library will provide you with an HTTP client.
+This client is used to make HTTP requests to external resources. Axios is a promise-based HTTP client that can send asynchronous requests to REST endpoints. To learn more about the Axios library and its HTTP client, see the https://www.npmjs.com/package/axios[Axios documentation^].
 
 ArtistTable.js
 [source, javascript, linenums, role='code_column']
@@ -328,7 +330,8 @@ endif::[]
 
 New projects that are created with `create-react-app` comes with a test file
 called [hotspot file]`App.test.js`, which is included in the `src/main/frontend/src` directory. The `App.test.js` file is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases that are written for this application. 
-The `create-react-app` configuration uses https://jestjs.io/[Jest^] as its test runner. To learn more about Jest, go to their documentation on https://jestjs.io/docs/en/tutorial-react[Testing React apps^]. 
+The `create-react-app` configuration uses https://jestjs.io/[Jest^] as its test runner.
+To learn more about Jest, go to their documentation on https://jestjs.io/docs/en/tutorial-react[Testing React apps^]. 
 
 App.test.js
 [source, javascript, linenums, role='code_column']
