@@ -29,7 +29,7 @@ Explore how to access a simple RESTful web service and consume its resources wit
 // Introduction
 // =================================================================================================
 
-== What you'll learn 
+== What you'll learn
 
 You will learn how to access a REST service and deserialize the returned JSON that contains a list of artists and their albums by using an HTTP client with the ReactJS library. You will then present this data by using a ReactJS paginated table component.
 
