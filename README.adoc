@@ -161,9 +161,15 @@ The front end of your application uses Node.js to build your React code. The Mav
 Node.js is a server-side JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to run the React build scripts that are found in the `package.json` file.
 To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
-The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies that are listed in your `package.json` file from the npm registry
-into a folder called `node_modules`.
+ifndef::cloud-hosted[]
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies that are listed in your `package.json` file from the npm registry into a folder called `node_modules`.
 The `node_modules` folder can be found in your [hotspot=working-dir]`working` directory. Then, the configuration [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/build` directory. 
+endif::[]
+
+ifdef::cloud-hosted[]
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies that are listed in your `package.json` file from the npm registry into a folder called **node_modules**.
+The **node_modules** folder can be found in your [hotspot=working-dir]`working` directory. Then, the configuration [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/build` directory. 
+endif::[]
 
 The [hotspot=copy-plugin]`maven-resources-plugin` copies the `static` content from the [hotspot=directory]`build` directory to the [hotspot=output-directory]`web content` of the application.
 
