@@ -130,6 +130,7 @@ Before you begin the implementation, start the provided REST service so that
 the artist JSON is available to you.
 
 Navigate to the `start` directory to begin.
+// cloud hosted instructions
 ifdef::cloud-hosted[]
 ```
 cd /home/project/guide-rest-client-reactjs/start
