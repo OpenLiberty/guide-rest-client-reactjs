@@ -300,7 +300,7 @@ For more information on how state in React works, see the React documentation on
 ifdef::cloud-hosted[]
 Finally, run the following command to specify the specific address of your **artists.json** in the IBM cloud environment.
 ```
-sed -i 's=http://localhost:9080/artists='"http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' home/project/guide-rest-client-reactjs/start/src/main/frontend/src/Components/ArtistTable.js
+sed -i 's=http://localhost:9080/artists='"http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' /home/project/guide-rest-client-reactjs/start/src/main/frontend/src/Components/ArtistTable.js
 ```
 {: codeblock}
 endif::[]
