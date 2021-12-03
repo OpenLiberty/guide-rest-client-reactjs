@@ -3,7 +3,7 @@ name: Test application
 on:
   pull_request:
     branches: [ prod, staging ]
-
+    
 jobs:
   check-files:
     if: ${{ github.event_name == 'pull_request' }}
@@ -44,25 +44,22 @@ jobs:
       run:
         working-directory: finish
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 8
-      - run: unset _JAVA_OPTIONS
-
-      - name: Run tests
-        run: sudo ../scripts/testApp.sh
-
-      - name: Post tests
-        if: always()
-        run: |
+    - uses: actions/checkout@v2
+    - name: Set up JDK 8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 8
+    - run: unset _JAVA_OPTIONS
+    - name: Run tests
+      run: sudo ../scripts/testApp.sh
+    - name: Post tests
+      if: always()
+      run: |
           logsPath=$(sudo find . -name "console.log");
           sudo cat $logsPath | sudo grep Launching
-
-      - name: Archive server logs if failed
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: server-logs
-          path: finish/target/liberty/wlp/usr/servers/defaultServer/logs/
+    - name: Archive server logs if failed
+      if: failure()
+      uses: actions/upload-artifact@v2
+      with:
+        name: server-logs
+        path: finish/target/liberty/wlp/usr/servers/defaultServer/logs/
