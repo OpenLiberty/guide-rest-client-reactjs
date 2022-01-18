@@ -27,6 +27,7 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_CSS: false
+          VALIDATE_TYPESCRIPT_STANDARD: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: ./tools/pr-checker/linters/
           DEFAULT_BRANCH: prod
