@@ -90,15 +90,6 @@
                         </configuration>
                     </execution>
                     <!-- end::node-resource-install[] -->
-                    <execution>
-                        <id>npm audit fix</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>audit fix --force</arguments>
-                        </configuration>
-                    </execution>
                     <!-- tag::node-resource-build[] -->
                     <execution>
                         <id>npm run build</id>
