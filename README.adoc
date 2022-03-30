@@ -72,19 +72,16 @@ mvn liberty:run
 endif::[]
 
 ifdef::cloud-hosted[]
-In this IBM cloud environment, you need to update the URL to access the **artists.json**. Run the following commands to go to the **finish** directory and update the file where specified the URL:
-```
+In this IBM cloud environment, you need to update the URL to access the ***artists.json***. Run the following commands to go to the ***finish*** directory and update the file where specified the URL:
+```bash
 cd finish
 sed -i 's=http://localhost:9080/artists='"http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' src/main/webapp/static/js/main.17305645.chunk.js
 ```
-{: codeblock}
 
 To try out the application, run the following Maven goal to build the application and deploy it to Open Liberty:
-```
+```bash
 mvn liberty:run
 ```
-{: codeblock}
-
 endif::[]
 
 After you see the following message, your application server is ready:
@@ -99,11 +96,8 @@ Next, point your browser to the http://localhost:9080[http://localhost:9080^] we
 endif::[]
 
 ifdef::cloud-hosted[]
-When the server is running, select **Terminal** > **New Terminal** from the menu of the IDE to open another command-line session. Open your browser and check out the application by going to the URL that the following command returns:
-```
-echo http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')
-```
-{: codeblock}
+When the server is running, click the following button to check out the application:
+::startApplication{port="9080" display="external" name="Visit application" route="/"}
 
 See the following output:
 endif::[]
@@ -124,10 +118,9 @@ Before you begin the implementation, start the provided REST service so that the
 Navigate to the `start` directory to begin.
 // cloud hosted instructions
 ifdef::cloud-hosted[]
-```
+```bash
 cd /home/project/guide-rest-client-reactjs/start
 ```
-{: codeblock}
 endif::[]
 
 [role='command']
@@ -139,10 +132,9 @@ endif::[]
 
 ifdef::cloud-hosted[]
 After the server is started, run the following curl command to view your artist JSON.
-```
+```bash
 curl -s http://localhost:9080/artists | jq
 ```
-{: codeblock} 
 endif::[]
 
 All the dependencies for the React front end can be found in `src/main/frontend/src/package.json`, and they are installed before the front end is built by the `frontend-maven-plugin`. Additionally, some provided `CSS` stylesheets files are provided and can be found in the `src/main/frontend/src/Styles` directory.
@@ -163,9 +155,10 @@ endif::[]
 
 ifdef::cloud-hosted[]
 Take a look at the **pom.xml** file.
-> From the menu of the IDE, select **File** > **Open** > guide-rest-client-reactjs/start/pom.xml
+> From the menu of the IDE, select **File** > **Open** > guide-rest-client-reactjs/start/pom.xml, or click the following button
+::openFile{path="/home/project/guide-rest-client-reactjs/start/pom.xml"}
 
-The **frontend-maven-plugin** is used to **install** the dependencies that are listed in your **package.json** file from the npm registry into a folder called **node_modules**. The **node_modules** folder can be found in your **working** directory. Then, the configuration **produces** the production files to the **src/main/frontend/build** directory. 
+The ***frontend-maven-plugin*** is used to ***install*** the dependencies that are listed in your ***package.json*** file from the npm registry into a folder called ***node_modules***. The ***node_modules*** folder can be found in your ***working*** directory. Then, the configuration ***produces*** the production files to the ***src/main/frontend/build*** directory. 
 endif::[]
 
 The [hotspot=copy-plugin]`maven-resources-plugin` copies the `static` content from the [hotspot=directory]`build` directory to the [hotspot=output-directory]`web content` of the application.
@@ -210,24 +203,18 @@ The [hotspot=dom-render file=0]`render` method takes an HTML DOM element and tel
 
 A React web application is a collection of components, and each component has a specific function. You will create the components that are used in the application to acquire and display data from the REST API. 
 
-App.js
-[source, javascript, linenums, role='code_column']
-----
-include::finish/src/main/frontend/src/Components/App.js[]
-----
-
-ArtistTable.js
-[source, javascript, linenums, role='code_column hide_tags=get-posts,mount-posts,axios-library']
-----
-include::finish/src/main/frontend/src/Components/ArtistTable.js[]
-----
-
 The main component in your React application is the `App` component. You need to create the [hotspot file=0]`App.js` file to act as a container for all other components. 
 
 [role="code_command hotspot file=0", subs="quotes"]
 ----
 #Create the `App.js` file.#
 `src/main/frontend/src/Components/App.js`
+----
+
+App.js
+[source, javascript, linenums, role='code_column']
+----
+include::finish/src/main/frontend/src/Components/App.js[]
 ----
 
 The `App.js` file returns the [hotspot=react-component file=0]`ArtistTable` component to create a reusable element that encompasses your web application. 
@@ -239,6 +226,13 @@ Next, create the `ArtistTable` component that fetches data from your back end an
 #Create the `ArtistTable.js` file.#
 `src/main/frontend/src/Components/ArtistTable.js`
 ----
+
+ArtistTable.js
+[source, javascript, linenums, role='code_column hide_tags=get-posts,mount-posts,axios-library']
+----
+include::finish/src/main/frontend/src/Components/ArtistTable.js[]
+----
+
 The [hotspot=react-library file=1]`React` library imports the `react` package for you to create the [hotspot=class file=1]`ArtistTable` component as inheritance of the `React Component` and use its values. The [hotspot=state-object file=1]`state` object is initialized to represent the state of the posts that appear on the paginated table. The `ArtistTable` component also needs to be [hotspot=export-artisttable file=1]`exported` as a reusable UI element that can be used across your application.
 
 To display the returned data, you will use pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table that is present on the webpage.
@@ -253,12 +247,6 @@ The [hotspot=return-table file=1]`return` statement returns the paginated table 
 
 Your application needs a way to communicate with and retrieve resources from RESTful web services to output the resources onto the paginated table. The https://github.com/axios/axios[Axios^] library will provide you with an HTTP client. This client is used to make HTTP requests to external resources. Axios is a promise-based HTTP client that can send asynchronous requests to REST endpoints. To learn more about the Axios library and its HTTP client, see the https://www.npmjs.com/package/axios[Axios documentation^].
 
-ArtistTable.js
-[source, javascript, linenums, role='code_column']
-----
-include::finish/src/main/frontend/src/Components/ArtistTable.js[]
-----
-
 The [hotspot=get-posts]`getArtistsInfo()` function uses the Axios API to fetch data from your back end. This function is called when the `ArtistTable` is rendered to the page using the [hotspot=mount-posts]`componentDidMount()` React lifecycle method.
 
 [role="code_command hotspot", subs="quotes"]
@@ -266,6 +254,13 @@ The [hotspot=get-posts]`getArtistsInfo()` function uses the Axios API to fetch d
 #Update the `ArtistTable.js` file.#
 `src/main/frontend/src/Components/ArtistTable.js`
 ----
+
+ArtistTable.js
+[source, javascript, linenums, role='code_column']
+----
+include::finish/src/main/frontend/src/Components/ArtistTable.js[]
+----
+
 [role="edit_command_text"]
 Add the [hotspot=axios-library]`axios` library and the [hotspot=get-posts]`getArtistsInfo()` function. Next, add the [hotspot=mount-posts]`componentDidMount()` method to your component. 
 
@@ -274,11 +269,10 @@ The [hotspot=axios]`axios` HTTP call is used to read the artist JSON that contai
 The [hotspot=set-state]`this.setState` function is used to update the state of your React component with the data that was fetched from the server. This update triggers a rerender of your React component, which updates the table with the artist data. For more information on how state in React works, see the React documentation on https://reactjs.org/docs/faq-state.html[state and lifecycle^].
 
 ifdef::cloud-hosted[]
-Finally, run the following command to update the URL to access the **artists.json** in the **ArtistTable.js** file:
-```
+Finally, run the following command to update the URL to access the ***artists.json*** in the ***ArtistTable.js*** file:
+```bash
 sed -i 's=http://localhost:9080/artists='"http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' /home/project/guide-rest-client-reactjs/start/src/main/frontend/src/Components/ArtistTable.js
 ```
-{: codeblock}
 endif::[]
 
 // =================================================================================================
@@ -300,11 +294,10 @@ mvn process-resources
 endif::[]
 // Cloud hosted guide instruction
 ifdef::cloud-hosted[]
-```
+```bash
 cd /home/project/guide-rest-client-reactjs/start
 mvn process-resources
 ```
-{: codeblock}
 endif::[]
 
 The build may take a few minutes to complete. You can rebuild the front end at any time with the Maven `process-resources` goal. Any local changes to your JavaScript and HTML are picked up when you build the front end.
@@ -314,12 +307,8 @@ Navigate to the http://localhost:9080[http://localhost:9080^] web application ro
 endif::[]
 
 ifdef::cloud-hosted[]
-Open your browser and view the front end of your application by going to the URL that the following command returns:
-```
-echo http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')
-```
-{: codeblock}
-
+Click the following button to view the front end of your application:
+::startApplication{port="9080" display="external" name="Visit application" route="/"}
 endif::[]
 
 // =================================================================================================
@@ -336,17 +325,18 @@ App.test.js
 include::finish/src/main/frontend/src/App.test.js[]
 ----
 
+[role="code_command hotspot file=1", subs="quotes"]
+----
+#Update the `pom.xml` file.#
+`pom.xml`
+----
+
 pom.xml
 [source, xml, linenums, role='code_column']
 ----
 include::finish/pom.xml[]
 ----
 
-[role="code_command hotspot file=1", subs="quotes"]
-----
-#Update the `pom.xml` file.#
-`pom.xml`
-----
 [role="edit_command_text"]
 To run the default test, you can add the [hotspot=node-tests file=1]`testing` configuration to the `frontend-maven-plugin`. Rerun the Maven `process-resources` goal to rebuild the front end and run the tests.
 
