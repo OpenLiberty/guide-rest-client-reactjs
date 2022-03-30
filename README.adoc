@@ -317,7 +317,8 @@ endif::[]
 
 == Testing the React client
 
-New projects that are created with `create-react-app` comes with a test file called [hotspot file]`App.test.js`, which is included in the `src/main/frontend/src` directory. The `App.test.js` file is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases that are written for this application. The `create-react-app` configuration uses https://jestjs.io/[Jest^] as its test runner. To learn more about Jest, go to their documentation on https://jestjs.io/docs/en/tutorial-react[Testing React apps^]. 
+New projects that are created with `create-react-app` comes with a test file called [hotspot file]`App.test.js`, which is included in the `src/main/frontend/src` directory. The `App.test.js` file is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases that are written for this application. The `create-react-app` configuration uses https://jestjs.io/[Jest^] as its test runner.
+To learn more about Jest, go to their documentation on https://jestjs.io/docs/en/tutorial-react[Testing React apps^]. 
 
 App.test.js
 [source, javascript, linenums, role='code_column']
