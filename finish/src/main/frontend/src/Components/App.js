@@ -1,5 +1,5 @@
 import React from 'react';
-import ArtistTable from './ArtistTable';
+import {ArtistTable} from './ArtistTable';
 
 function App() {
   return (
