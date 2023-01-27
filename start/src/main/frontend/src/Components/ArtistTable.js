@@ -22,7 +22,7 @@ export function ArtistTable() {
   // tag::get-posts[]
   const GetArtistsInfo = async () => {
     // tag::axios[]
-    const response = await axios.get('http://localhost:9080/artists')
+    await axios.get('http://localhost:9080/artists')
       // end::axios[]
       // tag::then-method[]
       .then(response => {
@@ -114,7 +114,6 @@ export function ArtistTable() {
     canPreviousPage,
     canNextPage,
     pageOptions,
-    pageCount,
     gotoPage,
     nextPage,
     previousPage,
@@ -125,6 +124,7 @@ export function ArtistTable() {
 
   // tag::useEffect[]
   useEffect(() => {
+    GetArtistsInfo();
     GetArtistsInfo();
   }, []);
   // end::useEffect[]
@@ -165,7 +165,7 @@ export function ArtistTable() {
           })}
         </tbody>
       </table>
-      // tag::table[]
+      {/*// tag::table[]*/}
       <div className="pagination">
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
           {'Previous'}

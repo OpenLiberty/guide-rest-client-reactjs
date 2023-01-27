@@ -235,11 +235,11 @@ ArtistTable.js
 include::finish/src/main/frontend/src/Components/ArtistTable.js[]
 ----
 
-The [hotspot=react-library file=1]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=1]`ArtistTable` function needs to have the `export` declaration as it is being exported to the `App.js` module. The [hotspot=Posts file=1]`Posts` object is initialized using a React Hook which lets you add a state to represent the state of the posts that appear on the paginated table.
+The [hotspot=react-library file=1]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=1]`ArtistTable` function needs to have the `export` declaration as it is being exported to the `App.js` module. The [hotspot=Posts file=1]`posts` object is initialized using a React Hook which lets you add a state to represent the state of the posts that appear on the paginated table.
 
 To display the returned data, you will use pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table that is present on the webpage.
 
-The [hotspot=useTable file=1]`useTable` hook is used to create a paginated table. The `useTable` hook takes in the [hotspot=table-info file=1]`columns` and [hotspot=Posts file=1]`Posts` objects as parameters. The `useTable` hook returns a paginated table that is assigned to the [hotspot=table file=1]`table` constant. The [hotspot=table file=1]`table` constant is used to render the paginated table on the webpage. The [hotspot=return-table file=1]`return` statement returns the paginated table. The [hotspot=useSortBy file=1]`useSortBy` hook is used to sort the paginated table by the column headers. The [hotspot=usePagination file=1]`usePagination` hook is used to create the pagination buttons that are used to navigate through the paginated table at the bottom of the table.
+The [hotspot=useTable file=1]`useTable` hook is used to create a paginated table. The `useTable` hook takes in the [hotspot=table-info file=1]`columns` and [hotspot=Posts file=1]`posts` and `setPosts` objects as parameters. The `useTable` hook returns a paginated table that is assigned to the [hotspot=table file=1]`table` constant. The [hotspot=table file=1]`table` constant is used to render the paginated table on the webpage. The [hotspot=return-table file=1]`return` statement returns the paginated table. The [hotspot=useSortBy file=1]`useSortBy` hook is used to sort the paginated table by the column headers. The [hotspot=usePagination file=1]`usePagination` hook is used to create the pagination buttons that are used to navigate through the paginated table at the bottom of the table.
 
 // =================================================================================================
 // Importing the HTTP client
@@ -264,11 +264,9 @@ include::finish/src/main/frontend/src/Components/ArtistTable.js[]
 ----
 
 [role="edit_command_text"]
-Add the [hotspot=axios-library]`axios` library and the [hotspot=get-posts]`getArtistsInfo()` function. Next, add the [hotspot=mount-posts]`componentDidMount()` method to your component. 
+Add the [hotspot=axios-library]`axios` library and the [hotspot=get-posts]`getArtistsInfo()` function.
 
-The [hotspot=axios]`axios` HTTP call is used to read the artist JSON that contains the data from the sample JSON file in the `resources` directory. When a response is successful, the state of the system changes by assigning [hotspot=response-data]`response.data` to [hotspot=data]`posts`. The [hotspot=convert-data]`convertData` function manipulates the JSON data to allow it to be accessed by the `ReactTable`. You will notice the [hotspot=spread-one hotspot=spread-two]`object spread syntax` that the `convertData` function uses, which is a relatively new sytnax made for simplicity. To learn more about it, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals[Spread in object literals^].
-
-The [hotspot=set-state]`this.setState` function is used to update the state of your React component with the data that was fetched from the server. This update triggers a rerender of your React component, which updates the table with the artist data. For more information on how state in React works, see the React documentation on https://reactjs.org/docs/faq-state.html[state and lifecycle^].
+The [hotspot=axios]`axios` HTTP call is used to read the artist JSON that contains the data from the sample JSON file in the `resources` directory. When a response is successful, the state of the system changes by assigning [hotspot=response-data]`response.data` to [hotspot=data]`posts`. The [hotspot=convert-data]`convertData` function manipulates the JSON data to allow it to be accessed by the `ReactTable`. To learn more about it, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals[Spread in object literals^].
 
 ifdef::cloud-hosted[]
 Finally, run the following command to update the URL to access the ***artists.json*** in the ***ArtistTable.js*** file:
