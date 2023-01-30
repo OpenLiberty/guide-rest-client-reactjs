@@ -266,7 +266,7 @@ include::finish/src/main/frontend/src/Components/ArtistTable.js[]
 [role="edit_command_text"]
 Add the [hotspot=axios-library]`axios` library and the [hotspot=get-posts]`getArtistsInfo()` function.
 
-The [hotspot=axios]`axios` HTTP call is used to read the artist JSON that contains the data from the sample JSON file in the `resources` directory. When a response is successful, the state of the system changes by assigning [hotspot=response-data]`response.data` to [hotspot=data]`posts`. The [hotspot=convert-data]`convertData` function manipulates the JSON data to allow it to be accessed by the `ReactTable`. To learn more about it, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals[Spread in object literals^].
+The [hotspot=axios]`axios` HTTP call is used to read the artist JSON that contains the data from the sample JSON file in the `resources` directory. When a response is successful, the state of the system changes by assigning [hotspot=response-data]`response.data` to [hotspot=data]`posts`. The `convertData` function manipulates the JSON data to allow it to be accessed by the `ReactTable`. To learn more about it, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals[Spread in object literals^].
 
 ifdef::cloud-hosted[]
 Finally, run the following command to update the URL to access the ***artists.json*** in the ***ArtistTable.js*** file:

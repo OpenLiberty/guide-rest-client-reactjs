@@ -15,9 +15,9 @@ import '../Styles/table.css'
 export function ArtistTable() {
   // end::ArtistTable[]
 
-  // tag::Posts[]
+  // tag::posts[]
   const [posts, setPosts] = useState([]);
-  // end::Posts[]
+  // end::posts[]
 
   // tag::get-posts[]
   const GetArtistsInfo = async () => {
