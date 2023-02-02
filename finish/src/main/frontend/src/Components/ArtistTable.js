@@ -42,8 +42,8 @@ export function ArtistTable() {
             posts.push({ ...rest, ...album });
             // end::spread-two[]
           }
+          // end::convert-data[]
         };
-        // end::convert-data[]
         // end::then-method[]
       }).catch(error => { console.log(error); });
   };
