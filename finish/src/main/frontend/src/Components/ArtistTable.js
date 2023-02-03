@@ -133,6 +133,7 @@ export function ArtistTable() {
   return (
     <>
       <h2>Artist Web Service</h2>
+      {/* tag::table[] */}
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
@@ -165,7 +166,7 @@ export function ArtistTable() {
           })}
         </tbody>
       </table>
-      // tag::table[]
+      {/* end::table[] */}
       <div className="pagination">
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
           {'Previous'}
