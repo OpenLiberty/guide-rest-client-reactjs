@@ -24,16 +24,15 @@ export function ArtistTable() {
     // tag::axios[]
     const response = await axios.get('http://localhost:9080/artists')
       // end::axios[]
-      // tag::then-method[]
       .then(response => {
         // tag::response-data[]
         const artists = response.data;
         // end::response-data[]
+        // tag::for-artists[]
         for (const artist of artists) {
           // tag::spread-one[]
           const { albums, ...rest } = artist;
           // end::spread-one[]
-          // tag::convert-data[]
           for (const album of albums) {
             //tag::setState[]
             setPosts([...posts, { ...rest, ...album }]);
@@ -42,9 +41,8 @@ export function ArtistTable() {
             posts.push({ ...rest, ...album });
             // end::spread-two[]
           }
-          // end::convert-data[]
         };
-        // end::then-method[]
+        // end::for-artists[]
       }).catch(error => { console.log(error); });
   };
   // end::get-posts[]
