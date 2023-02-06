@@ -16,7 +16,7 @@
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/prod
 :source-highlighter: prettify
 :page-seo-title: Consuming a RESTful Java web service with ReactJS
-:page-seo-description: A getting started tutorial with examples on how to access a RESTful Java micoservice and deserialize the returned JSON in ReactJS.
+:page-seo-description: A getting started tutorial with examples on how to access a RESTful Java micoservice and deserialize the returned JSON in React Table 7 of ReactJS.
 :guide-author: Open Liberty
 = Consuming a RESTful web service with ReactJS
 
