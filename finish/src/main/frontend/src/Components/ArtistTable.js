@@ -29,11 +29,11 @@ export function ArtistTable() {
         // tag::response-data[]
         const artists = response.data;
         // end::response-data[]
+        // tag::convert-data[]
         for (const artist of artists) {
           // tag::spread-one[]
           const { albums, ...rest } = artist;
           // end::spread-one[]
-          // tag::convert-data[]
           for (const album of albums) {
             //tag::setState[]
             setPosts([...posts, { ...rest, ...album }]);
@@ -42,8 +42,8 @@ export function ArtistTable() {
             posts.push({ ...rest, ...album });
             // end::spread-two[]
           }
-          // end::convert-data[]
         };
+          // end::convert-data[]
         // end::then-method[]
       }).catch(error => { console.log(error); });
   };
