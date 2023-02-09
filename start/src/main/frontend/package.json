@@ -10,7 +10,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "^5.0.0",
-    "react-table-6": "^6.11.0"
+    "react-table": "^7.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
