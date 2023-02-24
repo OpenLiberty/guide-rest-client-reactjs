@@ -8,6 +8,7 @@ while getopts t:d:b:u: flag; do
 done
 
 sed -i "\#<artifactId>liberty-maven-plugin</artifactId>#a<configuration><install><runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/$DATE/$DRIVER</runtimeUrl></install></configuration>" pom.xml
+sed -i "s;<arguments>install</arguments>;<arguments>ci</arguments>;g" pom.xml
 cat pom.xml
 
 ../scripts/testApp.sh
