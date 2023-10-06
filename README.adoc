@@ -346,7 +346,7 @@ To run the default test, you can add the [hotspot=node-tests file=1]`testing` co
 
 Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official https://reactjs.org/docs/testing.html[React testing documentation^].
 
-When you are done checking the application root, exit dev mode by pressing CTRL+C in the shell session where you ran the Liberty, or by typing `q` and then pressing the `enter/return` key.
+When you are done checking the application root, exit dev mode by pressing CTRL+C in the shell session where you ran the Liberty.
 
 == Great work! You're done!
 
