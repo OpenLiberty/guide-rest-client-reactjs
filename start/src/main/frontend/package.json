@@ -36,8 +36,8 @@
     ]
   },
   "jest": {
-    "transformIgnorePatterns": [
-      "/node_modules/(?!(axios)/)"
-    ]
+    "moduleNameMapper": {
+      "^axios$": "axios/dist/axios.js"
+    }
   }
 }
