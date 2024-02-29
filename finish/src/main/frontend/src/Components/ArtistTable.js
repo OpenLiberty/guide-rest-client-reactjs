@@ -169,7 +169,7 @@ export function ArtistTable() {
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
           {'Previous'}
         </button>{' '}
-        <div class="page-info">
+        <div className="page-info">
           <span>
             Page{' '}
             <strong>
