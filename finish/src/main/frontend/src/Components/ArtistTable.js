@@ -5,7 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 // end::axios-library[]
 // tag::react-table[]
-import { useTable, usePagination, useSortBy } from 'react-table';
+import { useReactTable, getCoreRowModel, getPaginationRowModel, getSortedRowModel } from '@tanstack/react-table'; 
 // end::react-table[]
 // tag::custom-style[]
 import '../Styles/table.css'
@@ -56,16 +56,16 @@ export function ArtistTable() {
     Header: 'Artist Info',
     columns: [
       {
-        Header: 'Artist ID',
-        accessor: 'id'
+        accessorKey: 'id',
+        header: 'Artist ID'
       },
       {
-        Header: 'Artist Name',
-        accessor: 'name'
+        accessorKey: 'name',
+        header: 'Artist Name'
       },
       {
-        Header: 'Genres',
-        accessor: 'genres',
+        accessorKey: 'genres',
+        header: 'Genres'
       }
     ]
   },
@@ -73,12 +73,12 @@ export function ArtistTable() {
     Header: 'Albums',
     columns: [
       {
-        Header: 'Number of Tracks',
-        accessor: 'ntracks',
+        accessorKey: 'ntracks',
+        header: 'Number of Tracks'
       },
       {
-        Header: 'Title',
-        accessor: 'title',
+        accessorKey: 'title',
+        header: 'Title'
       }
     ]
   }
@@ -86,21 +86,22 @@ export function ArtistTable() {
   );
   // end::table-info[]
 
-  // tag::useTable[]
-  const tableInstance = useTable(
-    {
-      columns,
-      data,
-      initialState: { pageIndex: 0, pageSize: 4 }
-    },
-    // tag::useSortBy[]
-    useSortBy,
-    // end::useSortBy[]
-    // tag::usePagination[]
-    usePagination
-    // end::usePagination[]
-  )
-  // end::useTable[]
+  // tag::useReactTable[]
+  const tableInstance = useReactTable({ 
+          columns, 
+          data,
+          initialState: { pageIndex: 0, pageSize: 4 },
+          // tag::getCoreRowModel[]
+          getCoreRowModel: getCoreRowModel(), 
+          // end::getCoreRowModel[]
+          // tag::getPaginationRowModel[]
+          getPaginationRowModel: getPaginationRowModel(), 
+          // end::getPaginationRowModel[]
+          // tag::getSortedRowModel[]
+          getSortedRowModel: getSortedRowModel(), 
+          // end::getSortedRowModel[]
+          }); 
+  // end::useReactTable[]
 
   // tag::destructuring[]
   const {
