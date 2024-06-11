@@ -3,17 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^14.2.1",
+    "@tanstack/react-table": "^8.17.3",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
-    "axios": "^1.6.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-table": "^7.8.0"
+    "axios": "^1.7.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "postcss": "^8.4.38",
     "react-scripts": "^5.0.1",
-    "postcss": "^8.4.35"
+    "resolve-url-loader": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +42,9 @@
     "moduleNameMapper": {
       "^axios$": "axios/dist/axios.js"
     }
+  },
+  "overrides": {
+    "@svgr/webpack": "$@svgr/webpack",
+    "resolve-url-loader": "$resolve-url-loader"
   }
 }
