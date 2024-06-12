@@ -1,4 +1,4 @@
-// Copyright (c) 2020, 2023 IBM Corporation and others.
+// Copyright (c) 2020, 2024 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -194,9 +194,9 @@ index.html
 include::finish/src/main/frontend/public/index.html[]
 ----
 
-The [hotspot=import-react file=0]`React` library imports the [hotspot=import-react file=0]`react` package. A DOM, or Document Object Model, is a programming interface for HTML and XML documents. React offers a virtual DOM, which is essentially a copy of the browser DOM that resides in memory. The React virtual DOM improves the performance of your web application and plays a crucial role in the rendering process. The [hotspot=react-dom file=0]`react-dom` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. 
+The [hotspot=import-react file=0]`React` library imports the [hotspot=import-react file=0]`react` package. A DOM, or Document Object Model, is a programming interface for HTML and XML documents. React offers a virtual DOM, which is essentially a copy of the browser DOM that resides in memory. The React virtual DOM improves the performance of your web application and plays a crucial role in the rendering process. The [hotspot=react-dom file=0]`react-dom/client` APIs provides methods for rendering React components in the browser. 
 
-The [hotspot=dom-render file=0]`render` method takes an HTML DOM element and tells the ReactDOM to render your React application inside of this DOM element. To learn more about the React virtual DOM, see the https://reactjs.org/docs/react-dom.html[ReactDOM^] documentation.
+The [hotspot=createRoot file=0]`createRoot` method initializes a root element to render React components within a browser's DOM node. To learn more about the React virtual DOM, see the https://react.dev/reference/react#react-dom[ReactDOM^] documentation.
 
 // =================================================================================================
 // Creating the React components
