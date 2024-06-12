@@ -58,13 +58,16 @@
                 <version>3.10.3</version>            
             </plugin>
             <!-- Frontend resources -->
+            <!-- tag::frontend-plugin[] -->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.15.0</version>
                 <configuration>
+                    <!-- tag::working-dir[] -->
                     <workingDirectory>src/main/frontend</workingDirectory>
-                </configuration> 
+                    <!-- end::working-dir[] -->
+                </configuration>
                 <executions>
                     <execution>
                         <id>install node and npm</id>
@@ -76,6 +79,7 @@
                             <npmVersion>10.2.4</npmVersion>
                         </configuration>
                     </execution>
+                    <!-- tag::node-resource-install[] -->
                     <execution>
                         <id>npm install</id>
                         <goals>
@@ -85,6 +89,8 @@
                             <arguments>install</arguments>
                         </configuration>
                     </execution>
+                    <!-- end::node-resource-install[] -->
+                    <!-- tag::node-resource-build[] -->
                     <execution>
                         <id>npm run build</id>
                         <goals>
@@ -94,9 +100,26 @@
                             <arguments>run build</arguments>
                         </configuration>
                     </execution>
+                    <!-- end::node-resource-build[] -->
+                    <!-- tag::node-tests[] -->
+                    <execution>
+                        <id>run tests</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>test a</arguments>
+                            <environmentVariables>
+                                <CI>true</CI>
+                            </environmentVariables>
+                        </configuration>
+                    </execution>
+                    <!-- end::node-tests[] -->
                 </executions>
             </plugin>
+            <!-- end::frontend-plugin[] -->
             <!-- Copy frontend static files to target directory -->
+            <!-- tag::copy-plugin[] -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -110,12 +133,16 @@
                         </goals>
                         <configuration>
                             <outputDirectory>
+                                <!-- tag::output-directory[] -->
                                 ${basedir}/src/main/webapp
+                                <!-- end::output-directory[] -->
                             </outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>
+                                        <!-- tag::directory[] -->
                                         ${basedir}/src/main/frontend/build
+                                        <!-- end::directory[] -->
                                     </directory>
                                     <filtering>true</filtering>
                                 </resource>
@@ -124,6 +151,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- end::copy-plugin[] -->
         </plugins>
     </build>
 </project>
