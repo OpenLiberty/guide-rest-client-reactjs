@@ -5,7 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 // end::axios-library[]
 // tag::react-table[]
-import { useReactTable, getCoreRowModel, getPaginationRowModel, getSortedRowModel } from '@tanstack/react-table'; 
+import { useReactTable, getCoreRowModel, getPaginationRowModel, getSortedRowModel, flexRender} from '@tanstack/react-table'; 
 // end::react-table[]
 // tag::custom-style[]
 import '../Styles/table.css'
@@ -18,32 +18,40 @@ export function ArtistTable() {
   // tag::posts[]
   const [posts, setPosts] = useState([]);
   // end::posts[]
+  // tag::sorting[]
+  const [sorting, setSorting] = useState([]);
+  // end::sorting[]
+  // tag::pagination[]
+  const [pagination, setPagination] = useState({pageIndex: 0, pageSize: 4});
+  // end::pagination[]
 
   // tag::get-posts[]
   const GetArtistsInfo = async () => {
-    // tag::axios[]
-    const response = await axios.get('http://localhost:9080/artists')
+    try {
+      // tag::axios[]
+      const response = await axios.get('http://localhost:9080/artists');
       // end::axios[]
-      .then(response => {
-        // tag::response-data[]
-        const artists = response.data;
-        // end::response-data[]
-        // tag::for-artists[]
-        for (const artist of artists) {
-          // tag::spread-one[]
-          const { albums, ...rest } = artist;
-          // end::spread-one[]
-          for (const album of albums) {
-            //tag::setState[]
-            setPosts([...posts, { ...rest, ...album }]);
-            // end::setState[]
-            // tag::spread-two[]
-            posts.push({ ...rest, ...album });
-            // end::spread-two[]
-          }
-        };
-        // end::for-artists[]
-      }).catch(error => { console.log(error); });
+      // tag::response-data[]
+      const artists = response.data;
+      // end::response-data[]
+      const processedData = [];
+      // tag::for-artists[]
+      for (const artist of artists) {
+        // tag::spread-one[]
+        const { albums, ...rest } = artist;
+        // end::spread-one[]
+        for (const album of albums) {
+          // tag::spread-two[]
+          processedData.push({ ...rest, ...album });
+          // end::spread-two[]
+        }
+      };
+      //tag::setState[]
+      setPosts(processedData);
+      // end::setState[]
+    } catch (error) {
+      console.log(error);
+    }
   };
   // end::get-posts[]
 
@@ -53,7 +61,7 @@ export function ArtistTable() {
 
   // tag::table-info[]
   const columns = useMemo(() => [{
-    Header: 'Artist Info',
+    header: 'Artist Info',
     columns: [
       {
         accessorKey: 'id',
@@ -70,7 +78,7 @@ export function ArtistTable() {
     ]
   },
   {
-    Header: 'Albums',
+    header: 'Albums',
     columns: [
       {
         accessorKey: 'ntracks',
@@ -90,7 +98,6 @@ export function ArtistTable() {
   const tableInstance = useReactTable({ 
           columns, 
           data,
-          initialState: { pageIndex: 0, pageSize: 4 },
           // tag::getCoreRowModel[]
           getCoreRowModel: getCoreRowModel(), 
           // end::getCoreRowModel[]
@@ -100,27 +107,31 @@ export function ArtistTable() {
           // tag::getSortedRowModel[]
           getSortedRowModel: getSortedRowModel(), 
           // end::getSortedRowModel[]
+          state:{
+            sorting: sorting,
+            pagination: pagination,
+          },
+          onSortingChange: setSorting,
+          onPaginationChange: setPagination,
           }); 
   // end::useReactTable[]
 
   // tag::destructuring[]
   const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    prepareRow,
-    page,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    pageCount,
-    gotoPage,
-    nextPage,
-    previousPage,
+    getHeaderGroups, 
+    getRowModel,
+    getState,
+    setPageIndex,
     setPageSize,
-    state: { pageIndex, pageSize }
+    getCanPreviousPage,
+    getCanNextPage,
+    previousPage,
+    nextPage,
+    getPageCount,
   } = tableInstance;
   // end::destructuring[]
+
+  const {pageIndex, pageSize} = getState().pagination;
 
   // tag::useEffect[]
   useEffect(() => {
@@ -133,48 +144,50 @@ export function ArtistTable() {
     <>
       <h2>Artist Web Service</h2>
       {/* tag::table[] */}
-      <table {...getTableProps()}>
+      <table>
         <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render('Header')}
-                  <span>
-                    {column.isSorted
-                      ? column.isSortedDesc
-                        ? ' 🔽'
-                        : ' 🔼'
-                      : ''}
-                  </span>
+          {getHeaderGroups().map(headerGroup => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map(header => (
+                <th key={header.id} colSpan={header.colSpan} onClick={header.column.getToggleSortingHandler()}>
+                  {header.isPlaceholder ? null :(
+                    <div>
+                      {flexRender(header.column.columnDef.header, header.getContext())}
+                      {
+                        {
+                          asc: " 🔼",
+                          desc: " 🔽",
+                        }[header.column.getIsSorted() ?? null]
+                      }
+                    </div>
+                  )}
                 </th>
               ))}
             </tr>
           ))}
         </thead>
-        <tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
-            prepareRow(row)
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                })}
-              </tr>
-            )
-          })}
+        <tbody>
+          {getRowModel().rows.map(row => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map(cell => (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
         </tbody>
       </table>
       {/* end::table[] */}
       <div className="pagination">
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+        <button onClick={() => previousPage()} disabled={!getCanPreviousPage()}>
           {'Previous'}
         </button>{' '}
         <div className="page-info">
           <span>
             Page{' '}
             <strong>
-              {pageIndex + 1} of {pageOptions.length}
+              {pageIndex + 1} of {getPageCount()}
             </strong>{' '}
           </span>
           <span>
@@ -184,7 +197,7 @@ export function ArtistTable() {
               defaultValue={pageIndex + 1}
               onChange={e => {
                 const page = e.target.value ? Number(e.target.value) - 1 : 0
-                gotoPage(page)
+                setPageIndex(page);
               }}
               style={{ width: '100px' }}
             />
@@ -202,7 +215,7 @@ export function ArtistTable() {
             ))}
           </select>
         </div>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
+        <button onClick={() => nextPage()} disabled={!getCanNextPage()}>
           {'Next'}
         </button>{' '}
       </div>
