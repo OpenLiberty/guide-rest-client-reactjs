@@ -308,6 +308,39 @@ echo http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')
 ```
 endif::[]
 
+// =================================================================================================
+// Testing the React client
+// =================================================================================================
+
+== Testing the React client
+
+`Next.js` supports a variety of testing tools. This guide uses `Vitest` for unit testing the React components, with the test file [hotspot file]`App.test.jsx` located in `src/main/frontend/__tests__/` directory. The `App.test.jsx` file is a simple JavaScript file that tests against the `page.jsx` component. There are no explicit test cases that are written for this application. To learn more about `Vitest`, please visit https://nextjs.org/docs/app/building-your-application/testing/vitest[Setting up Vitest with Next.js]
+
+App.test.jsx
+[source, javascript, linenums, role='code_column']
+----
+include::finish/src/main/frontend/__tests__/App.test.jsx[]
+----
+
+[role="code_command hotspot file=1", subs="quotes"]
+----
+#Update the `pom.xml` file.#
+`pom.xml`
+----
+
+pom.xml
+[source, xml, linenums, role='code_column']
+----
+include::finish/pom.xml[]
+----
+
+[role="edit_command_text"]
+To run the default test, you can add the [hotspot=node-tests file=1]`testing` configuration to the `frontend-maven-plugin`. Rerun the Maven `process-resources` goal to rebuild the front end and run the tests.
+
+Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official https://reactjs.org/docs/testing.html[React testing documentation^].
+
+When you are done checking the application root, exit dev mode by pressing `CTRL+C` in the shell session where you ran the Liberty.
+
 == Great work! You're done!
 
 Nice work! You just accessed a simple RESTful web service and consumed its resources by using ReactJS in Open Liberty.
