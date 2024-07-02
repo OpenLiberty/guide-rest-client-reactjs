@@ -172,7 +172,7 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-== Creating the main page
+== Creating the default page
 
 You'll need to create the entry point of your React application. In the latest version of `Next.js`, it's recommended to use the https://nextjs.org/docs/app/building-your-application/routing/defining-routes[App Router], which centralizes routing logic under the `app` directory. 
  
