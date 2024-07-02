@@ -1,5 +1,7 @@
-// tag::react-library[]
+// tag::render-client[]
 "use client";
+// end::render-client[]
+// tag::react-library[]
 import React, { useEffect, useMemo, useState } from 'react';
 // end::react-library[]
 // tag::axios-library[]

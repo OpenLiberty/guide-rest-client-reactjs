@@ -35,7 +35,7 @@ You will learn how to access a REST service and deserialize the returned JSON th
 
 https://reactjs.org/[ReactJS^] is a JavaScript library that is used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. With ReactJS, you can also interface with other libraries and frameworks. Note that the names ReactJS and React are used interchangeably.
 
-The React application in this guide is provided and configured for you in the `src/main/frontend` directory. The application uses the one of the https://react.dev/learn/start-a-new-react-project[React-powered frameworks] to set up the modern React application. The https://nextjs.org/[Next.js] framework provides a powerful environment for learning and building React applications, with features like server-side rendering, static site generation, and easy API routes. It is the best way to start building a new, highly performant React application.
+The React application in this guide is provided and configured for you in the `src/main/frontend` directory. The application uses https://nextjs.org/[Next.js], one of the https://react.dev/learn/start-a-new-react-project[React-powered frameworks], to set up the modern React application. The `Next.js` framework provides a powerful environment for learning and building React applications, with features like server-side rendering, static site generation, and easy API routes. It is the best way to start building a new, highly performant React application.
 
 artists.json
 [source, json, linenums, role="code_column"]
@@ -229,6 +229,8 @@ ArtistTable.jsx
 ----
 include::finish/src/main/frontend/src/app/ArtistTable.jsx[]
 ----
+
+At the top of the file, [hotspot=render-client file=0]`use client` is used to indicate the `ArtistTable` component will be rendered on the client side.
 
 The [hotspot=react-library file=0]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=0]`ArtistTable` function. This function must have the `export` declaration because it is being exported to the `App.js` module. The [hotspot=posts file=0]`posts` object is initialized using a React Hook that lets you add a state to represent the state of the posts that appear on the paginated table.
 
