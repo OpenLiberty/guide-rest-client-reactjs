@@ -190,22 +190,6 @@ page.jsx
 include::finish/src/main/frontend/src/app/page.jsx[]
 ----
 
-layout.jsx
-[source, javascript, linenums, role='code_column']
-----
-include::finish/src/main/frontend/src/app/layout.jsx[]
-----
-
-The `page.jsx` file will be act as a container for all other components. When React component [hotspot=createHome file=0]`Home` is rendered, the [hotspot=displayArtistTable file=0]`ArtistTable` components content will be displayed.
-
-In order to render the pages correctly, it is required to add a [hotspot file=1]`layout.jsx` file which defines the `RootLayout` containing the UI that shared across all routes.
-
-[role="code_command hotspot file=1", subs="quotes"]
-----
-#Create the `layout.jsx` file.#
-`src/main/frontend/src/app/layout.jsx`
-----
-
 For more detailed information on structuring `Pages` and `Layouts` in `Next.js`, please refer to the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#layouts[Pages and Layouts]
 
 // =================================================================================================
