@@ -1,4 +1,5 @@
 // tag::react-library[]
+"use client";
 import React, { useEffect, useMemo, useState } from 'react';
 // end::react-library[]
 // tag::axios-library[]
@@ -8,11 +9,11 @@ import axios from 'axios';
 import { useReactTable, getCoreRowModel, getPaginationRowModel, getSortedRowModel, flexRender} from '@tanstack/react-table'; 
 // end::react-table[]
 // tag::custom-style[]
-import '../Styles/table.css'
+import '../../styles/table.css'
 // end::custom-styly[]
 
 // tag::ArtistTable[]
-export function ArtistTable() {
+function ArtistTable() {
   // end::ArtistTable[]
 
   // tag::posts[]
@@ -223,3 +224,5 @@ export function ArtistTable() {
   );
   // end::return-table[]
 }
+
+export default ArtistTable
