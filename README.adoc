@@ -140,7 +140,7 @@ curl -s http://localhost:9080/artists | jq
 ```
 endif::[]
 
-All the dependencies for the React front end can be found in `src/main/frontend/src/package.json`, and they are installed before the front end is built by the `frontend-maven-plugin`. Additionally, some provided `CSS` stylesheets files are provided and can be found in the `src/main/frontend/src/styles` directory.
+All the dependencies for the React front end are listed in `src/main/frontend/src/package.json`, and are installed before the build process by the `frontend-maven-plugin`. Additionally, `CSS` stylesheets files are are available in the `src/main/frontend/src/styles` directory.
 
 // =================================================================================================
 // Project configuration 
@@ -232,7 +232,7 @@ include::finish/src/main/frontend/src/app/ArtistTable.jsx[]
 
 At the top of the file, the [hotspot=render-client file=0]`use client` directive is used to indicate the `ArtistTable` component will be rendered on the client side.
 
-The [hotspot=react-library file=0]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=0]`ArtistTable` function. This function must have the `export` declaration because it is being exported to the `App.js` module. The [hotspot=posts file=0]`posts` object is initialized using a React Hook that lets you add a state to represent the state of the posts that appear on the paginated table.
+The [hotspot=react-library file=0]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=0]`ArtistTable` function. This function must have the `export` declaration because it is being exported to the `page.jsx` module. The [hotspot=posts file=0]`posts` object is initialized using a React Hook that lets you add a state to represent the state of the posts that appear on the paginated table.
 
 To display the returned data, you will use pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=0]`columns` constant is used to define the table that is present on the webpage.
 
