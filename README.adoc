@@ -140,7 +140,7 @@ curl -s http://localhost:9080/artists | jq
 ```
 endif::[]
 
-All the dependencies for the React front end can be found in `src/main/frontend/src/package.json`, and they are installed before the front end is built by the `frontend-maven-plugin`. Additionally, some provided `CSS` stylesheets files are provided and can be found in the `src/main/frontend/src/Styles` directory.
+All the dependencies for the React front end can be found in `src/main/frontend/src/package.json`, and they are installed before the front end is built by the `frontend-maven-plugin`. Additionally, some provided `CSS` stylesheets files are provided and can be found in the `src/main/frontend/src/styles` directory.
 
 // =================================================================================================
 // Project configuration 
@@ -172,68 +172,62 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-== Creating the default page
+== Creating the main page
 
-You need to create the entry point of your React application. `create-react-app` uses the [hotspot file=0]`index.js` file as the main entry point of the application. This JavaScript file corresponds with the [hotspot file=1]`index.html` file, which is the entry point where your code runs in the browser.
+You'll need to create the entry point of your React application. In the latest version of `Next.js`, it's recommended to use the https://nextjs.org/docs/app/building-your-application/routing/defining-routes[App Router], which centralizes routing logic under the `app` directory. 
+ 
+To construct the home page of the web application, create a [hotspot file=0]`page.jsx` file.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Create the `index.js` file.#
-`src/main/frontend/src/index.js`
+#Create the `page.jsx` file.#
+`src/main/frontend/src/app/page.jsx`
 ----
 
-index.js
+page.jsx
 [source, javascript, linenums, role='code_column']
 ----
-include::finish/src/main/frontend/src/index.js[]
+include::finish/src/main/frontend/src/app/page.jsx[]
 ----
 
-index.html
+layout.jsx
 [source, html, linenums, role='code_column tags=html hide_tags=copyright']
 ----
-include::finish/src/main/frontend/public/index.html[]
+include::finish/src/main/frontend/src/app/layout.jsx[]
 ----
 
-The [hotspot=import-react file=0]`React` library imports the [hotspot=import-react file=0]`react` package. A DOM, or Document Object Model, is a programming interface for HTML and XML documents. React offers a virtual DOM, which is essentially a copy of the browser DOM that resides in memory. The React virtual DOM improves the performance of your web application and plays a crucial role in the rendering process. The [hotspot=react-dom file=0]`react-dom/client` APIs provides methods for rendering React components in the browser. 
+The `page.jsx` file will be act as a container for all other components. When React component [hotspot=createHome file=0]`Home` is rendered, the [hotspot=displayArtistTable file=0]`ArtistTable` components content will be displayed.
 
-The [hotspot=createRoot file=0]`createRoot` method initializes a root element to render React components within a browser's DOM node. To learn more about the React virtual DOM, see the https://react.dev/reference/react#react-dom[ReactDOM^] documentation.
+In order to render the pages correctly, it is required to add a [hotspot file=1]`layout.jsx` file which defines the `RootLayout` containing the UI that shared across all routes.
+
+[role="code_command hotspot", subs="quotes"]
+----
+#Create the `layout.jsx` file.#
+`src/main/frontend/src/app/layout.jsx`
+----
+
+For more detailed information on structuring `Pages` and `Layouts` in `Next.js`, please refer to the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#layouts[Pages and Layouts]
 
 // =================================================================================================
-// Creating the React components
+// Creating ArtistTable React component
 // =================================================================================================
 
-== Creating the React components
+== Creating ArtistTable React component
 
-A React web application is a collection of components, and each component has a specific function. You will create the components that are used in the application to acquire and display data from the REST API. 
+A React web application is a collection of components, and each component has a specific function. You will create a component that are used in the application to acquire and display data from the REST API. 
 
-The main component in your React application is the `App` component. You need to create the [hotspot file=0]`App.js` file to act as a container for all other components. 
-
-[role="code_command hotspot file=0", subs="quotes"]
-----
-#Create the `App.js` file.#
-`src/main/frontend/src/Components/App.js`
-----
-
-App.js
-[source, javascript, linenums, role='code_column']
-----
-include::finish/src/main/frontend/src/Components/App.js[]
-----
-
-The `App.js` file returns the [hotspot=react-component file=0]`ArtistTable` function to create a reusable element that encompasses your web application. 
-
-Next, create the `ArtistTable` function that fetches data from your back end and renders it in a table. 
+Create the `ArtistTable` function that fetches data from your back end and renders it in a table. 
 
 [role="code_command hotspot file=1", subs="quotes"]
 ----
-#Create the `ArtistTable.js` file.#
-`src/main/frontend/src/Components/ArtistTable.js`
+#Create the `ArtistTable.jsx` file.#
+`src/main/frontend/src/Components/ArtistTable.jsx`
 ----
 
-ArtistTable.js
+ArtistTable.jsx
 [source, javascript, linenums, role='code_column hide_tags=get-posts,useEffect,axios-library']
 ----
-include::finish/src/main/frontend/src/Components/ArtistTable.js[]
+include::finish/src/main/frontend/src/app/ArtistTable.jsx[]
 ----
 
 The [hotspot=react-library file=1]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=1]`ArtistTable` function. This function must have the `export` declaration because it is being exported to the `App.js` module. The [hotspot=posts file=1]`posts` object is initialized using a React Hook that lets you add a state to represent the state of the posts that appear on the paginated table.
@@ -254,14 +248,14 @@ The [hotspot=get-posts]`GetArtistsInfo()` function uses the Axios API to fetch d
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Update the `ArtistTable.js` file.#
-`src/main/frontend/src/Components/ArtistTable.js`
+#Update the `ArtistTable.jsx` file.#
+`src/main/frontend/src/app/ArtistTable.jsx`
 ----
 
-ArtistTable.js
+ArtistTable.jsx
 [source, javascript, linenums, role='code_column']
 ----
-include::finish/src/main/frontend/src/Components/ArtistTable.js[]
+include::finish/src/main/frontend/src/app/ArtistTable.jsx[]
 ----
 
 [role="edit_command_text"]
@@ -270,9 +264,9 @@ Add the [hotspot=axios-library]`axios` library and the [hotspot=get-posts]`GetAr
 The [hotspot=axios]`axios` HTTP call is used to read the artist JSON that contains the data from the sample JSON file in the `resources` directory. When a response is successful, the state of the system changes by assigning [hotspot=response-data]`response.data` to [hotspot=posts]`posts`. The [hotspot=for-artists]`artists` and their `albums` JSON data are manipulated to allow them to be accessed by the `ReactTable`. The [hotspot=spread-one]`...rest` or [hotspot=spread-two]`...album` object spread syntax is designed for simplicity. To learn more about it, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals[Spread in object literals^].
 
 ifdef::cloud-hosted[]
-Finally, run the following command to update the URL to access the ***artists.json*** in the ***ArtistTable.js*** file:
+Finally, run the following command to update the URL to access the ***artists.json*** in the ***ArtistTable.jsx*** file:
 ```bash
-sed -i 's=http://localhost:9080/artists='"https://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' /home/project/guide-rest-client-reactjs/start/src/main/frontend/src/Components/ArtistTable.js
+sed -i 's=http://localhost:9080/artists='"https://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' /home/project/guide-rest-client-reactjs/start/src/main/frontend/src/app/ArtistTable.jsx
 ```
 endif::[]
 
@@ -320,13 +314,12 @@ endif::[]
 
 == Testing the React client
 
-New projects that are created with `create-react-app` comes with a test file called [hotspot file]`App.test.js`, which is included in the `src/main/frontend/src` directory. The `App.test.js` file is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases that are written for this application. The `create-react-app` configuration uses https://jestjs.io/[Jest^] as its test runner.
-To learn more about Jest, go to their documentation on https://jestjs.io/docs/en/tutorial-react[Testing React apps^]. 
+`Next.js` supports a variety of testing tools. This guide uses `Vitest` for unit testing the React components, with the test file [hotspot file]`App.test.jsx` located in `src/main/frontend/__tests__/` directory. The `App.test.jsx` file is a simple JavaScript file that tests against the `page.jsx` component. There are no explicit test cases that are written for this application. To learn more about `Vitest`, please visit https://nextjs.org/docs/app/building-your-application/testing/vitest[Setting up Vitest with Next.js]
 
-App.test.js
+App.test.jsx
 [source, javascript, linenums, role='code_column']
 ----
-include::finish/src/main/frontend/src/App.test.js[]
+include::finish/src/main/frontend/__tests__/App.test.jsx[]
 ----
 
 [role="code_command hotspot file=1", subs="quotes"]
