@@ -178,7 +178,7 @@ You'll need to create the entry point of your React application. In the latest v
  
 To construct the home page of the web application, create a [hotspot file=0]`page.jsx` file.
 
-[role="code_command hotspot", subs="quotes"]
+[role="code_command hotspot file=0", subs="quotes"]
 ----
 #Create the `page.jsx` file.#
 `src/main/frontend/src/app/page.jsx`
