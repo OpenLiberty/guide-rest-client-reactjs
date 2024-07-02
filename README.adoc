@@ -206,7 +206,7 @@ In order to render the pages correctly, it is required to add a [hotspot file=1]
 `src/main/frontend/src/app/layout.jsx`
 ----
 
-For more detailed information on structuring `Pages` and `Layouts` in `Next.js`, please refer to the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#layouts[Pages and Layouts]
+For more detailed information on structuring `Pages` and `Layouts` in `Next.js`, please refer to the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts[Pages and Layouts]
 
 // =================================================================================================
 // Creating ArtistTable React component
@@ -221,7 +221,7 @@ Create the `ArtistTable` function that fetches data from your back end and rende
 [role="code_command hotspot file=0", subs="quotes"]
 ----
 #Create the `ArtistTable.jsx` file.#
-`src/main/frontend/src/Components/ArtistTable.jsx`
+`src/main/frontend/src/app/ArtistTable.jsx`
 ----
 
 ArtistTable.jsx
@@ -230,7 +230,7 @@ ArtistTable.jsx
 include::finish/src/main/frontend/src/app/ArtistTable.jsx[]
 ----
 
-At the top of the file, [hotspot=render-client file=0]`use client` is used to indicate the `ArtistTable` component will be rendered on the client side.
+At the top of the file, the [hotspot=render-client file=0]`use client` directive is used to indicate the `ArtistTable` component will be rendered on the client side.
 
 The [hotspot=react-library file=0]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=0]`ArtistTable` function. This function must have the `export` declaration because it is being exported to the `App.js` module. The [hotspot=posts file=0]`posts` object is initialized using a React Hook that lets you add a state to represent the state of the posts that appear on the paginated table.
 
