@@ -218,7 +218,7 @@ A React web application is a collection of components, and each component has a 
 
 Create the `ArtistTable` function that fetches data from your back end and renders it in a table. 
 
-[role="code_command hotspot file=1", subs="quotes"]
+[role="code_command hotspot file=0", subs="quotes"]
 ----
 #Create the `ArtistTable.jsx` file.#
 `src/main/frontend/src/Components/ArtistTable.jsx`
@@ -230,11 +230,11 @@ ArtistTable.jsx
 include::finish/src/main/frontend/src/app/ArtistTable.jsx[]
 ----
 
-The [hotspot=react-library file=1]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=1]`ArtistTable` function. This function must have the `export` declaration because it is being exported to the `App.js` module. The [hotspot=posts file=1]`posts` object is initialized using a React Hook that lets you add a state to represent the state of the posts that appear on the paginated table.
+The [hotspot=react-library file=0]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=0]`ArtistTable` function. This function must have the `export` declaration because it is being exported to the `App.js` module. The [hotspot=posts file=0]`posts` object is initialized using a React Hook that lets you add a state to represent the state of the posts that appear on the paginated table.
 
-To display the returned data, you will use pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table that is present on the webpage.
+To display the returned data, you will use pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=0]`columns` constant is used to define the table that is present on the webpage.
 
-The [hotspot=useReactTable file=1]`useReactTable` hook creates a table instance. The hook takes in the [hotspot=table-info file=1]`columns`, [hotspot=posts file=1]`posts` as parameters. The [hotspot=getCoreRowModel file=1]`getCoreRowModel` function is included for the generation of the core row model of the table, which serves as the foundational row model upon pagination and sorting build. The [hotspot=getPaginationRowModel file=1]`getPaginationRowModel` function applies pagination to the core row model, returning a row model that includes only the rows that should be displayed on the current page based on the pagination state. In addition, the [hotspot=getSortedRowModel file=1]`getSortedRowModel` function sorts the paginated table by the column headers then applies the changes to the row model. It returns a paginated table instance that is assigned to the [hotspot=table file=1]`table` constant. The [hotspot=table file=1]`table` constant renders the paginated table on the webpage. The [hotspot=return-table file=1]`return` statement returns the paginated table. 
+The [hotspot=useReactTable file=0]`useReactTable` hook creates a table instance. The hook takes in the [hotspot=table-info file=0]`columns`, [hotspot=posts file=0]`posts` as parameters. The [hotspot=getCoreRowModel file=0]`getCoreRowModel` function is included for the generation of the core row model of the table, which serves as the foundational row model upon pagination and sorting build. The [hotspot=getPaginationRowModel file=0]`getPaginationRowModel` function applies pagination to the core row model, returning a row model that includes only the rows that should be displayed on the current page based on the pagination state. In addition, the [hotspot=getSortedRowModel file=0]`getSortedRowModel` function sorts the paginated table by the column headers then applies the changes to the row model. It returns a paginated table instance that is assigned to the [hotspot=table file=0]`table` constant. The [hotspot=table file=0]`table` constant renders the paginated table on the webpage. The [hotspot=return-table file=0]`return` statement returns the paginated table.
 
 // =================================================================================================
 // Importing the HTTP client
