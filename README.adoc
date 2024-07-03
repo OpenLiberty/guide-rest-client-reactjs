@@ -59,7 +59,7 @@ include::{common-includes}/gitclone.adoc[]
 
 === Try what you'll build
 
-The `finish` directory in the root of this guide contains the finished application. The React front end is already pre-built for you and the static files from the production build can be found in the `src/main/webapp/static` directory.
+The `finish` directory in the root of this guide contains the finished application. The React front end is already pre-built for you and the static files from the production build can be found in the `src/main/webapp/_next/static` directory.
 
 ifndef::cloud-hosted[]
 To try out the application, navigate to the `finish` directory and run the following Maven goal to build the application and deploy it to Open Liberty:
@@ -236,7 +236,7 @@ The [hotspot=react-library file=0]`React` library imports the `react` package fo
 
 To display the returned data, you will use pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=0]`columns` constant is used to define the table that is present on the webpage.
 
-The [hotspot=useReactTable file=0]`useReactTable` hook creates a table instance. The hook takes in the [hotspot=table-info file=0]`columns`, [hotspot=posts file=0]`posts` as parameters. The [hotspot=getCoreRowModel file=0]`getCoreRowModel` function is included for the generation of the core row model of the table, which serves as the foundational row model upon pagination and sorting build. The [hotspot=getPaginationRowModel file=0]`getPaginationRowModel` function applies pagination to the core row model, returning a row model that includes only the rows that should be displayed on the current page based on the pagination state. In addition, the [hotspot=getSortedRowModel file=0]`getSortedRowModel` function sorts the paginated table by the column headers then applies the changes to the row model. It returns a paginated table instance that is assigned to the [hotspot=table file=0]`table` constant. The [hotspot=table file=0]`table` constant renders the paginated table on the webpage. The [hotspot=return-table file=0]`return` statement returns the paginated table.
+The [hotspot=useReactTable file=0]`useReactTable` hook creates a table instance. The hook takes in the [hotspot=table-info file=0]`columns`, [hotspot=posts file=0]`posts` as parameters. The [hotspot=getCoreRowModel file=0]`getCoreRowModel` function is included for the generation of the core row model of the table, which serves as the foundational row model upon pagination and sorting build. The [hotspot=getPaginationRowModel file=0]`getPaginationRowModel` function applies pagination to the core row model, returning a row model that includes only the rows that should be displayed on the current page based on the pagination state. In addition, the [hotspot=getSortedRowModel file=0]`getSortedRowModel` function sorts the paginated table by the column headers then applies the changes to the row model. The paginated table instance is assigned to the [hotspot=table file=0]`table` constant, which renders the paginated table on the webpage. The [hotspot=return-table file=0]`return` statement returns the paginated table.
 
 // =================================================================================================
 // Importing the HTTP client
