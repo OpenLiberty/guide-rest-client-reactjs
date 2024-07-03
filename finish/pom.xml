@@ -141,7 +141,7 @@
                                 <resource>
                                     <directory>
                                         <!-- tag::directory[] -->
-                                        ${basedir}/src/main/frontend/.next/static
+                                        ${basedir}/src/main/frontend/out
                                         <!-- end::directory[] -->
                                     </directory>
                                     <filtering>true</filtering>

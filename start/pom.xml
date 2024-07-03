@@ -115,7 +115,7 @@
                             <resources>
                                 <resource>
                                     <directory>
-                                        ${basedir}/src/main/frontend/.next/static
+                                        ${basedir}/src/main/frontend/out
                                     </directory>
                                     <filtering>true</filtering>
                                 </resource>
