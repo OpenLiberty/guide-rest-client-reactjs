@@ -43,7 +43,7 @@ artists.json
 include::finish/src/resources/artists.json[]
 ----
 
-The REST service that provides the resources was written for you in advance in the back end of the application, and it responds with the [hotspot]`artists.json` in the `src/resources` directory. You will implement a ReactJS client as the front end of your application, which consumes this JSON file and displays its contents on a single-page webpage. 
+The REST service that provides the resources was written for you in advance in the back end of the application, and it responds with the [hotspot]`artists.json` in the `src/resources` directory. You will implement a ReactJS client as the front-end of your application, which consumes this JSON file and displays its contents on a single-page webpage. 
 
 To learn more about REST services and how you can write them, see the https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^] guide.
 
@@ -59,7 +59,7 @@ include::{common-includes}/gitclone.adoc[]
 
 === Try what you'll build
 
-The `finish` directory in the root of this guide contains the finished application. The React front end is already pre-built for you and the static files from the production build can be found in the `src/main/webapp/_next/static` directory.
+The `finish` directory in the root of this guide contains the finished application. The React front-end is already pre-built for you and the static files from the production build can be found in the `src/main/webapp/_next/static` directory.
 
 ifndef::cloud-hosted[]
 To try out the application, navigate to the `finish` directory and run the following Maven goal to build the application and deploy it to Open Liberty:
@@ -140,7 +140,7 @@ curl -s http://localhost:9080/artists | jq
 ```
 endif::[]
 
-All the dependencies for the React front end are listed in `src/main/frontend/src/package.json` and are installed before the build process by the `frontend-maven-plugin`. Additionally, `CSS` stylesheets files are available in the `src/main/frontend/src/styles` directory.
+All the dependencies for the React front-end are listed in `src/main/frontend/src/package.json` and are installed before the build process by the `frontend-maven-plugin`. Additionally, `CSS` stylesheets files are available in the `src/main/frontend/src/styles` directory.
 
 // =================================================================================================
 // Project configuration 
@@ -148,7 +148,7 @@ All the dependencies for the React front end are listed in `src/main/frontend/sr
 
 == Project configuration
 
-The front end of your application uses Node.js to build your React code. The Maven project is configured for you to install Node.js and produce the production files, which are copied to the web content of your application.
+The front-end of your application uses Node.js to build your React code. The Maven project is configured for you to install Node.js and produce the production files, which are copied to the web content of your application.
 
 Node.js is a server-side JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to run the React build scripts that are found in the `package.json` file. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
@@ -273,14 +273,14 @@ sed -i 's=http://localhost:9080/artists='"https://${USERNAME}-9080.$(echo $TOOL_
 endif::[]
 
 // =================================================================================================
-// Building and packaging the front end
+// Building and packaging the front-end
 // =================================================================================================
 
-== Building and packaging the front end
+== Building and packaging the front-end
 
-After you successfully build your components, you need to build the front end and package your application. The Maven `process-resources` goal generates the Node.js resources, creates the front-end production build, and copies and processes the resources into the destination directory. 
+After you successfully build your components, you need to build the front-end and package your application. The Maven `process-resources` goal generates the Node.js resources, creates the front-end production build, and copies and processes the resources into the destination directory. 
 
-In a new command-line session, build the front end by running the following command in the `start` directory:
+In a new command-line session, build the front-end by running the following command in the `start` directory:
 
 // Static guide instruction
 ifndef::cloud-hosted[]
@@ -297,14 +297,14 @@ mvn process-resources
 ```
 endif::[]
 
-The build may take a few minutes to complete. You can rebuild the front end at any time with the Maven `process-resources` goal. Any local changes to your JavaScript and HTML are picked up when you build the front end.
+The build may take a few minutes to complete. You can rebuild the front-end at any time with the Maven `process-resources` goal. Any local changes to your JavaScript and HTML are picked up when you build the front-end.
 
 ifndef::cloud-hosted[]
-Navigate to the http://localhost:9080[http://localhost:9080^] web application root to view the front end of your application.
+Navigate to the http://localhost:9080[http://localhost:9080^] web application root to view the front-end of your application.
 endif::[]
 
 ifdef::cloud-hosted[]
-Open your browser and view the front end of your application by going to the URL that the following command returns:
+Open your browser and view the front-end of your application by going to the URL that the following command returns:
 ```bash
 echo http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')
 ```
@@ -337,7 +337,7 @@ include::finish/pom.xml[]
 ----
 
 [role="edit_command_text"]
-To run the default test, you can add the [hotspot=node-tests file=1]`testing` configuration to the `frontend-maven-plugin`. Rerun the Maven `process-resources` goal to rebuild the front end and run the tests.
+To run the default test, you can add the [hotspot=node-tests file=1]`testing` configuration to the `frontend-maven-plugin`. Rerun the Maven `process-resources` goal to rebuild the front-end and run the tests.
 
 Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official https://reactjs.org/docs/testing.html[React testing documentation^].
 
