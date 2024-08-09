@@ -43,7 +43,7 @@ artists.json
 include::finish/src/resources/artists.json[]
 ----
 
-The REST service that provides the resources was written for you in advance in the back end of the application, and it responds with the [hotspot]`artists.json` in the `src/resources` directory. You will implement a ReactJS client as the front-end of your application, which consumes this JSON file and displays its contents on a single-page webpage. 
+The REST service that provides the resources was written for you in advance in the back-end of the application, and it responds with the [hotspot]`artists.json` in the `src/resources` directory. You will implement a ReactJS client as the front-end of your application, which consumes this JSON file and displays its contents on a single-page webpage. 
 
 To learn more about REST services and how you can write them, see the https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^] guide.
 
@@ -196,7 +196,7 @@ layout.jsx
 include::finish/src/main/frontend/src/app/layout.jsx[]
 ----
 
-The `page.jsx` file will be act as a container for all other components. When React component [hotspot=createHome file=0]`Home` is rendered, the [hotspot=displayArtistTable file=0]`ArtistTable` components content will be displayed.
+The `page.jsx` file will serve as a container for all other components. When React component [hotspot=createHome file=0]`Home` is rendered, the [hotspot=displayArtistTable file=0]`ArtistTable` components content will be displayed.
 
 In order to render the pages correctly, it is required to add a [hotspot file=1]`layout.jsx` file which defines the `RootLayout` containing the UI that shared across all routes.
 
@@ -206,7 +206,7 @@ In order to render the pages correctly, it is required to add a [hotspot file=1]
 `src/main/frontend/src/app/layout.jsx`
 ----
 
-For more detailed information on structuring `Pages` and `Layouts` in `Next.js`, please refer to the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts[Pages and Layouts]
+For more detailed information on structuring `Pages` and `Layouts` in `Next.js`, please refer to the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages[Pages] and https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates[Layouts]
 
 // =================================================================================================
 // Creating ArtistTable React component
@@ -216,7 +216,7 @@ For more detailed information on structuring `Pages` and `Layouts` in `Next.js`,
 
 A React web application is a collection of components, and each component has a specific function. You will create a component that are used in the application to acquire and display data from the REST API. 
 
-Create the `ArtistTable` function that fetches data from your back end and renders it in a table. 
+Create the `ArtistTable` function that fetches data from your back-end and renders it in a table. 
 
 [role="code_command hotspot file=0", subs="quotes"]
 ----
@@ -246,7 +246,7 @@ The [hotspot=useReactTable file=0]`useReactTable` hook creates a table instance.
 
 Your application needs a way to communicate with and retrieve resources from RESTful web services to output the resources onto the paginated table. The https://github.com/axios/axios[Axios^] library will provide you with an HTTP client. This client is used to make HTTP requests to external resources. Axios is a promise-based HTTP client that can send asynchronous requests to REST endpoints. To learn more about the Axios library and its HTTP client, see the https://www.npmjs.com/package/axios[Axios documentation^].
 
-The [hotspot=get-posts]`GetArtistsInfo()` function uses the Axios API to fetch data from your back end. This function is called when the `ArtistTable` is rendered to the page using the [hotspot=useEffect]`useEffect()` React lifecycle method.
+The [hotspot=get-posts]`GetArtistsInfo()` function uses the Axios API to fetch data from your back-end. This function is called when the `ArtistTable` is rendered to the page using the [hotspot=useEffect]`useEffect()` React lifecycle method.
 
 [role="code_command hotspot", subs="quotes"]
 ----

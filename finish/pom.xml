@@ -125,7 +125,7 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.3.1</version>
                 <executions>
-                 <execution>
+                    <execution>
                         <id>Copy frontend build to target</id>
                         <phase>process-resources</phase>
                         <goals>
