@@ -35,7 +35,7 @@ You will learn how to access a REST service and deserialize the returned JSON th
 
 https://reactjs.org/[ReactJS^] is a JavaScript library that is used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. With ReactJS, you can also interface with other libraries and frameworks. Note that the names ReactJS and React are used interchangeably.
 
-The React application in this guide is provided and configured for you in the `src/main/frontend` directory. The application uses https://nextjs.org/[Next.js], one of the https://react.dev/learn/start-a-new-react-project[React-powered frameworks], to set up the modern React application. The `Next.js` framework provides a powerful environment for learning and building React applications, with features like server-side rendering, static site generation, and easy API routes. It is the best way to start building a new, highly performant React application.
+The React application in this guide is provided and configured for you in the `src/main/frontend` directory. The application uses https://nextjs.org/[Next.js^], one of the https://react.dev/learn/start-a-new-react-project[React-powered frameworks^], to set up the modern React application. The `Next.js` framework provides a powerful environment for learning and building React applications, with features like server-side rendering, static site generation, and easy API routes. It is the best way to start building a new, highly performant React application.
 
 artists.json
 [source, json, linenums, role="code_column"]
@@ -206,13 +206,13 @@ In order to render the pages correctly, it is required to add a [hotspot file=1]
 `src/main/frontend/src/app/layout.jsx`
 ----
 
-For more detailed information on structuring `Pages` and `Layouts` in `Next.js`, please refer to the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages[Pages] and https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates[Layouts]
+For more detailed information on structuring `Pages` and `Layouts` in `Next.js`, please refer to the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages[Pages] and https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates[Layouts].
 
 // =================================================================================================
-// Creating ArtistTable React component
+// Creating the React component
 // =================================================================================================
 
-== Creating ArtistTable React component
+== Creating the React component
 
 A React web application is a collection of components, and each component has a specific function. You will create a component that are used in the application to acquire and display data from the REST API. 
 
@@ -316,7 +316,7 @@ endif::[]
 
 == Testing the React client
 
-`Next.js` supports a variety of testing tools. This guide uses `Vitest` for unit testing the React components, with the test file [hotspot file]`App.test.jsx` located in `src/main/frontend/__tests__/` directory. The `App.test.jsx` file is a simple JavaScript file that tests against the `page.jsx` component. There are no explicit test cases that are written for this application. To learn more about `Vitest`, please visit https://nextjs.org/docs/app/building-your-application/testing/vitest[Setting up Vitest with Next.js]
+`Next.js` supports a variety of testing tools. This guide uses `Vitest` for unit testing the React components, with the test file [hotspot file]`App.test.jsx` located in `src/main/frontend/__tests__/` directory. The `App.test.jsx` file is a simple JavaScript file that tests against the `page.jsx` component. There are no explicit test cases that are written for this application. To learn more about `Vitest`, please visit https://nextjs.org/docs/app/building-your-application/testing/vitest[Setting up Vitest with Next.js].
 
 App.test.jsx
 [source, javascript, linenums, role='code_column']
