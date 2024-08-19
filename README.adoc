@@ -206,7 +206,7 @@ layout.jsx
 include::finish/src/main/frontend/src/app/layout.jsx[]
 ----
 
-For more detailed information on structuring `Pages` and `Layouts` in `Next.js`, please refer to the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages[Pages^] and https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates[Layouts^].
+For more detailed information, see the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages[Pages^] and https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates[Layouts^].
 
 // =================================================================================================
 // Creating the React component
