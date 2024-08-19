@@ -246,7 +246,7 @@ The [hotspot=useReactTable file=0]`useReactTable` hook creates a table instance.
 
 Your application needs a way to communicate with and retrieve resources from RESTful web services to output the resources onto the paginated table. The https://github.com/axios/axios[Axios^] library will provide you with an HTTP client. This client is used to make HTTP requests to external resources. Axios is a promise-based HTTP client that can send asynchronous requests to REST endpoints. To learn more about the Axios library and its HTTP client, see the https://www.npmjs.com/package/axios[Axios documentation^].
 
-The [hotspot=get-posts]`GetArtistsInfo()` function uses the Axios API to fetch data from your back-end. This function is called when the `ArtistTable` is rendered to the page using the [hotspot=useEffect]`useEffect()` React lifecycle method.
+The [hotspot=get-posts]`GetArtistsInfo()` function uses the Axios API to fetch data from your back end. This function is called when the `ArtistTable` is rendered to the page using the [hotspot=useEffect]`useEffect()` React lifecycle method.
 
 [role="code_command hotspot", subs="quotes"]
 ----
