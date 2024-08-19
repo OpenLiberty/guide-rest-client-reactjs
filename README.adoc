@@ -304,7 +304,7 @@ Navigate to the http://localhost:9080[http://localhost:9080^] web application ro
 endif::[]
 
 ifdef::cloud-hosted[]
-Click the following button to view the front-end of your application:
+Click the following button to view the front end of your application:
 
 ::startApplication{port="9080" display="external" name="Visit application" route="/"}
 endif::[]
