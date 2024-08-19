@@ -174,7 +174,7 @@ include::finish/pom.xml[]
 
 == Creating the default page
 
-Create the entry point of your React application. The latest version of `Next.js` recommends  you use the https://nextjs.org/docs/app/building-your-application/routing/defining-routes[App Router], which centralizes routing logic under the `app` directory. 
+Create the entry point of your React application. The latest version of `Next.js` recommends you use the https://nextjs.org/docs/app/building-your-application/routing/defining-routes[App Router], which centralizes routing logic under the `app` directory. 
  
 To construct the home page of the web application, create a [hotspot file=0]`page.jsx` file.
 
