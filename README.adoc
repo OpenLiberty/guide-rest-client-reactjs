@@ -278,7 +278,7 @@ endif::[]
 
 == Building and packaging the front-end
 
-After you successfully build your components, you need to build the front-end and package your application. The Maven `process-resources` goal generates the Node.js resources, creates the front-end production build, and copies and processes the resources into the destination directory. 
+After you successfully build your components, you need to build the front end and package your application. The Maven `process-resources` goal generates the Node.js resources, creates the front-end production build, and copies and processes the resources into the destination directory. 
 
 In a new command-line session, build the front-end by running the following command in the `start` directory:
 
