@@ -336,7 +336,7 @@ include::finish/pom.xml[]
 ----
 
 [role="edit_command_text"]
-To run the default test, you can add the [hotspot=node-tests file=1]`testing` configuration to the `frontend-maven-plugin`. Rerun the Maven `process-resources` goal to rebuild the front-end and run the tests.
+To run the default test, you can add the [hotspot=node-tests file=1]`testing` configuration to the `frontend-maven-plugin`. Rerun the Maven `process-resources` goal to rebuild the front end and run the tests.
 
 ifndef::cloud-hosted[]
 [role='command']
