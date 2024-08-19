@@ -230,7 +230,7 @@ ArtistTable.jsx
 include::finish/src/main/frontend/src/app/ArtistTable.jsx[]
 ----
 
-At the top of the file, the [hotspot=render-client file=0]`use client` directive is used to indicate the `ArtistTable` component will be rendered on the client side.
+At the beginning of the file, the [hotspot=render-client file=0]`use client` directive indicates the `ArtistTable` component is rendered on the client side.
 
 The [hotspot=react-library file=0]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=0]`ArtistTable` function. This function must have the `export` declaration because it is being exported to the `page.jsx` module. The [hotspot=posts file=0]`posts` object is initialized using a React Hook that lets you add a state to represent the state of the posts that appear on the paginated table.
 
