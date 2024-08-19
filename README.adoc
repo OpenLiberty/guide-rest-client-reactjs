@@ -297,7 +297,7 @@ mvn process-resources
 ```
 endif::[]
 
-The build may take a few minutes to complete. You can rebuild the front-end at any time with the Maven `process-resources` goal. Any local changes to your JavaScript and HTML are picked up when you build the front-end.
+The build may take a few minutes to complete. You can rebuild the front end at any time with the Maven `process-resources` goal. Any local changes to your JavaScript and HTML are picked up when you build the front-end.
 
 ifndef::cloud-hosted[]
 Navigate to the http://localhost:9080[http://localhost:9080^] web application root to view the front-end of your application.
