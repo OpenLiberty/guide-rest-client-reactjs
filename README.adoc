@@ -315,7 +315,7 @@ endif::[]
 
 == Testing the React client
 
-`Next.js` supports a variety of testing tools. This guide uses `Vitest` for unit testing the React components, with the test file [hotspot file]`App.test.jsx` located in `src/main/frontend/__tests__/` directory. The `App.test.jsx` file is a simple JavaScript file that tests against the `page.jsx` component. There are no explicit test cases that are written for this application. To learn more about `Vitest`, please visit https://nextjs.org/docs/app/building-your-application/testing/vitest[Setting up Vitest with Next.js].
+`Next.js` supports various testing tools. This guide uses `Vitest` for unit testing the React components, with the test file [hotspot file]`App.test.jsx` located in `src/main/frontend/__tests__/` directory. The `App.test.jsx` file is a simple JavaScript file that tests against the `page.jsx` component. No explicit test cases are written for this application. To learn more about `Vitest`, see https://nextjs.org/docs/app/building-your-application/testing/vitest[Setting up Vitest with Next.js].
 
 App.test.jsx
 [source, javascript, linenums, role='code_column']
