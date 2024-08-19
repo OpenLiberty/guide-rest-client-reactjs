@@ -59,7 +59,7 @@ include::{common-includes}/gitclone.adoc[]
 
 === Try what you'll build
 
-The `finish` directory in the root of this guide contains the finished application. The React front-end is already pre-built for you and the static files from the production build can be found in the `src/main/webapp/_next/static` directory.
+The `finish` directory in the root of this guide contains the finished application. The React front end is already pre-built for you and the static files from the production build can be found in the `src/main/webapp/_next/static` directory.
 
 ifndef::cloud-hosted[]
 To try out the application, navigate to the `finish` directory and run the following Maven goal to build the application and deploy it to Open Liberty:
