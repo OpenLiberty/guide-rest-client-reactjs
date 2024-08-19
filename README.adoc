@@ -43,7 +43,7 @@ artists.json
 include::finish/src/resources/artists.json[]
 ----
 
-The REST service that provides the resources was written for you in advance in the back-end of the application, and it responds with the [hotspot]`artists.json` in the `src/resources` directory. You will implement a ReactJS client as the front-end of your application, which consumes this JSON file and displays its contents on a single-page webpage. 
+The REST service that provides the resources was written for you in advance in the back end of the application, and it responds with the [hotspot]`artists.json` file  in the `src/resources` directory. You will implement a ReactJS client as the front end of your application, which consumes this JSON file and displays its contents on a single web page. 
 
 To learn more about REST services and how you can write them, see the https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^] guide.
 
