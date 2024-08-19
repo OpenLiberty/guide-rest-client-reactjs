@@ -139,7 +139,7 @@ curl -s http://localhost:9080/artists | jq
 ```
 endif::[]
 
-All the dependencies for the React front-end are listed in `src/main/frontend/src/package.json` and are installed before the build process by the `frontend-maven-plugin`. Additionally, `CSS` stylesheets files are available in the `src/main/frontend/src/styles` directory.
+All the dependencies for the React front end are listed in the  `src/main/frontend/src/package.json` file and are installed before the build process by the `frontend-maven-plugin`. Also, `CSS` stylesheets files are available in the `src/main/frontend/src/styles` directory.
 
 // =================================================================================================
 // Project configuration 
