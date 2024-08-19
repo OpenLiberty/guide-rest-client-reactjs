@@ -214,7 +214,7 @@ For more detailed information, see the `Next.js` documentation on https://nextjs
 
 == Creating the React component
 
-A React web application is a collection of components, and each component has a specific function. You will create a component that are used in the application to acquire and display data from the REST API. 
+A React web application is a collection of components, and each component has a specific function. You will create a component that the application uses to acquire and display data from the REST API. 
 
 Create the `ArtistTable` function that fetches data from your back-end and renders it in a table. 
 
