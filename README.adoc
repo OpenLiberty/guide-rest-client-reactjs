@@ -190,7 +190,7 @@ page.jsx
 include::finish/src/main/frontend/src/app/page.jsx[]
 ----
 
-The `page.jsx` file will serve as a container for all other components. When React component [hotspot=createHome file=0]`Home` is rendered, the [hotspot=displayArtistTable file=0]`ArtistTable` components content will be displayed.
+The `page.jsx` file is a container for all other components. When the [hotspot=createHome file=0]`Home` React component  is rendered, the [hotspot=displayArtistTable file=0]`ArtistTable` components content are displayed.
 
 In order to render the pages correctly, it is required to add a [hotspot file=1]`layout.jsx` file which defines the `RootLayout` containing the UI that shared across all routes.
 
