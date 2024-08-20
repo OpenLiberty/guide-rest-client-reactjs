@@ -1,4 +1,4 @@
-// Copyright (c) 2020, 2023 IBM Corporation and others.
+// Copyright (c) 2020, 2024 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -10,6 +10,7 @@
 :page-duration: 20 minutes
 :page-description: Explore how to access a simple RESTful web service and consume its resources with ReactJS in Open Liberty.
 :page-releasedate: 2020-07-23
+:page-majorupdateddate: 2024-08-21
 :page-related-guides: ['rest-intro', 'rest-client-java']
 :page-permalink: /guides/{projectid}
 :imagesdir: /img/guide/{projectid}
@@ -35,7 +36,7 @@ You will learn how to access a REST service and deserialize the returned JSON th
 
 https://reactjs.org/[ReactJS^] is a JavaScript library that is used to build user interfaces. Its main purpose is to incorporate a component-based approach to create reusable UI elements. With ReactJS, you can also interface with other libraries and frameworks. Note that the names ReactJS and React are used interchangeably.
 
-The React application in this guide is provided and configured for you in the `src/main/frontend` directory. The application uses the https://reactjs.org/docs/create-a-new-react-app.html[Create React App^] prebuilt configuration to set up the modern single-page React application. The https://github.com/facebook/create-react-app[create-react-app^] integrated toolchain is a comfortable environment for learning React and is the best way to start building a new single-page application with React.
+The React application in this guide is provided and configured for you in the `src/main/frontend` directory. The application uses https://nextjs.org/[Next.js^], a https://react.dev/learn/start-a-new-react-project[React-powered framework^], to set up the modern React application. The `Next.js` framework provides a powerful environment for learning and building React applications, with features like server-side rendering, static site generation, and easy API routes. It is the best way to start building a highly performant React application.
 
 artists.json
 [source, json, linenums, role="code_column"]
@@ -43,7 +44,7 @@ artists.json
 include::finish/src/resources/artists.json[]
 ----
 
-The REST service that provides the resources was written for you in advance in the back end of the application, and it responds with the [hotspot]`artists.json` in the `src/resources` directory. You will implement a ReactJS client as the front end of your application, which consumes this JSON file and displays its contents on a single-page webpage. 
+The REST service that provides the resources was written for you in advance in the back end of the application, and it responds with the [hotspot]`artists.json` file  in the `src/resources` directory. You will implement a ReactJS client as the front end of your application, which consumes this JSON file and displays its contents on a single web page. 
 
 To learn more about REST services and how you can write them, see the https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^] guide.
 
@@ -59,7 +60,7 @@ include::{common-includes}/gitclone.adoc[]
 
 === Try what you'll build
 
-The `finish` directory in the root of this guide contains the finished application. The React front end is already pre-built for you and the static files from the production build can be found in the `src/main/webapp/static` directory.
+The `finish` directory in the root of this guide contains the finished application. The React front end is already pre-built for you and the static files from the production build can be found in the `src/main/webapp/_next/static` directory.
 
 ifndef::cloud-hosted[]
 To try out the application, navigate to the `finish` directory and run the following Maven goal to build the application and deploy it to Open Liberty:
@@ -75,8 +76,8 @@ ifdef::cloud-hosted[]
 In this IBM cloud environment, you need to update the URL to access the ***artists.json***. Run the following commands to go to the ***finish*** directory and update the files where the URL has been specified:
 ```bash
 cd finish
-sed -i 's=http://localhost:9080/artists='"https://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' src/main/webapp/static/js/main.2d7e902e.js
-sed -i 's=http://localhost:9080/artists='"https://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' /home/project/guide-rest-client-reactjs/finish/src/main/frontend/src/Components/ArtistTable.js
+sed -i 's=http://localhost:9080/artists='"https://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' /home/project/guide-rest-client-reactjs/finish/src/main/webapp/_next/static/chunks/app/page-37714928d1f43656.js
+sed -i 's=http://localhost:9080/artists='"https://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' /home/project/guide-rest-client-reactjs/finish/src/main/frontend/src/app/ArtistTable.jsx
 ```
 
 To try out the application, run the following Maven goal to build the application and deploy it to Open Liberty:
@@ -97,10 +98,9 @@ Next, point your browser to the http://localhost:9080[http://localhost:9080^] we
 endif::[]
 
 ifdef::cloud-hosted[]
-When the Liberty instance is running, select **Terminal** > **New Terminal** from the menu of the IDE to open another command-line session. Open your browser and check out the application by going to the URL that the following command returns:
-```bash
-echo http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')
-```
+When the Liberty instance is running, click the following button to check out the application:
+
+::startApplication{port="9080" display="external" name="Visit application" route="/"}
 
 See the following output:
 endif::[]
@@ -140,7 +140,7 @@ curl -s http://localhost:9080/artists | jq
 ```
 endif::[]
 
-All the dependencies for the React front end can be found in `src/main/frontend/src/package.json`, and they are installed before the front end is built by the `frontend-maven-plugin`. Additionally, some provided `CSS` stylesheets files are provided and can be found in the `src/main/frontend/src/Styles` directory.
+All the dependencies for the React front end are listed in the  `src/main/frontend/src/package.json` file and are installed before the build process by the `frontend-maven-plugin`. Also, `CSS` stylesheets files are available in the `src/main/frontend/src/styles` directory.
 
 // =================================================================================================
 // Project configuration 
@@ -158,7 +158,8 @@ endif::[]
 
 ifdef::cloud-hosted[]
 Take a look at the **pom.xml** file.
-> From the menu of the IDE, select **File** > **Open** > guide-rest-client-reactjs/start/pom.xml, or click the following button
+> From the menu of the IDE, select **File** > **Open** > guide-rest-client-reactjs/start/pom.xml, or click the following button:
+
 ::openFile{path="/home/project/guide-rest-client-reactjs/start/pom.xml"}
 
 The ***frontend-maven-plugin*** is used to ***install*** the dependencies that are listed in your ***package.json*** file from the npm registry into a folder called ***node_modules***. The ***node_modules*** folder can be found in your ***working*** directory. Then, the configuration ***produces*** the production files to the ***src/main/frontend/build*** directory. 
@@ -174,73 +175,69 @@ include::finish/pom.xml[]
 
 == Creating the default page
 
-You need to create the entry point of your React application. `create-react-app` uses the [hotspot file=0]`index.js` file as the main entry point of the application. This JavaScript file corresponds with the [hotspot file=1]`index.html` file, which is the entry point where your code runs in the browser.
-
-[role="code_command hotspot", subs="quotes"]
-----
-#Create the `index.js` file.#
-`src/main/frontend/src/index.js`
-----
-
-index.js
-[source, javascript, linenums, role='code_column']
-----
-include::finish/src/main/frontend/src/index.js[]
-----
-
-index.html
-[source, html, linenums, role='code_column tags=html hide_tags=copyright']
-----
-include::finish/src/main/frontend/public/index.html[]
-----
-
-The [hotspot=import-react file=0]`React` library imports the [hotspot=import-react file=0]`react` package. A DOM, or Document Object Model, is a programming interface for HTML and XML documents. React offers a virtual DOM, which is essentially a copy of the browser DOM that resides in memory. The React virtual DOM improves the performance of your web application and plays a crucial role in the rendering process. The [hotspot=react-dom file=0]`react-dom` package provides DOM-specific methods that can be used in your application to get outside of the React model, if necessary. 
-
-The [hotspot=dom-render file=0]`render` method takes an HTML DOM element and tells the ReactDOM to render your React application inside of this DOM element. To learn more about the React virtual DOM, see the https://reactjs.org/docs/react-dom.html[ReactDOM^] documentation.
-
-// =================================================================================================
-// Creating the React components
-// =================================================================================================
-
-== Creating the React components
-
-A React web application is a collection of components, and each component has a specific function. You will create the components that are used in the application to acquire and display data from the REST API. 
-
-The main component in your React application is the `App` component. You need to create the [hotspot file=0]`App.js` file to act as a container for all other components. 
+Create the entry point of your React application. The latest version of `Next.js` recommends you use the https://nextjs.org/docs/app/building-your-application/routing/defining-routes[App Router], which centralizes routing logic under the `app` directory. 
+ 
+To construct the home page of the web application, create a [hotspot file=0]`page.jsx` file.
 
 [role="code_command hotspot file=0", subs="quotes"]
 ----
-#Create the `App.js` file.#
-`src/main/frontend/src/Components/App.js`
+#Create the `page.jsx` file.#
+`src/main/frontend/src/app/page.jsx`
 ----
 
-App.js
+page.jsx
 [source, javascript, linenums, role='code_column']
 ----
-include::finish/src/main/frontend/src/Components/App.js[]
+include::finish/src/main/frontend/src/app/page.jsx[]
 ----
 
-The `App.js` file returns the [hotspot=react-component file=0]`ArtistTable` function to create a reusable element that encompasses your web application. 
+The `page.jsx` file is a container for all other components. When the [hotspot=createHome file=0]`Home` React component  is rendered, the [hotspot=displayArtistTable file=0]`ArtistTable` components content are displayed.
 
-Next, create the `ArtistTable` function that fetches data from your back end and renders it in a table. 
+To render the pages correctly, add a [hotspot file=1]`layout.jsx` file that defines the `RootLayout` containing the UI that are shared across all routes.
 
 [role="code_command hotspot file=1", subs="quotes"]
 ----
-#Create the `ArtistTable.js` file.#
-`src/main/frontend/src/Components/ArtistTable.js`
+#Create the `layout.jsx` file.#
+`src/main/frontend/src/app/layout.jsx`
 ----
 
-ArtistTable.js
+layout.jsx
+[source, javascript, linenums, role='code_column']
+----
+include::finish/src/main/frontend/src/app/layout.jsx[]
+----
+
+For more detailed information, see the `Next.js` documentation on https://nextjs.org/docs/app/building-your-application/routing/pages[Pages^] and https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates[Layouts^].
+
+// =================================================================================================
+// Creating the React component
+// =================================================================================================
+
+== Creating the React component
+
+A React web application is a collection of components, and each component has a specific function. You will create a component that the application uses to acquire and display data from the REST API. 
+
+Create the `ArtistTable` function that fetches data from your back-end and renders it in a table. 
+
+[role="code_command hotspot file=0", subs="quotes"]
+----
+#Create the `ArtistTable.jsx` file.#
+`src/main/frontend/src/app/ArtistTable.jsx`
+----
+
+ArtistTable.jsx
 [source, javascript, linenums, role='code_column hide_tags=get-posts,useEffect,axios-library']
 ----
-include::finish/src/main/frontend/src/Components/ArtistTable.js[]
+include::finish/src/main/frontend/src/app/ArtistTable.jsx[]
 ----
 
-The [hotspot=react-library file=1]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=1]`ArtistTable` function. This function must have the `export` declaration because it is being exported to the `App.js` module. The [hotspot=posts file=1]`posts` object is initialized using a React Hook that lets you add a state to represent the state of the posts that appear on the paginated table.
+At the beginning of the file, the [hotspot=render-client file=0]`use client` directive indicates the `ArtistTable` component is rendered on the client side.
 
-To display the returned data, you will use pagination. Pagination is the process of separating content into discrete pages, and it can be used for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=1]`columns` constant is used to define the table that is present on the webpage.
+The [hotspot=react-library file=0]`React` library imports the `react` package for you to create the [hotspot=ArtistTable file=0]`ArtistTable` function. This function must have the `export` declaration because it is being exported to the `page.jsx` module. The [hotspot=posts file=0]`posts` object is initialized using a React Hook that lets you add a state to represent the state of the posts that appear on the paginated table.
 
-The [hotspot=useTable file=1]`useTable` hook creates a paginated table. The `useTable` hook takes in the [hotspot=table-info file=1]`columns`, [hotspot=posts file=1]`posts`, and `setPosts` objects as parameters. It returns a paginated table that is assigned to the [hotspot=table file=1]`table` constant. The [hotspot=table file=1]`table` constant renders the paginated table on the webpage. The [hotspot=return-table file=1]`return` statement returns the paginated table. The [hotspot=useSortBy file=1]`useSortBy` hook sorts the paginated table by the column headers. The [hotspot=usePagination file=1]`usePagination` hook creates the pagination buttons at the bottom of the table that are used to navigate through the paginated table.
+To display the returned data, you will use pagination. Pagination is the process of separating content into discrete pages, and you can use it for handling data sets in React. In your application, you'll render the columns in the paginated table. The [hotspot=table-info file=0]`columns` constant defines the table that is present on the web page.
+
+The [hotspot=useReactTable file=0]`useReactTable` hook creates a table instance. The hook takes in the [hotspot=table-info file=0]`columns` and  [hotspot=posts file=0]`posts` as parameters. The [hotspot=getCoreRowModel file=0]`getCoreRowModel` function is included for the generation of the core row model of the table, which serves as the foundational row model upon pagination and sorting build. The [hotspot=getPaginationRowModel file=0]`getPaginationRowModel` function applies pagination to the core row model, returning a row model that includes only the rows that should be displayed on the current page based on the pagination state. In addition, the [hotspot=getSortedRowModel file=0]`getSortedRowModel` function sorts the paginated table by the column headers then applies the changes to the row model. The paginated table instance is assigned to the [hotspot=table file=0]`table` constant, which renders the paginated table on the web page.
 
 // =================================================================================================
 // Importing the HTTP client
@@ -254,14 +251,14 @@ The [hotspot=get-posts]`GetArtistsInfo()` function uses the Axios API to fetch d
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Update the `ArtistTable.js` file.#
-`src/main/frontend/src/Components/ArtistTable.js`
+#Update the `ArtistTable.jsx` file.#
+`src/main/frontend/src/app/ArtistTable.jsx`
 ----
 
-ArtistTable.js
+ArtistTable.jsx
 [source, javascript, linenums, role='code_column']
 ----
-include::finish/src/main/frontend/src/Components/ArtistTable.js[]
+include::finish/src/main/frontend/src/app/ArtistTable.jsx[]
 ----
 
 [role="edit_command_text"]
@@ -270,17 +267,17 @@ Add the [hotspot=axios-library]`axios` library and the [hotspot=get-posts]`GetAr
 The [hotspot=axios]`axios` HTTP call is used to read the artist JSON that contains the data from the sample JSON file in the `resources` directory. When a response is successful, the state of the system changes by assigning [hotspot=response-data]`response.data` to [hotspot=posts]`posts`. The [hotspot=for-artists]`artists` and their `albums` JSON data are manipulated to allow them to be accessed by the `ReactTable`. The [hotspot=spread-one]`...rest` or [hotspot=spread-two]`...album` object spread syntax is designed for simplicity. To learn more about it, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals[Spread in object literals^].
 
 ifdef::cloud-hosted[]
-Finally, run the following command to update the URL to access the ***artists.json*** in the ***ArtistTable.js*** file:
+Finally, run the following command to update the URL to access the ***artists.json*** in the ***ArtistTable.jsx*** file:
 ```bash
-sed -i 's=http://localhost:9080/artists='"https://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' /home/project/guide-rest-client-reactjs/start/src/main/frontend/src/Components/ArtistTable.js
+sed -i 's=http://localhost:9080/artists='"https://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists"'=' /home/project/guide-rest-client-reactjs/start/src/main/frontend/src/app/ArtistTable.jsx
 ```
 endif::[]
 
 // =================================================================================================
-// Building and packaging the front end
+// Building and packaging the front-end
 // =================================================================================================
 
-== Building and packaging the front end
+== Building and packaging the front-end
 
 After you successfully build your components, you need to build the front end and package your application. The Maven `process-resources` goal generates the Node.js resources, creates the front-end production build, and copies and processes the resources into the destination directory. 
 
@@ -301,17 +298,16 @@ mvn process-resources
 ```
 endif::[]
 
-The build may take a few minutes to complete. You can rebuild the front end at any time with the Maven `process-resources` goal. Any local changes to your JavaScript and HTML are picked up when you build the front end.
+The build may take a few minutes to complete. You can rebuild the front end at any time with the Maven `process-resources` goal. Any local changes to your JavaScript and HTML are picked up when you build the front-end.
 
 ifndef::cloud-hosted[]
 Navigate to the http://localhost:9080[http://localhost:9080^] web application root to view the front end of your application.
 endif::[]
 
 ifdef::cloud-hosted[]
-Open your browser and view the front end of your application by going to the URL that the following command returns:
-```bash
-echo http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')
-```
+Click the following button to view the front end of your application:
+
+::startApplication{port="9080" display="external" name="Visit application" route="/"}
 endif::[]
 
 // =================================================================================================
@@ -320,13 +316,12 @@ endif::[]
 
 == Testing the React client
 
-New projects that are created with `create-react-app` comes with a test file called [hotspot file]`App.test.js`, which is included in the `src/main/frontend/src` directory. The `App.test.js` file is a simple JavaScript file that tests against the `App.js` component. There are no explicit test cases that are written for this application. The `create-react-app` configuration uses https://jestjs.io/[Jest^] as its test runner.
-To learn more about Jest, go to their documentation on https://jestjs.io/docs/en/tutorial-react[Testing React apps^]. 
+`Next.js` supports various testing tools. This guide uses `Vitest` for unit testing the React components, with the test file [hotspot file]`App.test.jsx` located in `src/main/frontend/__tests__/` directory. The `App.test.jsx` file is a simple JavaScript file that tests against the `page.jsx` component. No explicit test cases are written for this application. To learn more about `Vitest`, see https://nextjs.org/docs/app/building-your-application/testing/vitest[Setting up Vitest with Next.js].
 
-App.test.js
+App.test.jsx
 [source, javascript, linenums, role='code_column']
 ----
-include::finish/src/main/frontend/src/App.test.js[]
+include::finish/src/main/frontend/__tests__/App.test.jsx[]
 ----
 
 [role="code_command hotspot file=1", subs="quotes"]
@@ -343,6 +338,32 @@ include::finish/pom.xml[]
 
 [role="edit_command_text"]
 To run the default test, you can add the [hotspot=node-tests file=1]`testing` configuration to the `frontend-maven-plugin`. Rerun the Maven `process-resources` goal to rebuild the front end and run the tests.
+
+ifndef::cloud-hosted[]
+[role='command']
+----
+mvn process-resources
+----
+endif::[]
+// Cloud hosted guide instruction
+ifdef::cloud-hosted[]
+```bash
+cd /home/project/guide-rest-client-reactjs/start
+mvn process-resources
+```
+endif::[]
+
+If the test passes, you see a similar output to the following example:
+
+[source, role='no_copy']
+----
+[INFO]  ✓ __tests__/App.test.jsx  (1 test) 96ms
+[INFO] 
+[INFO]  Test Files  1 passed (1)
+[INFO]       Tests  1 passed (1)
+[INFO]    Start at  10:43:25
+[INFO]    Duration  3.73s (transform 264ms, setup 0ms, collect 343ms, tests 96ms, environment 408ms, prepare 1.16s)
+----
 
 Although the React application in this guide is simple, when you build more complex React applications, testing becomes a crucial part of your development lifecycle. If you need to write application-oriented test cases, follow the official https://reactjs.org/docs/testing.html[React testing documentation^].
 
