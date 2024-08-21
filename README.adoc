@@ -175,7 +175,7 @@ include::finish/pom.xml[]
 
 == Creating the default page
 
-Create the entry point of your React application. The latest version of `Next.js` recommends you use the https://nextjs.org/docs/app/building-your-application/routing/defining-routes[App Router], which centralizes routing logic under the `app` directory. 
+Create the entry point of your React application. The latest version of `Next.js` recommends you use the https://nextjs.org/docs/app/building-your-application/routing/defining-routes[App Router^], which centralizes routing logic under the `app` directory. 
  
 To construct the home page of the web application, create a [hotspot file=0]`page.jsx` file.
 
@@ -316,7 +316,7 @@ endif::[]
 
 == Testing the React client
 
-`Next.js` supports various testing tools. This guide uses `Vitest` for unit testing the React components, with the test file [hotspot file]`App.test.jsx` located in `src/main/frontend/__tests__/` directory. The `App.test.jsx` file is a simple JavaScript file that tests against the `page.jsx` component. No explicit test cases are written for this application. To learn more about `Vitest`, see https://nextjs.org/docs/app/building-your-application/testing/vitest[Setting up Vitest with Next.js].
+`Next.js` supports various testing tools. This guide uses `Vitest` for unit testing the React components, with the test file [hotspot file]`App.test.jsx` located in `src/main/frontend/__tests__/` directory. The `App.test.jsx` file is a simple JavaScript file that tests against the `page.jsx` component. No explicit test cases are written for this application. To learn more about `Vitest`, see https://nextjs.org/docs/app/building-your-application/testing/vitest[Setting up Vitest with Next.js^].
 
 App.test.jsx
 [source, javascript, linenums, role='code_column']
