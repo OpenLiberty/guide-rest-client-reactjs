@@ -75,8 +75,8 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                            <nodeVersion>v21.6.2</nodeVersion>
-                            <npmVersion>10.2.4</npmVersion>
+                            <nodeVersion>v20.14.0</nodeVersion>
+                            <npmVersion>10.7.0</npmVersion>
                         </configuration>
                     </execution>
                     <!-- tag::node-resource-install[] -->
@@ -125,7 +125,7 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.3.1</version>
                 <executions>
-                 <execution>
+                    <execution>
                         <id>Copy frontend build to target</id>
                         <phase>process-resources</phase>
                         <goals>
@@ -141,7 +141,7 @@
                                 <resource>
                                     <directory>
                                         <!-- tag::directory[] -->
-                                        ${basedir}/src/main/frontend/build
+                                        ${basedir}/src/main/frontend/out
                                         <!-- end::directory[] -->
                                     </directory>
                                     <filtering>true</filtering>
