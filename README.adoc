@@ -68,6 +68,7 @@ To try out the application, navigate to the `finish` directory and run the follo
 [role='command']
 ```
 cd finish
+mvn process-resources
 mvn liberty:run
 ```
 endif::[]
