@@ -12,7 +12,7 @@
   "dependencies": {
     "@tanstack/react-table": "^8.17.3",
     "axios": "^1.7.4",
-    "next": "14.2.10",
+    "next": "14.2.21",
     "react": "^18",
     "react-dom": "^18"
   },
@@ -21,6 +21,6 @@
     "@testing-library/react": "^16.0.0",
     "@vitejs/plugin-react": "^4.3.1",
     "jsdom": "^24.1.0",
-    "vitest": "^1.6.0"
+    "vitest": "^1.6.1"
   }
 }
