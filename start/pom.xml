@@ -73,7 +73,7 @@
                         </goals>
                         <configuration>
                             <nodeVersion>v20.14.0</nodeVersion>
-                            <npmVersion>10.7.1</npmVersion>
+                            <npmVersion>10.7.0</npmVersion>
                         </configuration>
                     </execution>
                     <execution>
@@ -127,3 +127,4 @@
         </plugins>
     </build>
 </project>
+
