@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.eclipse.microprofile</groupId>
             <artifactId>microprofile</artifactId>
-            <version>7.0</version>
+            <version>7.1</version>
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
@@ -76,7 +76,7 @@
                         </goals>
                         <configuration>
                             <nodeVersion>v20.14.0</nodeVersion>
-                            <npmVersion>10.7.0</npmVersion>
+                            <npmVersion>10.7.1</npmVersion>
                         </configuration>
                     </execution>
                     <!-- tag::node-resource-install[] -->
