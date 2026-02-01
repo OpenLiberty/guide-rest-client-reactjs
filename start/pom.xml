@@ -55,7 +55,7 @@
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.11.5</version>            
+                <version>3.12.0</version>            
             </plugin>
             <!-- Frontend resources -->
             <plugin>
